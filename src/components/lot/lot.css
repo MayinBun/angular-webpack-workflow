@@ -1,0 +1,275 @@
+.lot-header-container{
+  height:auto;
+  background-color:#F5F5F7;
+  border-bottom:1px solid #E0E0E8;
+  padding:15px;
+}
+.description-container{
+  padding:15px;
+  border-bottom:1px solid #E0E0E8;
+}
+.description{
+  color:#333333;
+  font-weight: bold;
+  font-size:18px;
+}
+.lot-description{
+  font-size:15px;
+  color:#89898A;
+  font-weight: bold;
+  line-height: 20px;
+  letter-spacing: 1px;
+}
+.lot-number{
+  font-weight: bold;
+  color:#B2B2B2;
+}
+
+img.lot-slide{
+  height:260px;
+  margin:0 auto;
+}
+.caption-bottom{
+  background-color:#292c2f;
+  padding:15px 0px;
+}
+.caption-bottom .sub-header{
+  color:#FFFFFF;
+  text-align: center;
+}
+.caption-bottom .header{
+  color:rgba(255,255,255,0.50);
+  font-weight: 600;
+  font-size:11px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* INPUTS */
+input.bid-input{
+  padding:15px 0px;
+  text-align: center;
+  font-size:16px;
+  border:1px solid #E0E0E8;
+  border-radius: 6px;
+  display:block;
+  width:100%;
+  font-weight: bold;
+  margin-top:5px;
+}
+.button.primary.bid{
+  width:100%;
+  padding:18px;
+  font-weight: bold;
+  margin-top:10px;
+}
+.button.primary.bid:disabled{
+  color:#999999;
+  background-color:#EAEAEA;
+}
+.button.primary.buynow{
+  background-color:darkred;
+  width:100%;
+  margin-top:10px;
+}
+
+/* AUTOBID SWITCH */
+.onoffswitch {
+    position: relative; 
+    width: 90px;
+    -webkit-user-select:none; 
+    -moz-user-select:none; 
+    -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; 
+    overflow: hidden; 
+    cursor: pointer;
+    border: 2px solid #EAEAEA; 
+    border-radius: 3px;
+}
+.onoffswitch-inner {
+    display: block; 
+    width: 200%; 
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; 
+    width: 50%; 
+    height: 30px; 
+    padding: 0; 
+    line-height: 30px;
+    font-size: 14px; 
+    color: white; 
+    font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "AAN";
+    padding-left: 10px;
+    background-color: #017EDA; 
+    color: #EAEAEA;
+}
+.onoffswitch-inner:after {
+    content: "UIT";
+    padding-right: 10px;
+    background-color: #EAEAEA; 
+    color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 16px; margin: 7px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 56px;
+    border: 2px solid #EAEAEA; border-radius: 3px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+/* BID MODAL */
+.modalDialog {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.6);
+	z-index: 99999;
+	opacity:1;
+  overflow-y:scroll;
+}
+.modalDialog > div {
+  opacity:1;
+  display:block;
+	width: 85%;
+	position: relative;
+	margin:10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 3px;
+	background: #FFFFFF;
+}
+.close {
+  position: absolute;
+  text-align: center;
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 30px;
+	right: 5px;
+	top: -10px;
+	width: 50px;
+	text-decoration: none;
+	font-weight: bold;
+  border-radius: 3px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+
+/* BID STATUS NOTIFICATIONS */
+.notice {
+  position: relative;
+  margin: 1em;
+  background: #F9F9F9;
+  padding: 1em 1em 1em 2em;
+  border-left: 4px solid #DDD;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+}
+.notice:before {
+  position: absolute;
+  top: 50%;
+  margin-top: -17px;
+  left: -17px;
+  background-color: #DDD;
+  color: #FFF;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  font-family: Georgia;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.info {
+  border-color: #0074D9;
+}
+
+.info:before {
+  content: "i";
+  background-color: #0074D9;
+}
+
+.success {
+  border-color: #009900
+}
+
+.success:before {
+  content: "√";
+  background-color: #009900
+}
+
+.warning {
+  border-color: #FFDC00;
+}
+
+.warning:before {
+  content: "!";
+  background-color: #FFDC00;
+}
+
+.error {
+  border-color: #FF3333
+}
+
+.error:before {
+  content: "X";
+  background-color: #FF3333
+}
+
+/*EXCEPTION NOTIFICATION*/
+.exception{
+  display:block;
+  background-color:#FFCCCC;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height:auto;
+  transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  overflow: hidden;
+  z-index: 100;
+}
+
+.exception.ng-hide{
+  top:-55px
+}
+
+.exception-message{
+  color:#A00000;
+  text-align: center;
+  line-height: 45px;
+  letter-spacing: .1em;
+  font-size:16px;
+}
+
+.exception-reload-message{
+  color:#A00000;
+  text-align: center;
+  letter-spacing: .1em;
+  font-size:13px;
+  font-weight: normal;
+  margin-bottom:5px;
+}

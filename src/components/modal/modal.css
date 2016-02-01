@@ -1,0 +1,43 @@
+.modal {
+	position: fixed;
+	display:block;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+	background: rgba(0,0,0,0.6);
+	z-index: 150;
+	opacity:1;
+	overflow-y:scroll;
+}
+.modal > .modal-content {
+  	opacity:1;
+  	display:block;
+	width: 95%;
+	position: relative;
+	margin:5% auto;
+	padding: 15px 5px 15px 5px;
+	border-radius: 3px;
+	background: #FFFFFF;
+}
+.close {
+    position: absolute;
+    text-align: center;
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 30px;
+	right: 5px;
+	top: -10px;
+	width: 50px;
+	text-decoration: none;
+	font-weight: bold;
+    border-radius: 3px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+.hide-overflow{
+	overflow: hidden !important;
+}

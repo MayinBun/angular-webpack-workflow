@@ -1,0 +1,20 @@
+<div class="row">
+    <a data-ng-repeat="data in lotsList" class="list-item col-md-6 col-xs-12 textlimit" data-ui-sref="lot({auctionId:data.auctionId,lotId:data.id})">
+        <img class="pull-left" data-ng-src="{{::data.imageUrl}}"/>
+        <h3 class="list-item-title">{{::data.name.nl}}</h3>
+        <h5 class="pull-right bva-black">€ {{::data.latestBidAmount|number:2}}</h5>
+        <h5 class="list-item-sub">{{::data.fullNumber}}</h5>
+        <div data-timer data-type="lots" data-start-date="data.startDate" data-end-date="data.endDate"></div>
+    </a>
+</div>
+<!-- pagination -->
+<div 
+    data-pagination
+    class="text-center col-xs-12"
+    data-ng-if="count > 25" 
+    data-ng-click="pageChanged(page)"
+    data-page=page 
+    data-page-size="25" 
+    data-total="count" 
+    data-show-prev-next="true">
+</div>

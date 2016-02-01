@@ -1,0 +1,39 @@
+<div  class="exception login-exception" data-ng-if="!!loginApiError">
+	<h5 class='exception-message'>{{loginApiError}}</h5>
+</div>
+
+<form name='loginForm' novalidate data-ng-submit='loginForm.$valid && login()'>
+		<div class="row padding fullwidth">
+			<input 
+				name='username'
+				class="col-xs-12 input-field margin-top radius-3"
+				data-ng-model="credentials.username" 
+				data-ng-keydown='loginApiError = undefined'
+				type='text' 
+				placeholder='Gebruiksnaam'
+				required
+				autofocus/>
+				
+			<div class='error-messages' data-ng-messages="loginForm.username.$error" data-ng-show="loginForm.$submitted">
+					<span data-ng-message="required">Ongeldig gebruiksnaam</span>
+			</div>
+				
+			<input 
+				class="col-xs-12 input-field margin-top radius-3"
+				name='password'
+				data-ng-model="credentials.password" 
+				type='password' 
+				placeholder='Wachtwoord' 
+				data-ng-keydown='$event.which === 13 && submit(); loginApiError = undefined'
+				required/>
+			
+			<div class='error-messages' data-ng-messages="loginForm.password.$error" data-ng-show="loginForm.$submitted">
+    			<span data-ng-message="required">Ongeldig wachtwoord</span>
+			</div>
+			
+			<input 
+				type='submit' 
+				class="button primary login"
+				value='Inloggen'/>
+		</div>
+</form>

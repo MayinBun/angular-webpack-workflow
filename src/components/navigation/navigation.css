@@ -1,0 +1,113 @@
+/*2) HEADER (TOPBAR)*/
+header{
+  width:100%;
+  height:55px;
+  position:relative;
+  background-color:#0968AE;
+  top:0;
+  left:0;
+  z-index: 100;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.35);
+}
+.logo{
+  float:left !important;
+}
+
+.logo img{
+  max-width:100%; 
+  max-height:50px;
+  margin:auto;
+  padding:5px 5px 0px 5px;
+  display:block;
+}
+
+/*3) NAVIGATION (MENU) */
+nav{
+ float:right;
+ padding:0px;
+}
+nav>ul{
+  list-style:none;
+  text-align: center;
+  height:100%;
+}
+nav>ul>li{
+  color:#FFFFFF;
+  height:100%;
+  display:inline-block;
+  text-align: center;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+nav>ul>li>a{
+  display:inline-block;
+  color:#FFFFFF;
+  padding:18px 20px;
+}
+nav>ul>li>a.m-active{
+ background-color:#FFFFFF;
+ box-shadow: 0px 2px 1px #FF6600;
+ color:#FF6600;
+ font-weight: bold;
+}
+nav>a#menu-icon {
+	display: none !important;
+}
+
+nav>ul.ng-hide:not(.ng-hide-animate) {
+    display: inline-block !important;
+}
+
+@media only screen and (max-width : 768px) {
+  nav>a#menu-icon {
+    display:inline-block !important;
+    width: 100%;
+    line-height: 55px;
+    font-size:18px;
+    color:#EAEAEA;
+    -webkit-user-select: none;
+    -moz-user-select:none;
+    user-select:none;
+  }
+  nav>ul.ng-hide:not(.ng-hide-animate) {
+    display: none !important;
+  }
+  nav>ul { 
+    box-sizing: border-box;
+	position: absolute;
+	background: #0968AE;
+	left:0;
+	width: 100%;
+    border: none;
+    color: #F9FAFB;
+	}
+   nav>ul>li {
+	text-align: center;
+	width: 100%;
+	margin: 0;
+    background-color:inherit;
+    }
+   nav>ul>li>a{
+    color:#FFFFFF;
+    display:block;
+    }
+  #menu-icon>.expand {
+    -webkit-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+  #menu-icon>.collapse {
+    -webkit-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+    -webkit-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
+    transform: rotate(0);
+  }
+}

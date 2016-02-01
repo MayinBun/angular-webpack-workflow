@@ -1,0 +1,8 @@
+<div class='row' data-infinite-scroll="loadMore()" data-infinite-scroll-distance='1' data-infinite-scroll-disabled="busy">
+	<a data-ng-repeat="data in lotsPhotos track by data.id" class="col-xs-6 center-xs col-md-3 margin-top" data-ui-sref="lot(::{auctionId:data.auctionId,lotId:data.id})">
+		<div class="caption-wrapper">
+			<img class='grid-image' data-ng-src="{{::data.imageUrl}}">
+			<span class="caption-content">€ {{::data.latestBidAmount|number:2}}</span>
+		</div>
+	</a>
+</div>

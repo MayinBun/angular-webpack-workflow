@@ -1,0 +1,54 @@
+/*Slick carousel overridings*/
+.slick-prev,
+.slick-next{
+    height:100%;
+    top:0;
+    bottom:0;
+    margin:0 auto;
+    padding:0px 50px 0px 0px;
+}
+.slick-prev{
+    left:0;
+}
+.slick-next{
+    right:0;
+}
+.slick-next:before,
+.slick-prev:before{
+    font-family: 'fontawesome';
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: rgba(255, 102, 0, 0.9);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display:block;
+    position: absolute;
+    background:#000000;
+    opacity: 0.4;
+    border-radius: 16px;
+    padding:3px 5px 3px 5px;
+    margin:0 auto;
+}
+
+.slick-next:before
+{
+    content:"\f061";
+    right:13px;
+}
+.slick-prev:before
+{
+    content:"\f060";
+    left:13px;
+}
+
+.mob-carousel-image{
+    max-width: 100%;
+    border:none;
+    width:100%;
+    margin:0 auto;
+}
+.mob-carousel{
+    border:none;
+    width:100%;
+}

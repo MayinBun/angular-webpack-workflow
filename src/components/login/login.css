@@ -1,0 +1,32 @@
+/*NG MESSAGES*/
+.error-messages.ng-active {
+  background:#FFCCCC;
+  color:#A00000;
+  font-size:16px;
+  border-radius: 3px;
+  padding:5px;
+  margin-bottom:10px;
+  position:relative;
+}
+.error-messages.ng-active:after {
+  position:absolute;
+  top:-10px;
+  content:"";
+  left:20px;
+  border-style:solid;
+  border-color:transparent transparent #FFCCCC;
+  border-width:5px;
+}
+.button.primary.login{
+  width:100%;
+  margin-top:10px;
+  display:block;
+  border-radius: 3px;
+  padding:18px;
+  font-size:16px;
+}
+
+/*EXCEPTION Override*/
+.login-exception{
+  position: relative !important;
+}

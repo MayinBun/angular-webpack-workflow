@@ -1,11 +1,27 @@
 <!doctype html>
-<html ng-app="app" lang="en">
+<html ng-app="app" lang="en" ng-controller="AppController">
 <head>
-  <meta charset="UTF-8">
-  <title>Angular App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <title data-ng-bind="title"></title>
+  <meta name='description' content='De veilingsite voor openbare verkoop, executie verkoop en online veilingen van roerende goederen afkomstig van faillissement bij diverse bedrijven.'/>
+  <meta name='keywords' content='veiling, faillissement veiling, online veilingen, openbare verkoop, executie verkoop, internetveiling'/>
+  <meta http-equiv='Cache-control' content='no-cache'/>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+  <meta name='mobile-web-app-capable' content='yes'>
+  <meta name='apple-mobile-web-app-capable' content='yes'/>
+  <meta name='theme-color' content='#0968AE'/>
   <base href="/">
 </head>
-<body>
-  Hello, World
+<body class="site">
+    <div class="site-content">
+          <navigation-directive></navigation-directive>
+          <div data-ui-view></div>
+          <!-- static views -->
+          <div data-autoscroll="root.staticscroll" data-ui-view="staticView"></div>
+    </div>
+     <!-- footer view -->
+    <footer autoscroll="false" data-ui-view="footer"></footer>
+    <consent-directive></consent-directive>
 </body>
 </html>

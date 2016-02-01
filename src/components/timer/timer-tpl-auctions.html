@@ -1,0 +1,9 @@
+<div data-ng-show='secondsEnd === 0' class='bva-orange'>
+	<i class="fa fa-gavel"></i> Aan het sluiten!
+</div>
+<div data-ng-show='!dateIsBeforeNow && !dateIsAfterNow && secondsEnd > 0'>
+    <h5 class="list-item-sub"><i class="fa fa-clock-o"></i> {{timestamp}}</h5>
+	<div class='progressbar'>
+		<span data-ng-style="{width:percentage+'%'}"></span>
+	</div>
+</div>

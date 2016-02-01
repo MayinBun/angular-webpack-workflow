@@ -1,0 +1,9 @@
+<div class='no-m' data-slick  responsive="breakpoints" arrows='false' autoplay="true" data='mobileBanner.data' init-onload="true">
+  <div data-ng-repeat='slide in ::mobileBanner.data track by $index'>
+    <a data-ng-href='{{::slide.url}}'>
+      <div class='mob-carousel'>
+      <img data-ng-show="loaded" class='mob-carousel-image' data-ng-src="{{::slide.image}}"/>
+      </div>
+    </a>
+  </div>
+</div>

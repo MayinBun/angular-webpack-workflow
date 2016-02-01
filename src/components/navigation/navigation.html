@@ -1,0 +1,44 @@
+<header>
+    <div class="logo">
+        <a data-ui-sref="home"><img src="media/images/bva-logo.png"></a>
+    </div>
+    <nav>
+        <a id="menu-icon" data-ng-click="showMenu = !showMenu"><i ng-class="{'fa fa-bars fa-lg collapse':!showMenu, 'fa fa-bars fa-lg expand':showMenu}"></i> Menu</a>
+        <ul data-ng-hide="!showMenu">
+            <li>
+                <a data-ui-sref-active='m-active' data-ui-sref='home' data-ng-click="showMenu = !showMenu">    
+                Alle veilingen
+            </a>
+            </li>
+            <li>
+                <a data-ui-sref-active='m-active' data-ui-sref='user-lots' data-ng-click="showMenu = !showMenu">
+               Mijn kavels
+            </a>
+            </li>
+            <li>
+                <a data-ui-sref-active='m-active' data-ng-hide="vm.is.loggedin" data-ui-sref='login' data-ng-click="showMenu = !showMenu"> 
+                Inloggen
+            </a>
+                <a data-ng-hide="!vm.is.loggedin" data-ng-click="vm.logOut();!showMenu">  
+                Uitloggen
+            </a>
+            </li>
+            <li>
+                <a data-ui-sref-active='m-active' data-ui-sref='contact' data-ng-click="showMenu = !showMenu">
+               Contact
+            </a>
+            </li>
+            <!--<li>
+            <a href="https://www.bva-auctions.com?force-web=true"><i class='fa fa-desktop'></i>desktop site</a>
+          </li>-->
+        </ul>
+    </nav>
+    <section class="pull-right">
+        <a class='fa fa-lg fa-search white padding' data-ng-click='showSearch = !showSearch'>
+        </a>
+    </section>
+    <section class="pull-right">
+        <a class='fa fa-info-circle fa-lg white padding' data-ng-show="auctionsummary.showInfoButton" data-ng-click="auctionsummary.showOverlay = !auctionsummary.showOverlay">
+        </a>
+    </section>
+</header>

@@ -1,0 +1,10 @@
+angular.module('mbva.user-lots')
+	.directive('userLots',function($filter){
+		return{
+			restrict:'EA',
+			scope:{
+			    userLots:'=userLots',
+			},
+			templateUrl:'components/user-lots/user-lots-list.html',
+		}
+	})
