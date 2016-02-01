@@ -5,7 +5,7 @@ import './carousel.css';
 
 export default angular.module('mbva.carousel',[])
 .directive('mobileBanner',directive)
-.factory('carouselService',CarouselService.Factory);
+.service('carouselService', CarouselService);
 
 
 directive.$inject = ['carouselService','$timeout'];
@@ -15,8 +15,8 @@ directive.$inject = ['carouselService','$timeout'];
       template:template,
       link:function(scope,element,attrs){        
         //console.log($scope.mobileBanner.data);
+      /*  console.log(carouselService.getItems().then(res => console.log(res.data)));*/
         scope.loaded = false;
-        
         scope.breakpoints = [
           {
             breakpoint:99999,

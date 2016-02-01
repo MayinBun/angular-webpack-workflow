@@ -9,6 +9,8 @@ import NavigationModule from './components/navigation/navigation';
 import LegalModule from './components/legal/legal';
 import PageTitleModule from './components/page-title/page-title';
 
+//Global templates & css
+import footerTemplate from "./components/footer/footer.html";
 import './app.css';
 import 'flexboxgrid/css/flexboxgrid.css';
 
@@ -26,9 +28,16 @@ angular.module('app', [
 .controller('AppController',()=>new AppController);
 
 
-import footerTemplate from "./components/footer/footer.html";
+
 function routeConfig($stateProvider,$urlRouterProvider) {
-    $urlRouterProvider.otherwise('/404');
+    //URL rewritings
+    $urlRouterProvider.otherwise('/404'); //Fallback URL (page not found)
+    
+    $urlRouterProvider.when('/login/*path', 'login');
+    $urlRouterProvider.when('/auction/lot/:id?*path', '/auction/lot/:id?page');
+    $urlRouterProvider.when('/auction/index/:id?*path', "/auction/lot/:id");
+    $urlRouterProvider.when('/content/terms', '/terms');
+    
     $stateProvider
         .state('root', {
             abstract: true,

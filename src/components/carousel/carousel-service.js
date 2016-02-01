@@ -20,19 +20,18 @@
       return { getCarouselItems: getCarouselItems };
     }])*/
     
-    const HTTP = new WeakMap();
     const carouselEndpoint = 'https://api.bva-auctions.com/static/feeds/carousel_mobile.xml'; 
     
     export default class CarouselService {
         constructor($http){
-            HTTP.set(this,$http);
+            this.$http = $http;
         }
         getItems(){
-            return HTTP.get(this).get(carouselEndpoint).then(response => response);
-        }
-        
-        static Factory($http){
-            return new CarouselService($http);
-        }
+            return this.$http ({
+                method:'GET',
+                cache:true,
+                url:carouselEndpoint,
+            })
+        }      
     }
     CarouselService.$inject = ['$http'];
