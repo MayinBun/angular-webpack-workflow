@@ -1,4 +1,4 @@
-angular
+/*angular
   .module('mbva.auctions')
   .factory('auctionsService', [
     'resolve',
@@ -13,4 +13,16 @@ angular
       }
       return getAuctions;
     }
-  ])
+  ])*/
+  
+  export default class AuctionsService {
+      constructor(resolve){
+          this.resolve = resolve;
+      }
+      getAuctionsPaged(page){
+          return this.resolve('ext123/auctions/bycurrent/paged',{
+              page:page
+          })
+      }
+  }
+  AuctionsService.$inject = ['resolve'];

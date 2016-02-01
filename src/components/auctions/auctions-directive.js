@@ -1,13 +1,11 @@
-angular.module('mbva.auctions')
-  .directive('auctions',['auctionsService',
-    function (auctionsService) {
-      'use strict';
+  import auctionsTemplate from './auctions.html';
+    function auctionsDirective (AuctionsService) {
       return {
         restrict: 'EA',
         scope: {
           auctions: '=auctions',
         },
-        templateUrl: 'components/auctions/auctions-tpl.html',
+        template:auctionsTemplate,
         link: function (scope, element, attr) {
           if (scope.auctions.list) {
             var currentPage = Math.ceil(scope.auctions.list.length / 25) || 1;
@@ -16,7 +14,7 @@ angular.module('mbva.auctions')
             scope.loadMore = function () {
               if (pages > currentPage) {
                 currentPage++;
-                auctionsService(currentPage).get(function (response) {
+                AuctionsService(currentPage).get(function (response) {
                   for (var i = 0; i < response.list.length; i++) {
                     var auction = response.list[i];
                     scope.auctions.list.push(auction);
@@ -27,8 +25,12 @@ angular.module('mbva.auctions')
             }
           }
         }
-      };
-    }]);
+      }
+    }
+    auctionsDirective.$inject = ['AuctionsService'];
+   
+    
+   
     
 /*    import template from "./auctions-tpl.html";
     class AuctionsDirective {

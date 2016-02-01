@@ -1,5 +1,4 @@
 import angular from 'angular';
-import ngCookies from 'angular-cookies';
 import ngAnimate from 'angular-animate';
 import uiRouter from 'angular-ui-router';
 
@@ -16,7 +15,6 @@ import 'flexboxgrid/css/flexboxgrid.css';
 
 angular.module('app', [
     uiRouter,
-    ngCookies,
     ngAnimate,
     HomeModule.name,
     NavigationModule.name,

@@ -20,14 +20,14 @@ export default angular.module('mbva.platform',[ngResource])
         .service('resolve',()=> new ResolveService);
         
         const ApiEndpoint = 'https://origin-api.bva-auctions.com/api/rest';
-        
         class ResolveService {
             constructor($resource){
                 this.$resource = $resource;
-                this.URL = "";
+               
             }
             resolve (serviceEndpoint, paramDefaults, actions, options){
                 this.URL = [ApiEndpoint, serviceEndpoint].join('/');
                 return this.$resource(this.URL,paramDefaults,actions,options);
             }
         }
+        ResolveService.$inject = ['$resource'];
