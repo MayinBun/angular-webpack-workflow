@@ -1,4 +1,8 @@
-angular.module("mbva.search", ['mbva.platform'])
+import angular from 'angular';
+import Platform from '../platform/platform';
+import searchBarDirective from './search-bar-directive';
+angular.module("mbva.search", [Platform.name])
+.directive('searchBar',searchBarDirective)
     .config([
         '$stateProvider',
         function ($stateProvider) {

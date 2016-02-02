@@ -1,3 +1,4 @@
+/*
 angular
   .module('mbva.search')
   .factory('searchService', [
@@ -10,4 +11,14 @@ angular
       }
       return search;
     }
-  ]);
+  ]);*/
+  
+  export default class SearchService {
+      constructor($http,platform){
+          this.$http = $http;
+          this.platform = platform;
+      }
+      searchQuery(query,page){
+          return this.$http.get(this.platform.API_ENDPOINT + '/ext123/search/' + query + '/' + page || 1);
+      }
+  }

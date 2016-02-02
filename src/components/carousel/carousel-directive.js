@@ -1,12 +1,13 @@
 import template from "./carousel.html";
 import './carousel.css';
+directive.$inject = ['carouselService','$timeout'];
 export default function directive (carouselService,$timeout) {
     return {
       restrict: 'EA',
       template:template,
       link:function(scope,element,attrs){        
-        //console.log($scope.mobileBanner.data);
-      /*  console.log(carouselService.getItems().then(res => console.log(res.data)));*/
+      //console.log($scope.mobileBanner.data);
+      //console.log(carouselService.getItems());
         scope.loaded = false;
         scope.breakpoints = [
           {
@@ -45,4 +46,3 @@ export default function directive (carouselService,$timeout) {
       }
     }
   }
-  directive.$inject = ['carouselService','$timeout'];

@@ -1,15 +1,13 @@
-angular.module('mbva.auctions-future')
-  .factory('auctionsFuturedService', [
-    'resolve',
-    function (resolve) {
-      'use strict';
-      function getFuturedAuctions(page) {
-        var resource;
-        resource = resolve('ext123/auctions/byfuture/paged', { 
-          page: page
-        });
-        return resource;
-      }
-      return getFuturedAuctions;
+export default class AuctionsFuturedService {
+    constructor($http,platform){
+        this.$http = $http;
+        this.platform = platform;
     }
-  ]);
+    getFutureAuctions(page){
+        return this.$http.get(this.platform.API_ENDPOINT + '/ext123/auctions/byfuture/paged',{
+            params:{
+                page:page
+            }
+        });
+    }
+}

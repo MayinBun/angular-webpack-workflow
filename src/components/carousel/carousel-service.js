@@ -20,18 +20,18 @@
       return { getCarouselItems: getCarouselItems };
     }])*/
     
+    import x2js from '../../vendor/xml2json.min.js';
     const carouselEndpoint = 'https://api.bva-auctions.com/static/feeds/carousel_mobile.xml'; 
-    
     export default class CarouselService {
-        constructor($http){
-            this.$http = $http;
+        constructor(platform){
+            this.platform = platform;
         }
         getItems(){
             return this.$http ({
                 method:'GET',
                 cache:true,
-                url:carouselEndpoint,
+                url:carouselEndpoint       
             })
         }      
     }
-    CarouselService.$inject = ['$http'];
+    CarouselService.$inject = ['platform'];

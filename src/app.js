@@ -29,7 +29,7 @@ angular.module('app', [
 
 function routeConfig($stateProvider,$urlRouterProvider) {
     //URL rewritings
-    $urlRouterProvider.otherwise('/404'); //Fallback URL (page not found)
+    $urlRouterProvider.otherwise('/'); //Fallback
     
     $urlRouterProvider.when('/login/*path', 'login');
     $urlRouterProvider.when('/auction/lot/:id?*path', '/auction/lot/:id?page');

@@ -1,12 +1,10 @@
-angular.module('mbva.auctions-future')
-  .directive('auctionsFutured',
-    function () {
-      'use strict';
+import template from './auctions-future.html';
+    export default function auctionsFutureDirective () {
       return {
-        restrict: 'A',
+        restrict: 'EA',
         scope:{
-          auctionsFutured:'=auctionsFutured'
+          auctionsFuture:'=auctionsFuture'
         },
-        templateUrl: 'components/auctions-future/auctions-future.html',
+        template:template
       };
-    });
+    };

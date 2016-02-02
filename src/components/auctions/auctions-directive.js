@@ -1,12 +1,13 @@
   import auctionsTemplate from './auctions.html';
-    function auctionsDirective (AuctionsService) {
+    export default function auctionsDirective (AuctionsService) {
       return {
         restrict: 'EA',
         scope: {
           auctions: '=auctions',
-        },
+        },   
         template:auctionsTemplate,
-        link: function (scope, element, attr) {
+       link: function (scope, element, attr) {
+            console.log(scope.auctions);
           if (scope.auctions.list) {
             var currentPage = Math.ceil(scope.auctions.list.length / 25) || 1;
             var pages = Math.ceil(scope.auctions.totalSize / 25);
@@ -14,9 +15,10 @@
             scope.loadMore = function () {
               if (pages > currentPage) {
                 currentPage++;
-                AuctionsService(currentPage).get(function (response) {
-                  for (var i = 0; i < response.list.length; i++) {
-                    var auction = response.list[i];
+                AuctionsService.getAuctionsPaged(currentPage).then(function(response){
+                    console.log(response);
+                  for (var i = 0; i < response.data.list.length; i++) {
+                    var auction = response.data.list[i];
                     scope.auctions.list.push(auction);
                   }
                 })

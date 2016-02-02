@@ -1,6 +1,5 @@
-import angular from "angular";
-import ngResource from "angular-resource";
-
+'use strict';
+import angular from 'angular';
 /*angular
 	.module('mbva.platform', ['ngResource'])
 	.factory('resolve',['$resource','ENV',
@@ -15,19 +14,14 @@ import ngResource from "angular-resource";
 			}
 			return resolve;
 		}])*/
-        
-export default angular.module('mbva.platform',[ngResource])
-        .service('resolve',()=> new ResolveService);
-        
-        const ApiEndpoint = 'https://origin-api.bva-auctions.com/api/rest';
-        class ResolveService {
-            constructor($resource){
-                this.$resource = $resource;
-               
-            }
-            resolve (serviceEndpoint, paramDefaults, actions, options){
-                this.URL = [ApiEndpoint, serviceEndpoint].join('/');
-                return this.$resource(this.URL,paramDefaults,actions,options);
-            }
-        }
-        ResolveService.$inject = ['$resource'];
+
+export default angular.module('mbva.platform', [])
+    .service('platform',() => new PlatformService);
+
+const API_ENDPOINT = 'https://api.bva-auctions.com/api/rest';  
+
+class PlatformService {
+    constructor(BASE) {
+        this.API_ENDPOINT = API_ENDPOINT;
+    }
+}
