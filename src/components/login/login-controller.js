@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 angular.module('mbva.login')
 	.controller('LoginController', [
 		'$scope',
@@ -33,4 +33,35 @@ angular.module('mbva.login')
 					}
 				})
 			}
-		}])
+		}])*/
+        
+        LoginController.$inject = ['$state','$previousState','LoginService','SessionService'];
+        export default class LoginController {
+            constructor($state,$previousState,LoginService,SessionService){
+                this.loginError = false;
+                this.$state = $state;
+                this.$previousState = $previousState;
+                this.previous = $previousState.get();
+                this.auth = LoginService;
+                this.session = SessionService;
+                this.credentials = {
+                    username:'',
+                    password:''
+                }
+            }
+            login(){
+                this.auth.login(this.credentials).then(response => {
+                    this.session.create(response.data);
+                    if(this.previous != null){
+                        this.$previousState.go();
+                    }else{
+                        this.$state.go('home');
+                    }
+                },(error)=>{
+                    this.loginError = false;
+                    if(error.status === 404){
+                        this.loginError = 'Onjuiste gebruiksnaam en/of wachtwoord'
+                    }
+                })
+            }
+        }

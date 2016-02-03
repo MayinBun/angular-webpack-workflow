@@ -1,5 +1,5 @@
-<div  class="exception login-exception" data-ng-if="!!loginApiError">
-	<h5 class='exception-message'>{{loginApiError}}</h5>
+<div  class="exception login-exception" data-ng-if="!!loginError">
+	<h5 class='exception-message'>{{loginError}}</h5>
 </div>
 
 <form name='loginForm' novalidate data-ng-submit='loginForm.$valid && login()'>

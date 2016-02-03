@@ -1,13 +1,11 @@
-angular
-  .module('mbva.lots')
-  .factory('lotsService', [
-    'resolve',
-    function (resolve) {
-      function getlots(auctionid, page) {
-        var resource;
-        resource = resolve("ext123/lots/byauction/" + auctionid + "/25/" + page,null,{cache:false});
-        return resource;
+export default class LotsService {
+      constructor($http,platform){
+          this.$http = $http;
+          this.platform = platform;
       }
-      return getlots;
-    }
-  ]);
+      getLots(auctionId,page){
+          return this.$http.get(this.platform.API_ENDPOINT + '/ext123/lots/byauction/' + auctionId + '/25/' + page || 1,{
+              cache:false
+          })
+      }
+  }

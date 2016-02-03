@@ -1,4 +1,4 @@
-angular.module('mbva.pagination').directive('pagination', function () {
+export default function paginationDirective () {
     return {
         restrict: 'EA',
         link: link,
@@ -305,4 +305,4 @@ angular.module('mbva.pagination').directive('pagination', function () {
         // Add the next and last buttons to our paging list
         addPrevNext(scope, pageCount, 'next');
     }
-});
+};

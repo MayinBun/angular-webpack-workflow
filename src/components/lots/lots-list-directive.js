@@ -1,9 +1,5 @@
-angular.module('mbva.lots')
-	.directive('lotsList', [
-		'$state',
-		'$stateParams',
-		'lotsService',
-		function ($state,$stateParams,lotsService) {
+lotsListDirective.$inject = ['$state','$stateParams']
+		export default function lotsListDirective ($state,$stateParams) {
 			return {
 				scope: {
 					lotsList: '=lotsList',
@@ -17,4 +13,4 @@ angular.module('mbva.lots')
 					};
 				}
 			}
-		}])
+		}
