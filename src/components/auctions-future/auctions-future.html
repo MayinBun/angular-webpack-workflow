@@ -1,5 +1,5 @@
 <div class="row">
-    <a data-ng-repeat="data in auctionsFutured track by data.id" class="list-item col-md-6 col-xs-12 textlimit" data-ui-sref="list(::{auctionId:data.id,page:'1'})">
+    <a data-ng-repeat="data in auctionsFuture.list track by data.id" class="list-item col-md-6 col-xs-12 textlimit" data-ui-sref="list(::{auctionId:data.id,page:'1'})">
         <img class="pull-left" data-ng-src="http://images.bva-auctions.com/static/auctions/{{::data.id}}/overview/114x114/{{::data.id}}.jpg">
         <h3 class="list-item-title">{{::data.name.nl}}</h3>
         <h5 data-ng-if="::data.approvedLotCount == 1 ? lotText ='kavel' : lotText = 'kavels'" class="list-item-sub"><i class="fa fa-map-marker fa-lg"></i> {{::data.approvedLotCount}} {{lotText}} | {{::data.location.name.nl}}</h5>

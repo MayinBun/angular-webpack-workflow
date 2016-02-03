@@ -5,6 +5,9 @@ export default function routeConfig ($stateProvider){
     .state('home',{
         parent:'root',
         url: '/',
+        deepStateRedirect:{
+          default:{state:'auctions-current'}  
+        },
         views:{
             "@":{
                 template:homeTemplate

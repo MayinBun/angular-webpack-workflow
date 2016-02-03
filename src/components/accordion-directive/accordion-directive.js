@@ -1,18 +1,15 @@
 'use strict';
-angular.module('accordion', [])
-    .directive('accordionDirective', ['$compile', '$timeout',
-        function ($compile, $timeout) {
+import angular from 'angular';
+import './accordion-directive.css';
+export default angular.module('accordion', [])
+    .directive('accordionDirective',accordionDirective);
+    
+        accordionDirective.$inject = ['$compile','$timeout'];
+        function accordionDirective ($compile, $timeout) {
             return {
                 restrict: 'AEC',
-                controller: ['$scope', function ($scope) {
-                    $scope.current = null;
-                    $scope.zero = {
-                        height: 0
-                    };
-                    $scope.toggle = function (i) {
-                        $scope.current = $scope.current === i ? null : i;
-                    };
-                }],
+                controller:Controller,
+                controllerAs:'vm',
                 link: function (scope, el, attrs) {
                     var itemSelector = attrs.itemSelector || 'li',
                         titleSelector = attrs.titleSelector || 'h2',
@@ -25,11 +22,11 @@ angular.module('accordion', [])
                                 var content = items[i].querySelectorAll(contentSelector)[0];
 
                                 angular.element(items[i]).addClass('item').attr({
-                                    'ng-class': '{\'open\':current == ' + i + '}'
+                                    'ng-class': '{\'open\':vm.current == ' + i + '}'
                                 });
-                                angular.element(title).addClass('title').attr('ng-click', 'toggle(' + i + ')');
+                                angular.element(title).addClass('title').attr('ng-click', 'vm.toggle(' + i + ')');
                                 angular.element(content).addClass('content').attr({
-                                    'ng-style': 'current == ' + i + '?height[' + i + ']:zero'
+                                    'ng-style': 'vm.current == ' + i + '?height[' + i + ']:zero'
                                 });;
 
                             }
@@ -38,4 +35,16 @@ angular.module('accordion', [])
                     });
                 }
             }
-        }]);
+        }
+        
+        class Controller {
+            constructor(){
+                this.current = null;
+                this.zero = {
+                    height:0
+                };
+            }
+            toggle(i){
+                this.current = this.current === i ? null : i;
+            }
+        }

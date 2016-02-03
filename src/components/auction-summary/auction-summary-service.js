@@ -11,3 +11,4 @@ angular.module('mbva.auction-summary')
       return auctionSummary;
     }
   ]);
+

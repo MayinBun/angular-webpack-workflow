@@ -5,7 +5,7 @@ searchBarDirective.$inject = ['$state'];
 export default function searchBarDirective ($state) {
     return {
         restrict: 'EA',
-        templateUrl: "components/search/search-bar-tpl.html",
+        template:searchBarTemplate,
         link: function (scope, element, attr) {
             scope.submit = function () {
                 if (scope.userInput !== undefined && scope.userInput !== "") {

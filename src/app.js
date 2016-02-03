@@ -1,6 +1,7 @@
 import angular from 'angular';
 import ngAnimate from 'angular-animate';
 import uiRouter from 'angular-ui-router';
+import uiRouterExtras from 'ui-router-extras/release/ct-ui-router-extras.js';
 
 //Modules
 import HomeModule from './components/home/home';
@@ -12,6 +13,7 @@ import PageTitleModule from './components/page-title/page-title';
 import footerTemplate from "./components/footer/footer.html";
 import './app.css';
 import 'flexboxgrid/css/flexboxgrid.css';
+//import 'font-awesome/css/font-awesome.css';
 
 angular.module('app', [
     uiRouter,
@@ -19,18 +21,16 @@ angular.module('app', [
     HomeModule.name,
     NavigationModule.name,
     LegalModule.name,
-    PageTitleModule.name
-
+    PageTitleModule.name,
+    'ct.ui.router.extras'
 ])
 .config(routeConfig)
 .controller('AppController',()=>new AppController);
 
 
-
 function routeConfig($stateProvider,$urlRouterProvider) {
     //URL rewritings
     $urlRouterProvider.otherwise('/'); //Fallback
-    
     $urlRouterProvider.when('/login/*path', 'login');
     $urlRouterProvider.when('/auction/lot/:id?*path', '/auction/lot/:id?page');
     $urlRouterProvider.when('/auction/index/:id?*path', "/auction/lot/:id");

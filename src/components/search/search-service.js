@@ -18,7 +18,7 @@ angular
           this.$http = $http;
           this.platform = platform;
       }
-      searchQuery(query,page){
-          return this.$http.get(this.platform.API_ENDPOINT + '/ext123/search/' + query + '/' + page || 1);
+      searchQuery(searchQuery,page){
+          return this.$http.get(this.platform.API_ENDPOINT + '/ext123/search/' + searchQuery + '/' + page || 1);
       }
   }

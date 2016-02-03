@@ -1,27 +1,31 @@
-angular.module("mbva.auction-categories")
-  .config([
-    '$stateProvider',
-    function ($stateProvider) {
-      'use strict';
+import categoriesTemplate from './auction-categories.html';
+    export default function routeConfig($stateProvider) {
       //Main/sub categories
       $stateProvider.state("categories", {
         parent: "auction-overview",
         url: "^/auction/category/:auctionId",
         sticky: true,
         deepStateRedirect: true,
-        templateUrl: "components/auction-categories/auction-categories-tpl.html",
-        resolve: { auctionCategories: auctionCategories },
-        controller: ['$scope', '$state', 'auctionCategories',
-          function ($scope, $state, auctionCategories) {
-            $scope.categories = auctionCategories;
-            //console.log($scope.categories);
-            $scope.redirectTo = function (categoryId) {
-              $state.go('list', { category: categoryId, page: 1 });
-            }
-          }]
+        template: categoriesTemplate,
+        controller: CategoriesController,
+        controllerAs:'vm',
+        resolve: { AuctionCategories: getCategories }
       })
-
-      function auctionCategories(auctionCategories, $stateParams) {
-        return auctionCategories($stateParams.auctionId).query();
+      
+      getCategories.$inject = ['AuctionCategoriesService','$stateParams'];
+      function getCategories(AuctionCategoriesService, $stateParams) {
+        return AuctionCategoriesService.getAuctionCategories($stateParams.auctionId);
       }
-    }]);
+      
+      
+      CategoriesController.$inject = ['$state','AuctionCategories'];
+      class CategoriesController {
+          constructor($state,AuctionCategories){
+              this.$state = $state;
+              this.categories = AuctionCategories;
+          }
+          redirectTo(categoryId){
+              this.$state.go('list',{category:categoryId,page:1});
+          }
+      }
+    }

@@ -1,7 +1,7 @@
 <!-- searchresult -->
-<h4 class='text-center padding' data-ng-if="result.totalHits !== undefined">{{::result.totalHits}} resultaten gevonden voor "{{::searchQuery}}"</h4>
+<h4 class='text-center padding' data-ng-if="vm.result.totalHits !== undefined">{{::result.totalHits}} resultaten gevonden voor "{{::searchQuery}}"</h4>
 <div class="row">
-  <a data-ng-repeat="data in result.lots" class="list-item col-md-6 col-xs-12 textlimit" data-ui-sref="lot({auctionId:data.lot.auctionId,lotId:data.lot.id})">
+  <a data-ng-repeat="data in vm.result.data.lots" class="list-item col-md-6 col-xs-12 textlimit" data-ui-sref="lot({auctionId:data.lot.auctionId,lotId:data.lot.id})">
           <img class="pull-left" data-ng-src="{{::data.lot.imageUrl || ''}}"/>
             <h5 class="list-item-title">{{::data.lot.name.nl}}</h5>
             <h5 class="pull-right bva-black">€ {{::data.lot.latestBidAmount|number:2}}</h5>
@@ -12,11 +12,11 @@
 <!-- pagination -->
 <div 
     class="text-center col-xs-12"
-    data-ng-if="result.totalHits > 25" 
-    data-ng-click="pageChanged(page)" 
+    data-ng-if="vm.result.data.totalHits > 25" 
+    data-ng-click="vm.pageChanged(page)" 
     data-pagination
     data-page=page 
     data-page-size="25" 
-    data-total="result.totalHits" 
+    data-total="vm.result.data.totalHits" 
     data-show-prev-next="true">
 </div>

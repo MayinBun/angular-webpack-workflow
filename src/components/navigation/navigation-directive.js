@@ -12,7 +12,7 @@ import template from './navigation.html';
     class NavigationController {
         constructor(SessionService){
             this.SessionService = SessionService;
-            this.is = {loggedin:true};
+            this.is = {loggedin:this.SessionService.isLoggedin()};
         }
         logOut (){
             /* logout.save(function (response) {

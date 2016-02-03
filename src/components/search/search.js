@@ -1,26 +1,13 @@
 import angular from 'angular';
 import Platform from '../platform/platform';
-import searchBarDirective from './search-bar-directive';
-angular.module("mbva.search", [Platform.name])
-.directive('searchBar',searchBarDirective)
-    .config([
-        '$stateProvider',
-        function ($stateProvider) {
-            $stateProvider.state('search', {
-                url: "/search?searchQuery&page",
-                templateUrl: "components/search/search.html",
-                resolve: {
-                    searchLots: [
-                        'searchService',
-                        '$stateParams',
-                        function (searchService, $stateParams) {
-                            return searchService($stateParams.searchQuery, $stateParams.page || 1).get(function (response) {
-                                return response;
-                            });
-                        }
-                    ]
-                },
-                controller: [
+import SearchService from './search-service';
+import routeConfig from './search-route';
+export default angular.module("mbva.search", [Platform.name])
+    .config(routeConfig)
+    .service('SearchService',SearchService);
+    
+                             
+                /*controller: [
                     '$scope',
                     '$stateParams',
                     '$state',
@@ -36,4 +23,5 @@ angular.module("mbva.search", [Platform.name])
                     }
                 ]
             })
-        }]);
+        }]);*/
+   
