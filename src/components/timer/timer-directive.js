@@ -1,6 +1,6 @@
-angular.module('mbva.timer', [])
-  .directive('timer', ['$interval',
-   function ($interval) {
+import moment from 'moment';
+timerDirective.$inject = ['$interval'];
+   export default function timerDirective ($interval) {
     var directive;
         
     function link(scope, element) {
@@ -101,8 +101,11 @@ angular.module('mbva.timer', [])
 
     directive = {
       restrict: 'EA',
-      templateUrl: function(element,attrs){
-        return "components/timer/timer-tpl-"+attrs.type+".html";
+      template: function(element,attrs){
+          if(attrs.type !== undefined){
+        return require("./timer-tpl-"+attrs.type+".html");
+          }
+          else return "<h5 class='list-item-sub'>sluitingstijd onbekend</h5>"
       },
       scope: {
         startDateAttr:'=startDate',
@@ -112,4 +115,4 @@ angular.module('mbva.timer', [])
       link: link
     }
     return directive;
-  }]);
+  };

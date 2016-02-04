@@ -8,6 +8,7 @@ import HomeModule from './components/home/home';
 import NavigationModule from './components/navigation/navigation';
 import LegalModule from './components/legal/legal';
 import PageTitleModule from './components/page-title/page-title';
+import TimerModule from './components/timer/timer';
 
 //Global templates & css
 import footerTemplate from "./components/footer/footer.html";
@@ -15,17 +16,18 @@ import './app.css';
 import 'flexboxgrid/css/flexboxgrid.css';
 //import 'font-awesome/css/font-awesome.css';
 
-angular.module('app', [
+angular.module('mbva.app', [
     uiRouter,
     ngAnimate,
     HomeModule.name,
     NavigationModule.name,
     LegalModule.name,
     PageTitleModule.name,
+    TimerModule.name,
     'ct.ui.router.extras'
 ])
 .config(routeConfig)
-.controller('AppController',()=>new AppController);
+.controller('AppController',() => new AppController);
 
 
 function routeConfig($stateProvider,$urlRouterProvider) {
@@ -63,7 +65,9 @@ routeConfig.$inject = ['$stateProvider','$urlRouterProvider'];
 
 class AppController {
     constructor(){
-      
+      this.scroll = {
+          staticscroll:false
+      }
     }
 }
 
@@ -73,12 +77,6 @@ class AppController {
         '$stateProvider',
         function ($httpProvider, $urlRouterProvider, $stateProvider) {
             //URL REWRITINGS
-            $urlRouterProvider.when('/login/*path', 'login');
-            $urlRouterProvider.when('/auction/lot/:id?*path', '/auction/lot/:id?page');
-            $urlRouterProvider.when('/auction/index/:id?*path', "/auction/lot/:id");
-            $urlRouterProvider.when('/content/terms', '/terms');
-            //FALLBACK URL (Can be replaced with 404 page)
-            $urlRouterProvider.otherwise("/404");
       
             //$locationProvider.html5Mode({ enabled: true, requireBase: false });
       

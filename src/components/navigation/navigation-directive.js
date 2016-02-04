@@ -5,7 +5,7 @@ import template from './navigation.html';
             this.restrict = 'EA';
             this.template = template;
             this.controller = NavigationController;
-            this.controllerAs = 'vm';
+            this.controllerAs = 'nav';
         }
     }
     

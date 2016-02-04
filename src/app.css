@@ -146,7 +146,19 @@ a.search:hover,a.search:focus{
 	color:inherit;
 	display: inline-block;
 }
+@media only screen and (max-device-width: 320px) {
+    .footer .footer-company-name{
+		font-size: .6em;
+	}
 
+	.footer .footer-links{
+		font-size: .6em;
+	}
+    .footer .footer-social-links img{
+	width:20px;
+	padding: 0px 3px 0px 3px;
+    }
+}
 @media (max-width: 600px) {
 
 	.footer .footer-company-name{
@@ -170,7 +182,7 @@ a.search:hover,a.search:focus{
 .list-item-sub{
   font-size:12px;
   font-weight: bold;
-  color:#B2B2B2;
+  color:#777777;
   text-transform: uppercase;
   letter-spacing: 1.4px;
   padding:3px 0px;
