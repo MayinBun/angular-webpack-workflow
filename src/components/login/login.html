@@ -1,14 +1,14 @@
-<div  class="exception login-exception" data-ng-if="!!loginError">
-	<h5 class='exception-message'>{{loginError}}</h5>
+<div  class="exception login-exception" data-ng-if="!!vm.loginError">
+	<h5 class='exception-message'>{{vm.loginError}}</h5>
 </div>
 
-<form name='loginForm' novalidate data-ng-submit='loginForm.$valid && login()'>
+<form name='loginForm' novalidate data-ng-submit='loginForm.$valid && vm.login()'>
 		<div class="row padding fullwidth">
 			<input 
 				name='username'
 				class="col-xs-12 input-field margin-top radius-3"
-				data-ng-model="credentials.username" 
-				data-ng-keydown='loginApiError = undefined'
+				data-ng-model="vm.credentials.username" 
+				data-ng-keydown='vm.loginApiError = undefined'
 				type='text' 
 				placeholder='Gebruiksnaam'
 				required
@@ -31,9 +31,8 @@
     			<span data-ng-message="required">Ongeldig wachtwoord</span>
 			</div>
 			
-			<input 
+			<button 
 				type='submit' 
-				class="button primary login"
-				value='Inloggen'/>
+				class="button primary login">Inloggen</button>
 		</div>
 </form>

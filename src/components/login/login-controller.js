@@ -35,7 +35,6 @@ angular.module('mbva.login')
 			}
 		}])*/
         
-        LoginController.$inject = ['$state','$previousState','LoginService','SessionService'];
         export default class LoginController {
             constructor($state,$previousState,LoginService,SessionService){
                 this.loginError = false;
@@ -65,3 +64,4 @@ angular.module('mbva.login')
                 })
             }
         }
+          LoginController.$inject = ['$state','$previousState','LoginService','SessionService'];

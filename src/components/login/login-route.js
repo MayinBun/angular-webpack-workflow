@@ -1,11 +1,14 @@
-routeConfig.$inject = ['$stateProvider'];
-function routeConfig($stateProvider) {
+import loginTemplate from './login.html';
+import LoginController from './login-controller';
+export default function routeConfig($stateProvider) {
     'use strict';
     $stateProvider
         .state('login', {
             url: '/login',
-            templateUrl: 'components/login/login.html',
-            controller: 'LoginController',
+            template: loginTemplate,
+            controller: LoginController,
+            controllerAs:'vm',
             pageTitle: 'BVA Auctions - Inloggen'
         })
 }
+routeConfig.$inject = ['$stateProvider'];

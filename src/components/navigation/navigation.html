@@ -3,7 +3,7 @@
         <a data-ui-sref='home'><img src=''></a>
     </div>
     <nav>
-        <a id='menu-icon' data-ng-click='showMenu = !showMenu'><i ng-class="{'fa fa-bars fa-lg collapse':!showMenu, 'fa fa-bars fa-lg expand':showMenu}"></i> Menu</a>
+        <a id='menu-icon' data-ng-click='showMenu = !showMenu'><i class="fa fa-bars fa-lg"></i> Menu</a>
         <ul data-ng-hide='!showMenu'>
             <li>
                 <a data-ui-sref-active='m-active' data-ui-sref='home' data-ng-click='showMenu = !showMenu'>    
@@ -34,7 +34,7 @@
         </ul>
     </nav>
     <section class='pull-right'>
-        <a class='fa fa-lg fa-search white padding' data-ng-click='showSearch = !showSearch'>
+        <a class='fa fa-lg fa-search white padding' data-ng-click='main.showSearch = !main.showSearch'>
         </a>
     </section>
     <section class='pull-right'>

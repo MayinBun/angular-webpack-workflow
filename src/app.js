@@ -1,4 +1,5 @@
 import angular from 'angular';
+import ngMessages from 'angular-messages';
 import ngAnimate from 'angular-animate';
 import uiRouter from 'angular-ui-router';
 import uiRouterExtras from 'ui-router-extras/release/ct-ui-router-extras.js';
@@ -10,6 +11,8 @@ import LegalModule from './components/legal/legal';
 import PageTitleModule from './components/page-title/page-title';
 import TimerModule from './components/timer/timer';
 import UserLotsModule from './components/user-lots/user-lots';
+import LoginModule from './components/login/login';
+import LotPageModule from './components/lot/lot';
 
 //Global templates & css
 import footerTemplate from "./components/footer/footer.html";
@@ -20,7 +23,10 @@ import 'flexboxgrid/css/flexboxgrid.css';
 angular.module('mbva.app', [
     uiRouter,
     ngAnimate,
+    ngMessages,
     HomeModule.name,
+    LoginModule.name,
+    LotPageModule.name,
     UserLotsModule.name,
     NavigationModule.name,
     LegalModule.name,
@@ -29,7 +35,14 @@ angular.module('mbva.app', [
     'ct.ui.router.extras'
 ])
 .config(routeConfig)
+.run(run)
 .controller('AppController',() => new AppController);
+
+
+function run(){
+    //Using fastclick since ngTouch is deprecated from angular 1.5.x
+    require('fastclick').attach(document.body)
+}
 
 
 function routeConfig($stateProvider,$urlRouterProvider) {

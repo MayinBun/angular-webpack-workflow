@@ -1,30 +1,43 @@
 import template from './navigation.html';
 
-    export default class NavigationDirective {
-        constructor() {
-            this.restrict = 'EA';
-            this.template = template;
-            this.controller = NavigationController;
-            this.controllerAs = 'nav';
+export default class NavigationDirective {
+    constructor() {
+        this.restrict = 'EA';
+        this.template = template;
+        this.controller = NavigationController;
+        this.controllerAs = 'nav';
+    }
+}
+
+class NavigationController {
+    constructor($scope, SessionService) {
+        this.$scope = $scope;
+        this.SessionService = SessionService;
+        this.is = { loggedin: this.SessionService.isLoggedin() };
+        this.$scope.$watch(function(){})    
+        //Watch for loggedin status
+        this.$scope.$watch('is.loggedin',this.watchLoginStatus());
+          
+    }
+    watchLoginStatus(newVal,oldVal){
+        return ()=>{
+            if(newVal !== oldVal){
+                this.is.loggedin = this.SessionService.isLoggedin();
+            }
         }
     }
     
-    class NavigationController {
-        constructor(SessionService){
-            this.SessionService = SessionService;
-            this.is = {loggedin:this.SessionService.isLoggedin()};
-        }
-        logOut (){
-            /* logout.save(function (response) {
-                            Session.destroy();
-                            $scope.is.loggedin = Session.isLoggedin();
-                            $state.reload();
-                        })*/
-                        console.log('loggedout');
-        }
+    logOut() {
+        /* logout.save(function (response) {
+                        Session.destroy();
+                        $scope.is.loggedin = Session.isLoggedin();
+                        $state.reload();
+                    })*/
+        console.log('loggedout');
     }
-    
-    NavigationController.$inject = ['SessionService'];
+}
+
+NavigationController.$inject = ['$scope','SessionService'];
 /*    .directive('navigationDirective', [
         '$state',
         'Session',

@@ -1,4 +1,8 @@
-angular.module('mbva.static', ['accordion'])
+import angular from 'angular';
+import staticContentDirective from './static-content';
+import accordionDirective from '../accordion-directive/accordion-directive';
+angular.module('mbva.static', [accordionDirective.name])
+.directive('staticContent',staticContentDirective)
 
   .config(['$stateProvider', function ($stateProvider) {
 

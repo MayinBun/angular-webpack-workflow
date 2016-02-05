@@ -19,23 +19,17 @@ export default function routeConfig($stateProvider) {
             }
         })
 }
-
-getAuctions.$inject = ['$q', 'AuctionsService'];
+                                  
 function getAuctions($q, AuctionsService) {
-    return AuctionsService.getAuctionsPaged(1).then(response => response.data);
+    let defer = $q.defer(); 
+    AuctionsService.getAuctionsPaged(1).then(response => {
+        defer.resolve(response.data);
+    },(error) => {
+        defer.resolve(error);
+    });
+    return defer.promise;
 }
-
-/*function lazyLoad($q,$ocLazyLoad){
-    return $q((resolve) => {
-        require.ensure([],()=>{
-            let module = require('./auctions');
-            $ocLazyLoad.load({name:'mbva.auctions'});
-            console.log(module);
-            resolve(module);
-        })
-    })
-}*/
-
+getAuctions.$inject = ['$q', 'AuctionsService']; 
 
 class AuctionsController {
     constructor(AuctionsCurrent) {

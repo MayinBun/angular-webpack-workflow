@@ -17,7 +17,7 @@
 <body class="site" ng-cloak>
     <div class="site-content">
           <navigation></navigation>
-          <search-bar></search-bar>
+          <search-bar data-ng-hide="!main.showSearch"></search-bar>
           <div data-ui-view></div>
           <!-- static views -->
           <div data-autoscroll="main.scroll.staticscroll" data-ui-view="staticView"></div>

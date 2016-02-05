@@ -1,8 +1,10 @@
 import angular from 'angular';
 import LoginService from './login-service';
 import LoginController from './login-controller';
-angular.module('mbva.login', [
-	'mbva.utilities'
-])
+import routeConfig from './login-route';
+import './login.css';
+
+export default angular.module('mbva.login', [])
 .service('LoginService',LoginService)
-.controller('LoginController',LoginController);
+.controller('LoginController',LoginController)
+.config(routeConfig);
