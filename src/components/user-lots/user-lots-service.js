@@ -1,4 +1,4 @@
-angular.module("mbva.user-lots")
+/*angular.module("mbva.user-lots")
 	.factory('userLotsService', [
     'resolve',
     function(resolve) {
@@ -7,19 +7,16 @@ angular.module("mbva.user-lots")
       resource = resolve('followedlots');
       return resource;
     }
-  ])
+  ])*/
 
-/*angular.module('mbva.user-lots')
-    .factory('userLotsService', [
-        '$http',
-        'ENV',
-        function ($http, ENV) {
-            'use strict';
-            var promise;
-            promise = $http.get(ENV.apiEndpoint + '/followedlots', {
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            });
-            return promise;
-        }]);*/
+        
+        export default class UserLotsService {
+            constructor($http,platform){
+                this.$http = $http;
+                this.platform = platform;
+            }
+            getUserLots(){
+                return this.$http.get(this.platform.API_ENDPOINT + '/followedlots');
+            }
+        }
+        UserLotsService.$inject = ['$http','platform'];

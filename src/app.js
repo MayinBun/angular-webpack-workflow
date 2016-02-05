@@ -9,6 +9,7 @@ import NavigationModule from './components/navigation/navigation';
 import LegalModule from './components/legal/legal';
 import PageTitleModule from './components/page-title/page-title';
 import TimerModule from './components/timer/timer';
+import UserLotsModule from './components/user-lots/user-lots';
 
 //Global templates & css
 import footerTemplate from "./components/footer/footer.html";
@@ -20,6 +21,7 @@ angular.module('mbva.app', [
     uiRouter,
     ngAnimate,
     HomeModule.name,
+    UserLotsModule.name,
     NavigationModule.name,
     LegalModule.name,
     PageTitleModule.name,

@@ -1,0 +1,40 @@
+.user-lots-tabs{
+    width:100%;
+    background-color:#eaeaea;
+    padding:15px 0px 15px 0px;
+    -webkit-user-select: none;
+}
+.user-lots-tabs h1{
+    font-weight: normal;
+}
+.user-lots-tabs h1>span{
+    font-size:.8em;
+    font-weight: normal;
+}
+
+.user-lots-tabs .status-text{
+    text-transform: uppercase;
+    font-weight: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.green{
+    color:green;
+}
+.orange{
+    color:#FF6600;
+}
+.disable{
+    color:#999999 !important;
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px){
+ .user-lots-tabs .status-text{
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size:.6em;
+}
+}
