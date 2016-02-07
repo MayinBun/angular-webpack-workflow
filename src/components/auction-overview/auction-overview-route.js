@@ -1,13 +1,14 @@
-angular.module("mbva.auction-overview")
-  .config([
-    '$stateProvider',
-    function ($stateProvider) {
-      'use strict';
-      $stateProvider.state("auction-overview", {
+
+import template from './auction-overview.html';
+import AuctionOverviewController from './auction-overview-controller';
+export default function routeConfig($stateProvider) {
+    $stateProvider.state('auction-overview', {
         abstract: true,
         sticky: true,
-        url: ":auctionId",
-        controller: 'AuctionOverviewController',
-        templateUrl: "components/auction-overview/auction-overview.html",
-      })
-    }]);
+        url: ':auctionId',
+        controller: AuctionOverviewController,
+        controllerAs:'vm',
+        template: template
+    })
+}
+routeConfig.$inject = ['$stateProvider'];

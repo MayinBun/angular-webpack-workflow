@@ -1,38 +1,43 @@
 export default function routeConfig($stateProvider) {
-    $stateProvider.state("list", {
+    $stateProvider.state('list', {
         parent: 'auction-overview',
-        url: "^/auction/lot/:auctionId?page&category",
+        url: '^/auction/lot/:auctionId?page&category',
         sticky: true,
         resolve: {
             AuctionLots: getAuctionLots
         },
         controller: LotsController,
         controllerAs: 'vm',
-        template: function ($stateParams, auctionLots) {
+        template:($stateParams) => {
             if ($stateParams.category !== undefined) {
-                return "<div lots-list=list page='page' count='list.totalLotCount'></div>";
+                return "<div lots-list=vm.list page='vm.page' count='vm.list.totalLotCount'></div>";
             }
             else {
-                return "<div lots-list=list.lots page='page' count='list.totalLotCount'></div>";
+                return "<div lots-list=vm.list.lots page='vm.page' count='vm.list.totalLotCount'></div>";
             }
         }
     })
 }
+routeConfig.$inject = ['$stateProvider'];
 
 class LotsController {
-    constructor($stateParams, AuctionLots) {
+    constructor($scope,$stateParams, AuctionLots) {
+        this.$scope = $scope;
         this.$stateParams = $stateParams;
-        this.list =
+        this.list = AuctionLots.data;
         this.page = this.$stateParams.page || 1;
-        this.tab.page = this.$stateParams.page;
-        this.tab.category = this.$stateParams.category;
+        
+        this.$scope.tab.page = this.$stateParams.page;
+        this.$scope.tab.category = this.$stateParams.category;
     }
 }
+LotsController.$inject = ['$scope','$stateParams','AuctionLots']
 
-function getAuctionLots(auctionCategoriesLots, LotsService, $stateParams) {
+function getAuctionLots(LotsService, $stateParams) {
     if ($stateParams.category) {
-        return auctionCategoriesLots($stateParams.category).query();
+        return LotsService.getCategorieLots($stateParams.category);
     } else {
         return LotsService.getLots($stateParams.auctionId, $stateParams.page || 1);
     }
 }
+getAuctionLots.$inject = ['LotsService','$stateParams'];

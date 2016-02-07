@@ -4,10 +4,10 @@ export default class LotService {
         this.platform = platform;
     }
     getLot(lotId) {
-        return this.$http.get(this.platform.API_ENDPOINT + '/ext123/lot' + lotId + '/biddata');
+        return this.$http.get(this.platform.API_ENDPOINT + '/ext123/lot/' + lotId + '/biddata');
     }
     getLotMedia(lotId) {
-        this.$http.get(this.platform.API_ENDPOINT + "ext123/lot/" + lotId + "/media");
+        this.$http.get(this.platform.API_ENDPOINT + "/ext123/lot/" + lotId + "/media");
     }
     getAuction(auctionId) { 
         //currently needed for 'gunning' text based on some parameters

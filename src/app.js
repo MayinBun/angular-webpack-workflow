@@ -10,9 +10,11 @@ import NavigationModule from './components/navigation/navigation';
 import LegalModule from './components/legal/legal';
 import PageTitleModule from './components/page-title/page-title';
 import TimerModule from './components/timer/timer';
+import PaginationModule from './components/pagination/pagination';
 import UserLotsModule from './components/user-lots/user-lots';
 import LoginModule from './components/login/login';
-import LotPageModule from './components/lot/lot';
+//import LotPageModule from './components/lot/lot';
+import AuctionOverviewModule from './components/auction-overview/auction-overview';
 
 //Global templates & css
 import footerTemplate from "./components/footer/footer.html";
@@ -26,12 +28,13 @@ angular.module('mbva.app', [
     ngMessages,
     HomeModule.name,
     LoginModule.name,
-    LotPageModule.name,
     UserLotsModule.name,
     NavigationModule.name,
     LegalModule.name,
     PageTitleModule.name,
     TimerModule.name,
+    PaginationModule.name,
+    AuctionOverviewModule.name,
     'ct.ui.router.extras'
 ])
 .config(routeConfig)

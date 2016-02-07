@@ -1,4 +1,4 @@
-angular.module("mbva.auction-overview")
+/*angular.module("mbva.auction-overview")
 	.controller("AuctionOverviewController", [
 		'$scope',
 		'$stateParams',
@@ -19,4 +19,25 @@ angular.module("mbva.auction-overview")
 			$scope.$on('$destroy',function(){
 				$scope.auctionsummary.showInfoButton = false;
 			})
-		}]);
+		}]);*/
+        
+        
+        export default class AuctionOverviewController {
+            constructor($scope,$stateParams){
+                this.$scope = $scope;
+                this.$scope.lots = {};
+                this.$stateParams = $stateParams;
+                this.$scope.tab = {page:1};
+                this.tab = this.$scope.tab;
+                //this.AuctionSummaryService = AuctionSummaryService;
+                
+                this.$scope.$on('$destroy',()=>{
+                    //this.$scope.auctionsummary.showInfoButton = false;
+                })
+                
+            }
+            INIT(auctionId){
+                //todo
+            }
+        }
+        AuctionOverviewController.$inject = ['$scope','$stateParams'];
