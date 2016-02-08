@@ -38,9 +38,8 @@ angular.module('mbva.app', [
     'ct.ui.router.extras'
 ])
 .config(routeConfig)
+.controller('AppController',() => new AppController)
 .run(run)
-.controller('AppController',() => new AppController);
-
 
 function run(){
     //Using fastclick since ngTouch is deprecated from angular 1.5.x
