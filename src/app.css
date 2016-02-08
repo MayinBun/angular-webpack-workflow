@@ -93,16 +93,15 @@ a.search:hover,a.search:focus{
 
 /*1) FOOTER */
 .footer{
-  	background-color: #292c2f;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  	background-color: #f5f5f5;
 	box-sizing: border-box;
   	width:100%;
   	height:auto;
+    color:#757575;
 }
 .footer .footer-links{
   	list-style: none;
-	font-weight: bold;
-	color:  #8f9296;
+	
 	text-align:center;
 	margin: 0;
 }
@@ -124,14 +123,11 @@ a.search:hover,a.search:focus{
 }
 
 .footer .footer-company-name{
-    color:  #8f9296;
 	font-size: 14px;
-	font-weight: bold;
 	text-align: center;
 	padding:5px 0px 5px 0px;
 }
 .footer .footer-force-desktop{
-	color:  #8d9093;
 	font-size: 16px;
 	text-align: center;
 	text-decoration: none;
@@ -146,6 +142,13 @@ a.search:hover,a.search:focus{
 	color:inherit;
 	display: inline-block;
 }
+
+@media (max-width: 600px) {
+
+	.footer {
+		font-size: .8em;
+	}
+}
 @media only screen and (max-device-width: 320px) {
     .footer .footer-company-name{
 		font-size: .6em;
@@ -158,16 +161,6 @@ a.search:hover,a.search:focus{
 	width:20px;
 	padding: 0px 3px 0px 3px;
     }
-}
-@media (max-width: 600px) {
-
-	.footer .footer-company-name{
-		font-size: .6em;
-	}
-
-	.footer .footer-links{
-		font-size: .8em;
-	}
 }
 
 /*3) LIST COMPONENTS*/

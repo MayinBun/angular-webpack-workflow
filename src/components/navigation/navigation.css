@@ -3,23 +3,29 @@ header{
   width:100%;
   height:55px;
   position:relative;
-  background-color:#0968AE;
+  background-color:#FFFFFF;
   top:0;
   left:0;
   z-index: 100;
   box-shadow: 0 1px 6px rgba(0,0,0,0.35);
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing:border-box;
 }
 .logo{
   float:left !important;
 }
 
 .logo img{
-  max-width:100%; 
-  max-height:50px;
-  margin:auto;
-  padding:5px 5px 0px 5px;
-  display:block;
+  max-width:auto;
+  max-height:40px;
+  margin:0;
+  padding:7px 0px 0px 5px;
+  image-rendering: optimizeQuality;
+  -webkit-user-select: none;
+  user-select:none;
 }
+
 
 /*3) NAVIGATION (MENU) */
 nav{
@@ -42,12 +48,12 @@ nav>ul>li{
 }
 nav>ul>li>a{
   display:inline-block;
-  color:#FFFFFF;
+  color:#333333;
   padding:18px 20px;
+  text-rendering: optimizeLegibility;
 }
 nav>ul>li>a.m-active{
- background-color:#FFFFFF;
- box-shadow: 0px 2px 1px #FF6600;
+ box-shadow: 0px 2px 0px #FF6600;
  color:#FF6600;
  font-weight: bold;
 }
@@ -64,8 +70,9 @@ nav>ul.ng-hide:not(.ng-hide-animate) {
     display:inline-block !important;
     width: 100%;
     line-height: 55px;
-    font-size:18px;
-    color:#EAEAEA;
+    font-size:1.1em;
+    color:#666666;
+    text-rendering: optimizeLegibility;
     -webkit-user-select: none;
     -moz-user-select:none;
     user-select:none;
@@ -76,20 +83,27 @@ nav>ul.ng-hide:not(.ng-hide-animate) {
   nav>ul { 
     box-sizing: border-box;
 	position: absolute;
-	background: #0968AE;
+	background: #fafafa; 
 	left:0;
 	width: 100%;
     border: none;
-    color: #F9FAFB;
 	}
    nav>ul>li {
 	text-align: center;
 	width: 100%;
-	margin: 0;
+	margin: 0px;
     background-color:inherit;
+    box-shadow: 0 5px 8px 1px rgba(0,0,0,0.35);
     }
    nav>ul>li>a{
-    color:#FFFFFF;
     display:block;
+    color:#666666;
     }
+    nav>ul>li>a.m-active{
+    box-shadow:none;
+    }
+}
+
+section>.nav-icon{
+    color:#666666;
 }

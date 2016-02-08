@@ -1,43 +1,47 @@
 import template from './navigation.html';
+import logo from '../../images/bva_logo.png';
 
 export default class NavigationDirective {
-    constructor() {
+    constructor(NavigationService) {
         this.restrict = 'EA';
         this.template = template;
         this.controller = NavigationController;
         this.controllerAs = 'nav';
+        this.service = NavigationService;
     }
 }
 
 class NavigationController {
-    constructor($scope, SessionService) {
+    constructor($scope,$state, SessionService) {
         this.$scope = $scope;
+        this.$state = $state;
         this.SessionService = SessionService;
-        this.is = { loggedin: this.SessionService.isLoggedin() };
-        this.$scope.$watch(function(){})    
+        this.logo = logo;
+        
+        this.$scope.auctionsummary = { showOverlay: false, showInfoButton: false } 
+        this.is = { loggedin: this.SessionService.isLoggedin()};   
         //Watch for loggedin status
-        this.$scope.$watch('is.loggedin',this.watchLoginStatus());
-          
-    }
-    watchLoginStatus(newVal,oldVal){
-        return ()=>{
-            if(newVal !== oldVal){
-                this.is.loggedin = this.SessionService.isLoggedin();
+        this.$scope.$watch(() => {
+            return this.SessionService.isLoggedin();
+        }, (newVal, oldVal) => {
+            if (newVal !== oldVal) {
+                this.is.loggedin = this.SessionService.isLoggedin()
             }
-        }
+        })
     }
     
     logOut() {
-        /* logout.save(function (response) {
-                        Session.destroy();
-                        $scope.is.loggedin = Session.isLoggedin();
-                        $state.reload();
-                    })*/
-        console.log('loggedout');
+        this.SessionService.LOGOUT().then(response => {
+         this.SessionService.destroy();
+         this.is.loggedin = this.SessionService.isLoggedin();
+         this.$state.reload();   
+        },(error) =>{
+            console.log(error);
+        })
     }
 }
 
-NavigationController.$inject = ['$scope','SessionService'];
+NavigationController.$inject = ['$scope','$state','SessionService'];
 /*    .directive('navigationDirective', [
         '$state',
         'Session',
