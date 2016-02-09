@@ -1,5 +1,5 @@
 import template from './navigation.html';
-import logo from '../../images/bva_logo.png';
+import logo from '../../images/bva_logo.svg';
 
 export default class NavigationDirective {
     constructor(NavigationService) {

@@ -12,15 +12,23 @@ header{
   -webkit-box-sizing: border-box;
   -moz-box-sizing:border-box;
 }
+
 .logo{
   float:left !important;
+  position:absolute;
+}
+@media only screen and (max-width:300px){
+    .logo img{
+        max-width:150px;
+        max-height: auto;
+    }
 }
 
 .logo img{
   max-width:auto;
-  max-height:40px;
+  max-height:39px;
   margin:0;
-  padding:7px 0px 0px 5px;
+  padding:8px 0px 8px 5px;
   image-rendering: optimizeQuality;
   -webkit-user-select: none;
   user-select:none;

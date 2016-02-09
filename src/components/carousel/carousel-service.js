@@ -19,19 +19,22 @@
       }
       return { getCarouselItems: getCarouselItems };
     }])*/
-    
-    import x2js from '../../vendor/xml2json.min.js';
     const carouselEndpoint = 'https://api.bva-auctions.com/static/feeds/carousel_mobile.xml'; 
     export default class CarouselService {
-        constructor(platform){
-            this.platform = platform;
+        constructor($http){
+            this.$http = $http;
         }
         getItems(){
             return this.$http ({
                 method:'GET',
                 cache:true,
-                url:carouselEndpoint       
+                url:carouselEndpoint,
+             /*   transformResponse: function (data) {
+                let x2js = new X2JS();
+                let json = x2js.xml_str2json(data);
+                return json;
+                }     */
             })
         }      
     }
-    CarouselService.$inject = ['platform'];
+    CarouselService.$inject = ['$http'];

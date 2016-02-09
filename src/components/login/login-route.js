@@ -5,9 +5,13 @@ export default function routeConfig($stateProvider) {
     $stateProvider
         .state('login', {
             url: '/login',
+            views:{
+                "@":{
             template: loginTemplate,
             controller: LoginController,
             controllerAs:'vm',
+           }
+            },
             pageTitle: 'BVA Auctions - Inloggen'
         })
 }
