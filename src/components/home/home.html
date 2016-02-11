@@ -5,10 +5,11 @@
 <!-- <div data-auctions-targeting-directive></div> -->
 
 <!-- tabs -->
-<div class='row tabs fullwidth text-center'>
-    <a data-ui-sref-active='is-active-tab' class="col-xs textlimit" data-ui-sref='auctions-current'>Nu in de veiling</a>
-    <a data-ui-sref-active='is-active-tab' class="col-xs textlimit" data-ui-sref='auctions-future'>Binnenkort</a>
-</div>
+<ul class='tabs scrollable'>
+    <li><a data-ui-sref-active='is-active-tab' data-ui-sref='auctions-current'>Nu in de veiling</a></li>
+    <li data-ng-if="nav.is.loggedin"><a data-ui-sref-active='is-active-tab' data-ui-sref='lot-targeting'>Speciaal voor u</a></li>
+    <li><a data-ui-sref-active='is-active-tab' data-ui-sref='auctions-future'>Binnenkort</a></li>
+</ul>
 
 <!-- current and futured auctions inject in this view -->
-<div data-ui-view="auctions"></div>
+<div data-ui-view="home"></div>

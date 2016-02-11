@@ -35,9 +35,7 @@ class NavigationController {
          this.SessionService.destroy();
          this.is.loggedin = this.SessionService.isLoggedin();
          this.$state.reload();   
-        },(error) =>{
-            console.log(error);
-        })
+        });
     }
 }
 

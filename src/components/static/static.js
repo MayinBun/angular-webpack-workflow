@@ -1,17 +1,15 @@
 import angular from 'angular';
 import staticContentDirective from './static-content';
 import accordionDirective from '../accordion-directive/accordion-directive';
-angular.module('mbva.static', [accordionDirective.name])
+export default angular.module('mbva.static', [accordionDirective.name])
 .directive('staticContent',staticContentDirective)
-
   .config(['$stateProvider', function ($stateProvider) {
-
     $stateProvider.state('customerservice', {
       url: '/customerservice',
       parent:'root',
       views: {
         'staticView@': {
-          template: "<div static-content template-url='components/static/customerservice.html'></div>"
+          template: require('./customerservice.html')
         }
       }
     })
@@ -20,7 +18,7 @@ angular.module('mbva.static', [accordionDirective.name])
         url: '/terms',
         views: {
           'staticView@': {
-            template: "<div static-content template-url = 'components/static/terms.html'></div>"
+            template: require('./terms.html')
           }
         }
       })
@@ -29,7 +27,7 @@ angular.module('mbva.static', [accordionDirective.name])
         url: '/about',
         views: {
           'staticView@': {
-            template: "<div static-content template-url = 'components/static/about.html'></div>"
+            template:require('./about.html')
           }
         }
       })
@@ -38,7 +36,7 @@ angular.module('mbva.static', [accordionDirective.name])
         url:'/contact',
         views: {
           'staticView@': {
-              template:"<div static-content template-url ='components/static/contact.html'></div>"
+              template:require('./contact.html')
           }
         }
       })
@@ -57,7 +55,7 @@ angular.module('mbva.static', [accordionDirective.name])
         url:'/invoices',
         views: {
           'staticView@': {
-            template: "<div static-content template-url ='components/static/invoices.html'></div>"
+            template: require('./invoices.html')
           }
         }
       })
@@ -66,7 +64,7 @@ angular.module('mbva.static', [accordionDirective.name])
         url: '/cookies',
         views: {
           'staticView@': {
-            template: "<div static-content template-url = 'components/static/cookie.html'></div>"
+            template: require('./cookie.html')
           }
         }
       })
@@ -75,11 +73,10 @@ angular.module('mbva.static', [accordionDirective.name])
         url: '/faq',
         views: {
           'staticView@': {
-              template: "<div static-content template-url = 'components/static/faq.html'></div>"
+              template: require('./faq.html')
           }
         }
       });
-
   }])
 
   .controller('NewsController',['$scope','$stateParams','$http','$sce', 

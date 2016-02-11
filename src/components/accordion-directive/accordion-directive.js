@@ -4,7 +4,6 @@ import './accordion-directive.css';
 export default angular.module('accordion', [])
     .directive('accordionDirective',accordionDirective);
     
-        accordionDirective.$inject = ['$compile','$timeout'];
         function accordionDirective ($compile, $timeout) {
             return {
                 restrict: 'AEC',
@@ -26,7 +25,7 @@ export default angular.module('accordion', [])
                                 });
                                 angular.element(title).addClass('title').attr('ng-click', 'vm.toggle(' + i + ')');
                                 angular.element(content).addClass('content').attr({
-                                    'ng-style': 'vm.current == ' + i + '?height[' + i + ']:zero'
+                                    'ng-style': 'vm.current == ' + i + '?height[' + i + ']:vm.zero'
                                 });;
 
                             }
@@ -36,6 +35,8 @@ export default angular.module('accordion', [])
                 }
             }
         }
+        
+         accordionDirective.$inject = ['$compile','$timeout'];
         
         class Controller {
             constructor(){

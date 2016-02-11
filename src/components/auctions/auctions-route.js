@@ -8,7 +8,7 @@ export default function routeConfig($stateProvider) {
             sticky: true,
             url: 'auctions/current',
             views: {
-                "auctions": {
+                "home": {
                     template:template,
                     controller: AuctionsController,
                     controllerAs: 'vm',

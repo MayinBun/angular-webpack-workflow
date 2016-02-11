@@ -1,0 +1,10 @@
+<div class="row">
+    <a data-ng-repeat="data in vm.selectedLots" class="list-item col-md-6 col-xs-12 textlimit" data-ui-sref="lot({auctionId:data.auctionId,lotId:data.id})">
+        <img class="pull-left" data-ng-src="{{::data.imageUrl}}"/>
+        <h3 class="list-item-title">{{::data.name.nl}}</h3>
+        <h5 class="pull-right bva-black">€ {{::data.latestBidAmount|number:2}}</h5>
+        <h5 class="list-item-sub">{{::data.fullNumber}}</h5>
+        <div data-timer data-type="lots" data-start-date="data.startDate" data-end-date="data.endDate"></div>
+    </a>
+</div>
+<h5 data-ng-if="vm.selectedLots.length == 0" class="text-center padding">Er zijn nog geen geselecteerde kavels voor u</h5>

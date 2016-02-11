@@ -24,7 +24,7 @@
 				data-ng-model="vm.credentials.password" 
 				type='password' 
 				placeholder='Wachtwoord' 
-				data-ng-keydown='$event.which === 13 && submit(); loginApiError = undefined'
+				data-ng-keydown='$event.which === 13 && submit(); vm.loginError = undefined'
 				required/>
 			
 			<div class='error-messages' data-ng-messages="loginForm.password.$error" data-ng-show="loginForm.$submitted">

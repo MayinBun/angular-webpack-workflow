@@ -13,6 +13,7 @@ import TimerModule from './components/timer/timer';
 import PaginationModule from './components/pagination/pagination';
 import UserLotsModule from './components/user-lots/user-lots';
 import LoginModule from './components/login/login';
+import StaticContentModule from './components/static/static';
 //import LotPageModule from './components/lot/lot';
 import AuctionOverviewModule from './components/auction-overview/auction-overview';
 
@@ -35,6 +36,7 @@ angular.module('mbva.app', [
     TimerModule.name,
     PaginationModule.name,
     AuctionOverviewModule.name,
+    StaticContentModule.name,
     'ct.ui.router.extras'
 ])
 .config(routeConfig)

@@ -4,7 +4,6 @@ export default function routeConfig ($stateProvider){
     $stateProvider
     .state('home',{
         parent:'root',
-        sticky:true,
         url: '/',
         deepStateRedirect:{
           default:{state:'auctions-current'}  

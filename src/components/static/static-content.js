@@ -16,7 +16,7 @@
 
 export default function staticContentDirective() {
     return {
-        templateUrl: function (tElem, tAttrs) {
+        template: function (tElem, tAttrs) {
             return tAttrs.templateUrl;
         },
         controller:Controller
@@ -25,10 +25,10 @@ export default function staticContentDirective() {
 
 class Controller{
     constructor($scope){
-        this.$scope = $scope;
+       /* this.$scope = $scope;
         this.$scope.$on('$destroy',function(){
             this.$scope.root.staticscroll = false;
-        })
+        })*/
     }
 }
 Controller.$inject= ['$scope'];

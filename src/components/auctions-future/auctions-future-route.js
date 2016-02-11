@@ -7,7 +7,7 @@ export default function routeConfig ($stateProvider){
         sticky:true,
         url: 'auctions/future',
         views:{
-            "auctions":{
+            "home":{
                 template:"<div auctions-future = vm.auctionsfuture></div>",
                 controller:AuctionsFutureController,
                 controllerAs:'vm',
