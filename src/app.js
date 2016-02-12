@@ -14,7 +14,7 @@ import PaginationModule from './components/pagination/pagination';
 import UserLotsModule from './components/user-lots/user-lots';
 import LoginModule from './components/login/login';
 import StaticContentModule from './components/static/static';
-//import LotPageModule from './components/lot/lot';
+import LotPageModule from './components/lot/lot';
 import AuctionOverviewModule from './components/auction-overview/auction-overview';
 
 //Global templates & css
@@ -37,6 +37,7 @@ angular.module('mbva.app', [
     PaginationModule.name,
     AuctionOverviewModule.name,
     StaticContentModule.name,
+    LotPageModule.name,
     'ct.ui.router.extras'
 ])
 .config(routeConfig)
@@ -44,16 +45,17 @@ angular.module('mbva.app', [
 .run(run)
 
 function run(){
-    //Using fastclick since ngTouch is deprecated from angular 1.5.x
+    //Use fastclick since ngTouch is deprecated from angular 1.5.x
     require('fastclick').attach(document.body)
 }
 
 
-function routeConfig($stateProvider,$urlRouterProvider) {
+function routeConfig($stateProvider,$urlRouterProvider,$compileProvider) {
+    $compileProvider.debugInfoEnabled(false);
     //URL rewritings
     $urlRouterProvider.otherwise('/'); //Fallback
     $urlRouterProvider.when('/login/*path', 'login');
-    $urlRouterProvider.when('/auction/lot/:id?*path', '/auction/lot/:id?page');
+    /*$urlRouterProvider.when('/auction/lot/:id?*path', '/auction/lot/:id?page');*/
     $urlRouterProvider.when('/auction/index/:id?*path', "/auction/lot/:id");
     $urlRouterProvider.when('/content/terms', '/terms');
     
@@ -80,7 +82,7 @@ function routeConfig($stateProvider,$urlRouterProvider) {
             }
         })
 }
-routeConfig.$inject = ['$stateProvider','$urlRouterProvider'];
+routeConfig.$inject = ['$stateProvider','$urlRouterProvider','$compileProvider'];
 
 class AppController {
     constructor(){

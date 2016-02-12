@@ -20,6 +20,7 @@
     "fastclick": "^1.0.6",
     "flexboxgrid": "^6.3.0",
     "font-awesome": "^4.5.0",
+    "font-awesome-webpack": "0.0.4",
     "moment": "^2.11.2",
     "ui-router-extras": "^0.1.0"
   },

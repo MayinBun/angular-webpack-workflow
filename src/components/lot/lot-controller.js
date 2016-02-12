@@ -4,39 +4,42 @@ import moment from 'moment';
 const exceptions = {
     bidBelowIncrement: "Er is een hoger bod geplaatst!",
     bidClosed: "Kavel is gesloten!",
-    serverError: "Oeps er ging iets mis! Probeer het later opnieuw"
+    serverError: "Oeps er ging iets mis! Probeer het later nog ééns"
 }
 export default class LotController {
-    constructor($scope, $state, $window, $document, LotService, lot, lotMedia, auction) {
+    constructor($scope, $state, $window, $document,lot,auction,LotService) {
         this.$scope = $scope;
         this.$state = $state;
         this.service = LotService;
         this.lot = lot;
-        this.lotMedia = lotMedia;
         this.auction = auction;
         this.body = angular.element($document[0].body); //todo adjust modal directive
+        //console.log(this.auction);
+        /*this.lotMedia = lotMedia;
+        */
         
-        //set some time values
+        //set time values
         this.now = moment();
         this.lotEnd = moment(this.lot.lot.endDate);
         this.lotStart = moment(this.lot.lot.startDate);
         
         //scroll content in view
-        this.main.scroll.staticscroll = true;
+      /*  this.main.scroll.staticscroll = true;
         this.$scope.$on('$destroy', () => {
             this.main.scroll.staticscroll = false;
-        })
+        })*/
         //set default object values
         this.exception = {};
         this.bidoverview = {};
         this.bid_object = {};
+        this.showModal = false;
         this.bid = {
             bidvalue: this.lot.nextBidAmount,
             autobid: false
         }
 
     }
-    submitBid() {
+   submitBid() {
         this.showModal = false;
         this.bid.autobid ? this.bid_object.type = 2 : this.bid_object.type = 1;
         this.bid_object.amount = this.bid.bidvalue;
@@ -57,7 +60,7 @@ export default class LotController {
                 this.exception.message = exceptions.serverError;
             }
         })
-    }
+    }/*
     confirmBid() {
         this.service.putBid(this.lot.lot.id, this.bid_object).then(response => {
             this.$state.reload();
@@ -72,7 +75,7 @@ export default class LotController {
                 this.exception.message = exceptions.bidClosed;
             }
         })
-    }
+    }*/
     followLot() {
         if (this.lot.favorite) {
             this.service.followLot(this.lot.lot.id, 'DELETE').then(response => {

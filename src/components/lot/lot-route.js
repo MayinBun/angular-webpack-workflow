@@ -8,10 +8,12 @@ export default function routeConfig ($stateProvider) {
         'staticView@': {
           template:lotTemplate,
           controller: LotController,
+          controllerAs:'vm',
           resolve: {
             lot: lot,
-            lotMedia: lotMedia,
             auction:auction
+          /*  lotMedia: lotMedia,
+            auction:auction*/
           }
         }
       }
@@ -20,7 +22,7 @@ export default function routeConfig ($stateProvider) {
     function lot(LotService, $stateParams, $q) {
       let defer = $q.defer();
       LotService.getLot($stateParams.lotId).then(response => {
-          defer.resolve(response);
+          defer.resolve(response.data);
       },(error) => {
           defer.resolve(error);
       }) 
@@ -40,7 +42,7 @@ export default function routeConfig ($stateProvider) {
     function auction(LotService,$stateParams,$q){
         var defer = $q.defer();
       LotService.getAuction($stateParams.auctionId).then(response => {
-        defer.resolve(response);
+        defer.resolve(response.data);
       },(error) => {
         defer.resolve(error);
       })

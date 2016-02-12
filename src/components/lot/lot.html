@@ -1,10 +1,10 @@
 <div class='lot-header-container'>
 	<div class='row'>
 		<div class='col-xs'>
-			<h3>{{::lot.lot.name.nl}}</h3>
-			<h5 class='lot-number'>{{::lot.lot.fullNumber}}</h5>
+			<h3>{{::vm.lot.lot.name.nl}}</h3>
+			<h5 class='lot-number'>{{::vm.lot.lot.fullNumber}}</h5>
 		</div>
-		<a data-ng-click='followLot(lot.favorite)' data-ng-class="{'button primary':lot.favorite,'button default':!lot.favorite}"><i data-ng-class="{'fa fa-heart':lot.favorite, 'fa fa-heart-o':!lot.favorite}"></i></a>
+		<a data-ng-click='vm.followLot()' data-ng-class="{'button primary':vm.lot.favorite,'button default':!vm.lot.favorite}"><i data-ng-class="{'fa fa-heart':vm.lot.favorite, 'fa fa-heart-o':!vm.lot.favorite}"></i></a>
 	</div>
 </div>
 
@@ -21,48 +21,48 @@
 
 <div class='caption-bottom'>
 	<!-- open auction -->
-	<div data-ng-if='!lotEnd < now && lotStart < now'>
-		<div data-timer data-end-date='lot.lot.endDate' data-start-date='lot.lot.startDate' data-type='lot' data-finish-callback="checkLot()"></div>
+	<div data-ng-if='!vm.lotEnd < vm.now && vm.lotStart < vm.now'>
+		<div data-timer data-end-date='vm.lot.lot.endDate' data-start-date='vm.lot.lot.startDate' data-type='lot' data-finish-callback="vm.checkLot()"></div>
 		<div class='row around-xs'>
 			<div class='col-xs'>
-				<h5 class="sub-header">€{{::lot.lot.startAmount}}</h5>
+				<h5 class="sub-header">€{{::vm.lot.lot.startAmount}}</h5>
 				<h5 class="header">openingsbod</h5>
 			</div>
 			<div class='col-xs'>
-				<h5 class="sub-header">{{::lot.lot.bidCount}}</h5>
+				<h5 class="sub-header">{{::vm.lot.lot.bidCount}}</h5>
 				<h5 class="header">aantal biedingen</h5>
 			</div>
 			<div class='col-xs'>
-				<h5 class="sub-header">€{{::lot.lot.latestBidAmount|number:2}}</h5>
+				<h5 class="sub-header">€{{::vm.lot.lot.latestBidAmount|number:2}}</h5>
 				<h5 class="header">laatste bod</h5>
 			</div>
 		</div>
 	</div>
 	<!-- futured auction -->
-	<div data-ng-if='!lotEnd < now && lotStart > now'>
+	<div data-ng-if='!vm.lotEnd < vm.now && vm.lotStart > vm.now'>
 		<div class='row around-xs'>
 			<div class='col-xs'>
 				<h5 class="header">Start veiling</h5>
-				<h5 class="sub-header">{{::lot.lot.startDate|date:"EEE dd MMM yyyy 'om' H:mm uur"}}</h5>
+				<h5 class="sub-header">{{::vm.lot.lot.startDate|date:"EEE dd MMM yyyy 'om' H:mm uur"}}</h5>
 			</div>
 			<div class='col-xs'>
 				<h5 class="header">Einde veiling</h5>
-				<h5 class="sub-header">{{::lot.lot.endDate|date:"EEE dd MMM yyyy 'om' H:mm uur"}}</h5>
+				<h5 class="sub-header">{{::vm.lot.lot.endDate|date:"EEE dd MMM yyyy 'om' H:mm uur"}}</h5>
 			</div>
 		</div>
 	</div>
 </div>
 
 <!-- notifications -->
-<div data-ng-class="{'notice success': lot.highestBidder && lot.bidded, 'notice warning':lot.bidded && !lot.highestBidder , 'notice info':!lot.lot.open}">
-<div data-ng-if="!lot.lot.open && lotEnd < now && lotStart < now">Kavel is gesloten</div>
-<div data-ng-if="!lotEnd < now && lotStart > now">Veiling is nog niet geopend</div>
-<div data-ng-if="lot.highestBidder">U bent de hoogste bieder!</div>
-<div data-ng-if="lot.bidded && !lot.highestBidder">U bent overboden!</div>
+<div data-ng-class="{'notice success': vm.lot.highestBidder && vm.lot.bidded, 'notice warning':vm.lot.bidded && !vm.lot.highestBidder , 'notice info':!vm.lot.lot.open}">
+<div data-ng-if="!vm.lot.lot.open && vm.lotEnd < vm.now && vm.lotStart < vm.now">Kavel is gesloten</div>
+<div data-ng-if="!vm.lotEnd < vm.now && vm.lotStart > vm.now">Veiling is nog niet geopend</div>
+<div data-ng-if="vm.lot.highestBidder">U bent de hoogste bieder!</div>
+<div data-ng-if="vm.lot.bidded && !vm.lot.highestBidder">U bent overboden!</div>
 </div>
 
 <!-- bid area -->
-<div data-ng-if="lot.lot.open && !auction.disableBidding">
+<div data-ng-if="vm.lot.lot.open && !vm.auction.disableBidding">
 	<div class="row around-xs padding">
 		<div class='row middle-xs'>
 			<div class='col-xs'>
@@ -72,7 +72,7 @@
 		<div class='row middle-xs'>
 			<div class='col-xs'>
 				<div class="onoffswitch">
-					<input type="checkbox" data-ng-model="bid.autobid" name="onoffswitch" class="onoffswitch-checkbox" id="autobid">
+					<input type="checkbox" data-ng-model="vm.bid.autobid" name="onoffswitch" class="onoffswitch-checkbox" id="autobid">
 					<label class="onoffswitch-label" for="autobid">
 						<span class="onoffswitch-inner"></span>
 						<span class="onoffswitch-switch"></span>
@@ -87,21 +87,21 @@
 		<div class='col-xs-12'>
 			<div class='row center-xs'>
 				<div class='col-xs-12'>
-					<div class='text-center' data-ng-if="bid.autobid ? abText = 'automatisch bieden tot' : abText = 'uw minimum volgend bod' ">{{abText}}</div>
+					<div class='text-center' data-ng-if="vm.bid.autobid ? abText = 'automatisch bieden tot' : abText = 'uw minimum volgend bod' ">{{abText}}</div>
 				</div>
 				<div class='col-xs col-md-6'>
 					<form name="inputForm">
-					<input min="{{lot.nextBidAmount}}" required class='bid-input' name="bidInput" type="number" required data-ng-model="bid.bidvalue"/>
+					<input min="{{vm.lot.nextBidAmount}}" required class='bid-input' name="bidInput" type="number" required data-ng-model="vm.bid.bidvalue"/>
 					<div class='error-messages' data-ng-messages="inputForm.bidInput.$error">
-    					<span data-ng-message="min && required">Minimum volgend bod: € {{lot.nextBidAmount}}</span>
+    					<span data-ng-message="min && required">Minimum volgend bod: € {{vm.lot.nextBidAmount}}</span>
 					</div>
 					</form>
 				</div>
 			</div>
 			<div class='row center-xs margin-top'>
 				<div class='col-xs-12'>
-					<button data-ng-disabled="bid.bidvalue == undefined || bid.bidvalue < lot.nextBidAmount" data-ng-click="submitBid()" class='button primary bid'>Bod Uitbrengen</button>
-                    <button data-ng-if="lot.lot.buyNowEnabled" class='button primary buynow' data-ng-click="submitBuyNow()">Nu kopen</button>
+					<button data-ng-disabled="vm.bid.bidvalue == undefined || vm.bid.bidvalue < vm.lot.nextBidAmount" data-ng-click="vm.submitBid()" class='button primary bid'>Bod Uitbrengen</button>
+                   <!-- <button data-ng-if="vm.lot.lot.buyNowEnabled" class='button primary buynow' data-ng-click="vm.submitBuyNow()">Nu kopen</button>-->
 				</div>
 			</div>
 		</div>
@@ -109,61 +109,51 @@
 </div>
 
 <!-- description(s) -->
-<div class='description-container' data-ng-if="::lot.lot.description">
+<div class='description-container' data-ng-if="::vm.lot.lot.description">
 	<label class='description'>Omschrijving</label>
     <div class='lot-description'>
-        {{::lot.lot.description.nl}}
+        {{::vm.lot.lot.description.nl}}
     </div>
 </div>
 
-<div data-ng-if="::lot.lot.assignedExplicitly">
+<div data-ng-if="::vm.lot.lot.assignedExplicitly">
     <div class="notice info size-14">
         Toewijzing aan de hoogste bieder geschiedt na gunning van de opdrachtgever.
         </br> Het bod is exclusief eventuele (veiling)kosten en belastingen.
     </div>
 </div>
 
-<div class="padding" data-ng-if="auction.disableBidding">
+<div class="padding" data-ng-if="vm.auction.disableBidding">
     <div>
         U kunt via onderstaande link een bod plaatsen op de veilingsite van Notarishuis Arnhem.
     </div>
-<div data-ng-if="::lot.lot.extraDownloadName.nl">
-    <a data-ng-href="::lot.lot.extraDownloadURL" target="_blanc">{{::lot.lot.extraDownloadName.nl}}</a>
+<div data-ng-if="::vm.lot.lot.extraDownloadName.nl">
+    <a data-ng-href="::vm.lot.lot.extraDownloadURL" target="_blanc">{{::lot.lot.extraDownloadName.nl}}</a>
 </div>
-<div data-ng-if="::lot.lot.extraDownload2Name.nl">
-     <a data-ng-href="::lot.lot.extraDownload2URL" target="_blanc">{{::lot.lot.extraDownload2Name.nl}}</a>
+<div data-ng-if="::vm.lot.lot.extraDownload2Name.nl">
+     <a data-ng-href="::vm.lot.lot.extraDownload2URL" target="_blanc">{{::lot.lot.extraDownload2Name.nl}}</a>
+</div>
 </div>
     
 
-<div data-ng-show="showBuyNow" class="modalDialog">
-    <div>
-        <h3 class="text-center">Nu kopen</h3>
-        <a data-ng-click="closeModal()" title="Close" class="close">X</a>
-        <div class="row">
-            <div class="col-xs">
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Modal //todo refactor to directive -->
-<div data-ng-show="showModal" class="modalDialog">
+<div data-ng-show="vm.showModal" class="modalDialog">
 	<div>
 		<h3 class="text-center">Bod Bevestigen</h3>
-	    <a data-ng-click="closeModal()" title="Close" class="close">X</a>
+	    <a data-ng-click="vm.closeModal()" title="Close" class="close">X</a>
 		<div class="row">
 			<div class="col-xs start-xs">
 				<h5>Uw bod:</h5>
-				<h5>BTW: {{bidoverview.taxRate}}%</h5>
-				<h5>Veilingskosten {{bidoverview.auctionFeePercentage}}%:</h5>
-				<h5>BTW Veilingskosten: {{bidoverview.auctionFeeTaxRate}}%</h5><br/>
+				<h5>BTW: {{vm.bidoverview.taxRate}}%</h5>
+				<h5>Veilingskosten {{vm.bidoverview.auctionFeePercentage}}%:</h5>
+				<h5>BTW Veilingskosten: {{vm.bidoverview.auctionFeeTaxRate}}%</h5><br/>
 				
 			</div>
 			<div class="col-xs end-xs">
-				<h5>€ {{bidoverview.bidAmount|number:2}}</h5>
-				<h5>€ {{bidoverview.taxAmount|number:2}}</h5>
-				<h5>€ {{bidoverview.auctionFeeAmount|number:2}}</h5>
-				<h5>€ {{bidoverview.auctionFeeTaxAmount|number:2}}</h5>
+				<h5>€ {{vm.bidoverview.bidAmount|number:2}}</h5>
+				<h5>€ {{vm.bidoverview.taxAmount|number:2}}</h5>
+				<h5>€ {{vm.bidoverview.auctionFeeAmount|number:2}}</h5>
+				<h5>€ {{vm.bidoverview.auctionFeeTaxAmount|number:2}}</h5>
 			</div>
 		</div>
 		<hr/>
@@ -172,15 +162,15 @@
 				<h4>Totaalbedrag</h4>
 			</div>
 			<div class="col-xs end-xs">
-			<h4>€{{bidoverview.totalAmount|number:2}}</h4>
+			<h4>€{{vm.bidoverview.totalAmount|number:2}}</h4>
 			</div>
 		</div>
-		<input type='submit' class='button primary bid' data-ng-click="confirmBid()" value='Bod bevestigen'>
+		<input type='submit' class='button primary bid' data-ng-click="vm.confirmBid()" value='Bod bevestigen'>
 	</div>
 </div>
 
 
-<div class="exception" data-ng-show="exception.message" data-ng-click="reloadState()">
-	<h5 class='exception-message'>{{exception.message}}</h5>
+<div class="exception" data-ng-show="vm.exception.message" data-ng-click="reloadState()">
+	<h5 class='exception-message'>{{vm.exception.message}}</h5>
 	<h6 class="exception-reload-message">Tik hier om te vernieuwen</h6>
 </div>

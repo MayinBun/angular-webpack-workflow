@@ -305,10 +305,7 @@ a.search:hover,a.search:focus{
   margin:0;
   padding:0;
 }
-.tabs *{
-  float:left;
-  background-color:#fff;
-}
+
 .tabs a{
   font-size:11px;
   text-transform: uppercase;
@@ -317,6 +314,7 @@ a.search:hover,a.search:focus{
   letter-spacing: 1.4px;
   font-family: Lato;
   font-weight: bold;
+  border-bottom: 1px solid #E0E0E8;
 }
 .tabs.scrollable{
   display:-webkit-box;
@@ -334,7 +332,6 @@ a.search:hover,a.search:focus{
     display:-webkit-inline-flex;
     -webkit-flex:1 1 auto;
     flex: 1 1 auto;
-    border-bottom: 1px solid #E0E0E8;
 }
 .tabs.scrollable>li>a{
     white-space: nowrap;
