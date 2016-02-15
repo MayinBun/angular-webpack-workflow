@@ -42,7 +42,6 @@ function getAuctions($q, AuctionsService) {
     });
     return defer.promise;
 }
-getAuctions.$inject = ['$q', 'AuctionsService'];
 
 
 class AuctionsController {
@@ -50,3 +49,4 @@ class AuctionsController {
         this.auctions = AuctionsCurrent;
     }
 }
+AuctionsController.$inject = ['AuctionsCurrent'];

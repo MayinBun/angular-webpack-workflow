@@ -6,18 +6,19 @@ export default function routeConfig($stateProvider) {
             url: '/dashboard',
             template: require('./user-lots.html'),
             controller: UserLotsController,
-            controllerAs:'vm',
+            controllerAs: 'vm',
             resolve: {
-                userLots: ['UserLotsService', '$q', '$state',
-                    function (UserLotsService, $q, $state) {
-                        var defer = $q.defer();
-                        UserLotsService.getUserLots().then(response => {
-                            defer.resolve(response.data);
-                        }, (error) => {
-                            $q.reject(error);
-                        });
-                        return defer.promise;
-                    }]
+                userLots:
+                function (UserLotsService, $q, $state) {
+                    var defer = $q.defer();
+                    UserLotsService.getUserLots().then(response => {
+                        defer.resolve(response.data);
+                    }, (error) => {
+                        $q.reject(error);
+                    });
+                    return defer.promise;
+                }
             }
         })
 }
+routeConfig.$inject = ['$stateProvider'];

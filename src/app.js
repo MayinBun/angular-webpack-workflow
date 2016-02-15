@@ -6,12 +6,14 @@ import uiRouter from 'angular-ui-router';
 import oclazyload from 'oclazyload';
 import uiRouterExtras from 'ui-router-extras/release/ct-ui-router-extras.js';
 
-//Modules
+//Global Modules
 import NavigationModule from './components/navigation/navigation';
 import LegalModule from './components/legal/legal';
 import PageTitleModule from './components/page-title/page-title';
 import TimerModule from './components/timer/timer';
 import PaginationModule from './components/pagination/pagination';
+import Platform from './components/platform/platform';
+
 import UserLotsModule from './components/user-lots/user-lots';
 import StaticContentModule from './components/static/static';
 import LotPageModule from './components/lot/lot';
@@ -22,7 +24,7 @@ import SearchModule from './components/search/search';
 import footerTemplate from "./components/footer/footer.html";
 import './app.css';
 import 'flexboxgrid/css/flexboxgrid.css';
-//import 'font-awesome/css/font-awesome.css';
+import 'angular-loading-bar/build/loading-bar.css';
 
 angular.module('mbva.app', [
     uiRouter,
@@ -30,7 +32,8 @@ angular.module('mbva.app', [
     ngAnimate,
     ngMessages,
     oclazyload,
-    
+    require('angular-loading-bar'),
+    Platform.name,
     require('./components/home/home-route').default.name,
     require('./components/login/login-route').default.name,
     require('./components/auction-overview/auction-overview-route').default.name,
@@ -42,9 +45,8 @@ angular.module('mbva.app', [
     PageTitleModule.name,
     TimerModule.name,
     PaginationModule.name,
- 
     StaticContentModule.name,
-    //LotPageModule.name
+    LotPageModule.name
 ])
 .config(routeConfig)
 .controller('AppController',() => new AppController)
@@ -55,9 +57,10 @@ function run(){
     require('fastclick').attach(document.body)
 }
 
-
-function routeConfig($stateProvider,$urlRouterProvider,$compileProvider) {
+routeConfig.$inject = ['$stateProvider','$urlRouterProvider','$compileProvider','cfpLoadingBarProvider'];
+function routeConfig($stateProvider,$urlRouterProvider,$compileProvider,cfpLoadingBarProvider) {
     $compileProvider.debugInfoEnabled(false);
+    cfpLoadingBarProvider.latencyThreshold = 300;
     //URL rewritings
     $urlRouterProvider.otherwise('/'); //Fallback
     $urlRouterProvider.when('/login/*path', 'login');
@@ -88,7 +91,6 @@ function routeConfig($stateProvider,$urlRouterProvider,$compileProvider) {
             }
         })
 }
-routeConfig.$inject = ['$stateProvider','$urlRouterProvider','$compileProvider'];
 
 class AppController {
     constructor(){

@@ -1,5 +1,5 @@
 
-function lotsPhotosDirective($state, $stateParams, $timeout, lotsService, cacheService) {
+export default function lotsPhotosDirective($state, $stateParams, $timeout, lotsService, cacheService) {
     return {
         scope: {
             lotsPhotos: '=lotsPhotos',

@@ -1,10 +1,10 @@
-<div data-modal-directive data-ng-if="auctionsummary.data" data-is-visible="auctionsummary.showOverlay">
-    <div data-auction-summary="auctionsummary.data"></div>
+<div data-modal-directive data-ng-if="vm.summary" data-is-visible="auctionsummary.showOverlay">
+    <div data-auction-summary="vm.summary"></div>
 </div>
 
 <div class='row tabs fullwidth text-center'>
     <a class="col-xs" data-ui-sref-active='is-active-tab' data-ui-sref='categories'>Categorieën</a>
-    <a class="col-xs" data-ui-sref-active='is-active-tab' data-ui-sref='list({page:vm.tab.page,category:vm.tab.category})'>Lijst</a>
+    <a class="col-xs" data-ui-sref-active='is-active-tab' data-ui-sref='list({page:tab.page,category:tab.category})'>Lijst</a>
     <a class="col-xs" data-ui-sref-active='is-active-tab' data-ui-sref='photos({category:tab.category})'>Fotos</a>
 </div>
 <!-- categories / lots / lots-photos inject in this view -->

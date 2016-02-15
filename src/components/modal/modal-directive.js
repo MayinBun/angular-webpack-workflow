@@ -1,10 +1,9 @@
 import angular from 'angular';
-import modalTemplate from './modal-tpl.html';
 modalDirective.$inject = ['$document'];
 export default function modalDirective($document) {
     return {
         restrict: "EA",
-        template:modalTemplate,
+        template:require('./modal.html'),
         replace: true,
         transclude: true,
         scope: {

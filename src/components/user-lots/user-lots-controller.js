@@ -86,4 +86,3 @@ export default class UserLotsController {
         }
     }
 }
-UserLotsController.$inject = ['$scope', '$filter', 'userLots'];

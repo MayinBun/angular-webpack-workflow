@@ -104,6 +104,7 @@ export default class LotController {
 
 
 }
+LotController.$inject = ['$scope', '$state', '$window', '$document','lot','auction','LotService']
 
 /*
 angular.module('mbva.lot')

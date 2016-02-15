@@ -33,3 +33,4 @@ export default class LotService {
         })
     }
 }
+LotService.$inject = ['$http','platform'];

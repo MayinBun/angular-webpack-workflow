@@ -34,7 +34,6 @@ function routeConfig($stateProvider) {
 }
 routeConfig.$inject = ['$stateProvider'];
 
-getFutureAuctions.$inject = ['AuctionsFutureService'];
 function getFutureAuctions(AuctionsFutureService) {
     return AuctionsFutureService.getAuctionsFuture(1).then(response => response.data);
 }
@@ -44,3 +43,4 @@ class AuctionsFutureController {
         this.auctionsFuture = AuctionsFuture
     }
 }
+AuctionsFutureController.$inject = ['AuctionsFuture'];

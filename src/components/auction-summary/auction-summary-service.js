@@ -1,14 +1,10 @@
-angular.module('mbva.auction-summary')
-  .factory('auctionSummaryService', [
-    'resolve',
-    function (resolve) {
-      'use strict';
-      function auctionSummary(auctionId) {
-        var resource;
-        resource = resolve('ext123/auction/' + auctionId + '/summary');
-        return resource;
-      }
-      return auctionSummary;
+export default class AuctionSummaryService {
+    constructor($http,platform){
+        this.$http = $http;
+        this.platform = platform;
     }
-  ]);
-
+    getAuctionSummary(auctionId){
+        return this.$http.get(this.platform.API_ENDPOINT + '/ext123/auction/' + auctionId + '/summary');
+    }
+}
+AuctionSummaryService.$inject = ['$http','platform'];

@@ -4,8 +4,11 @@
   "mbva.lots",
   "mbva.lots-photos",
 ])*/
-import AuctionCategoriesModule from '../auction-categories/auction-categories';
 import angular from 'angular';
+import AuctionCategoriesModule from '../auction-categories/auction-categories';
+import AuctionSummaryModule from '../auction-summary/auction-summary';
+import ModalModule from '../modal/modal';
 export default angular.module('mbva.auction-overview',[
-    AuctionCategoriesModule.name,
+    AuctionSummaryModule.name,
+    ModalModule.name
 ])

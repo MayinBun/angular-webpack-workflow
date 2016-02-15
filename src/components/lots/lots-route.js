@@ -2,11 +2,12 @@ import angular from 'angular';
 export default angular.module('mbva.lots.route',[])
 .config(routeConfig)
 
+routeConfig.$inject = ['$stateProvider'];
 function routeConfig($stateProvider) {
     $stateProvider.state('list', {
         parent: 'auction-overview',
-        url: '^/auction/lot/:auctionId?page&category',
         sticky: true,
+        url: '^/auction/lot/:auctionId?page&category',
         resolve:{
                loadModule: ($q, $ocLazyLoad) => {
                 return $q((resolve) => {
@@ -37,7 +38,14 @@ function routeConfig($stateProvider) {
         }
     })
 }
-routeConfig.$inject = ['$stateProvider'];
+
+function getAuctionLots(LotsService, $stateParams) {
+    if ($stateParams.category) {
+        return LotsService.getCategorieLots($stateParams.category);
+    } else {
+        return LotsService.getLots($stateParams.auctionId, $stateParams.page || 1);
+    }
+}
 
 class LotsController {
     constructor($scope, $stateParams, AuctionLots) {
@@ -51,12 +59,3 @@ class LotsController {
     }
 }
 LotsController.$inject = ['$scope', '$stateParams', 'AuctionLots']
-
-function getAuctionLots(LotsService, $stateParams) {
-    if ($stateParams.category) {
-        return LotsService.getCategorieLots($stateParams.category);
-    } else {
-        return LotsService.getLots($stateParams.auctionId, $stateParams.page || 1);
-    }
-}
-getAuctionLots.$inject = ['LotsService', '$stateParams'];

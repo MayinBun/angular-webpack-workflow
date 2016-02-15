@@ -6,32 +6,32 @@
 
 	<div class="col-xs-12">
 		<h5 class="margin-top">Overzicht</h5>
-		<span class="darkgray size-14">{{::summary.description.nl}}</span>
+		<span class="bva-black size-14">{{::summary.description.nl}}</span>
 
 		<hr/>
 
 		<strong>Start veiling</strong>
-		<h5 class="darkgray">{{::summary.startDate|date:"EEE dd MMM yyyy 'om' H:mm uur"}}</h5>
+		<h5 class="bva-black-light">{{::summary.startDate|date:"EEE dd MMM yyyy 'om' H:mm uur"}}</h5>
 
 		<strong>Sluiting veiling</strong>
-		<h5 class="darkgray">{{::summary.endDate|date:"EEE dd MMM yyyy 'om' H:mm uur"}}</h5>
+		<h5 class="bva-black-light">{{::summary.endDate|date:"EEE dd MMM yyyy 'om' H:mm uur"}}</h5>
 
 		<div data-ng-if="summary.displayDaySummaries.length > 0" class="margin-top">
 			<strong>Kijkdag(en)</strong>
 			<div data-ng-repeat="display in summary.displayDaySummaries">
-				<h5 class="darkgray">{{::display.startDate|date:"EEE dd MMM yyyy 'van' H:mm uur"}} {{::display.endDate|date:"tot H:mm uur"}}</h5>
-				<h5 class="darkgray">{{::display.location.address}} {{::display.location.houseNumber}}, {{::display.location.postalCode}} {{::display.location.city}}</h5>
-				<p class='darkgray'>{{::display.description.nl}}</p>
+				<h5 class="bva-black-light">{{::display.startDate|date:"EEE dd MMM yyyy 'van' H:mm uur"}} {{::display.endDate|date:"tot H:mm uur"}}</h5>
+				<h5 class="bva-black-light">{{::display.location.address}} {{::display.location.houseNumber}}, {{::display.location.postalCode}} {{::display.location.city}}</h5>
+				<p class='bva-black-light'><i>{{::display.description.nl}}</i></p><br/>
 			</div>
 		</div>
 
 		<div data-ng-if="summary.collectionDaySummaries.length > 0" class="margin-top">
-			<strong>Ophaal dag(en)</strong>
+			<strong>Ophaaldag(en)</strong>
 			<div data-ng-repeat="collect in summary.collectionDaySummaries">
-				<h5 class="darkgray">{{::collect.startDate|date:"EEE dd MMM yyyy 'van' H:mm uur"}} {{::collect.endDate|date:"tot H:mm uur"}}</h5>
-				<h5 class='darkgray'>{{::collect.location.address}} {{::collect.location.houseNumber}}, {{::collect.location.postalCode}} {{::collect.location.city}}</h5>
+				<h5 class="bva-black-light">{{::collect.startDate|date:"EEE dd MMM yyyy 'van' H:mm uur"}} {{::collect.endDate|date:"tot H:mm uur"}}</h5>
+				<h5 class='bva-black-light'>{{::collect.location.address}} {{::collect.location.houseNumber}}, {{::collect.location.postalCode}} {{::collect.location.city}}</h5>
 				<br/>
-				<p class='darkgray'>{{::collect.description.nl}}</p>
+				<p class='darkgray size-14'><i>{{::collect.description.nl}}</i></p><br/>
 			</div>
 		</div>
 	</div>

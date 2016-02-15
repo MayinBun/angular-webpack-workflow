@@ -1,9 +1,9 @@
-<a class='default-header' data-ui-sref="list({page:vm.page})">Alle kavels
-	<span data-ng-if="vm.tab.category === undefined" class='pull-right'><i class='fa fa-check fa-lg'></i></span>
+<a class='default-header' data-ui-sref="list({page:tab.page})">Alle kavels
+	<span data-ng-if="tab.category === undefined" class='pull-right'><i class='fa fa-check fa-lg'></i></span>
 </a>
 <div data-ng-repeat="data in vm.categories track by data.category.id">
 	<h3 class='category-header' data-ng-if="data.category.name.nl">{{data.category.name.nl}}</h3>
-	<a data-ng-if="subcat.lotCount > 0" data-ui-sref="list({page:vm.page,category:subcat.id})" 
+	<a data-ng-if="subcat.lotCount > 0" data-ui-sref="list({page:tab.page,category:subcat.id})" 
 	data-ng-repeat="subcat in data.subCategories track by subcat.id" 
 	class="sub-category">
 		<div class="row start-xs-12">

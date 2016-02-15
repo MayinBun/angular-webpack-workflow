@@ -7,3 +7,4 @@ export default class AuctionCategoriesService {
         return this.$http.get(this.platform.API_ENDPOINT + '/ext123/auction/' + auctionId + '/nl/lotcategories');
     }
 }
+AuctionCategoriesService.$inject = ['$http','platform'];

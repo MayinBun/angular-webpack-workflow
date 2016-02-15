@@ -23,21 +23,34 @@
         
         
         export default class AuctionOverviewController {
-            constructor($scope,$stateParams){
+            constructor($scope,$stateParams,AuctionSummaryService){
                 this.$scope = $scope;
-                this.$scope.lots = {};
                 this.$stateParams = $stateParams;
-                this.$scope.tab = {page:1};
-                this.tab = this.$scope.tab;
-                //this.AuctionSummaryService = AuctionSummaryService;
+                this.AuctionSummaryService = AuctionSummaryService;
                 
+                /*@ this.$scope.tab 
+                This is a shared scope object between the child states of auction-overview.
+                1.auction-categories
+                2.lots
+                3.lots-photos
+                */
+                this.$scope.tab = {page:1};
+           
+                this.summary = {};          
                 this.$scope.$on('$destroy',()=>{
-                    //this.$scope.auctionsummary.showInfoButton = false;
+                    this.$scope.auctionsummary.showInfoButton = false;
                 })
+                
+                this.INIT(this.$stateParams.auctionId);
                 
             }
             INIT(auctionId){
-                //todo
+                this.AuctionSummaryService.getAuctionSummary(auctionId).then(response =>{
+                    this.summary = response.data;
+                    this.$scope.auctionsummary.showInfoButton = true;
+                },(reject)=>{
+                    this.$scope.auctionsummary.showInfoButton = false;
+                })
             }
         }
-        AuctionOverviewController.$inject = ['$scope','$stateParams'];
+        AuctionOverviewController.$inject = ['$scope','$stateParams','AuctionSummaryService'];

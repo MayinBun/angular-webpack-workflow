@@ -6,7 +6,7 @@ export default angular.module('mbva.platform', [])
 const API_ENDPOINT = 'https://api.bva-auctions.com/api/rest';  
 
 class PlatformService {
-    constructor(BASE) {
+    constructor() {
         this.API_ENDPOINT = API_ENDPOINT;
     }
 }

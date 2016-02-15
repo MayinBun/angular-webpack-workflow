@@ -1,4 +1,3 @@
-import lotTemplate from './lot.html';
 import LotController from './lot-controller';
 export default function routeConfig ($stateProvider) {
     $stateProvider.state('lot', {
@@ -6,14 +5,13 @@ export default function routeConfig ($stateProvider) {
       url: '^/auction/lot/:auctionId/:lotId',
       views: {
         'staticView@': {
-          template:lotTemplate,
+          template:require('./lot.html'),
           controller: LotController,
           controllerAs:'vm',
           resolve: {
             lot: lot,
             auction:auction
-          /*  lotMedia: lotMedia,
-            auction:auction*/
+          /*  lotMedia: lotMedia,*/
           }
         }
       }
@@ -49,3 +47,4 @@ export default function routeConfig ($stateProvider) {
       return defer.promise;
     }
 }
+routeConfig.$inject = ['$stateProvider'];

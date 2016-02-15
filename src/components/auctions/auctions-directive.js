@@ -26,4 +26,3 @@ export default function auctionsDirective(AuctionsService) {
         }
     }
 }
-auctionsDirective.$inject = ['AuctionsService'];

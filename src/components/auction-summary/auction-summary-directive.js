@@ -1,13 +1,11 @@
-angular.module("mbva.auction-summary")
-	.directive('auctionSummary',
-		function () {
-			'use strict';
-			return {
-				restrict: 'A',
-				transclude:true,
-				scope: {
-					summary: '=auctionSummary'
-				},
-				templateUrl: 'components/auction-summary/auction-summary.html',
-			}
-		});
+export default function SummaryDirective() {
+    'use strict';
+    return {
+        restrict: 'A',
+        transclude: true,
+        scope: {
+            summary: '=auctionSummary'
+        },
+        template: require('./auction-summary.html')
+    }
+}

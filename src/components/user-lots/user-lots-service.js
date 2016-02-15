@@ -19,4 +19,4 @@
                 return this.$http.get(this.platform.API_ENDPOINT + '/followedlots');
             }
         }
-        UserLotsService.$inject = ['$http','platform'];
+        
