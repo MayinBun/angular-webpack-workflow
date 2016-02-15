@@ -1,15 +1,30 @@
-import template from './lot-targeting.html';
+import angular from 'angular';
 
-export default function routeConfig($stateProvider) {
+export default angular.module('mbva.lot-targeting.route',[])
+.config(routeConfig)
+
+function routeConfig($stateProvider) {
     'use strict';
     $stateProvider
         .state('lot-targeting', {
             parent: 'home',
             url: 'selected',
             sticky: true,
+            pageTitle: 'BVA Auctions - Speciaal voor u',
+            resolve: {
+                loadModule: ($q, $ocLazyLoad) => {
+                    return $q((resolve) => {
+                        require.ensure([], () => {
+                            let module = require('./lot-targeting');
+                            $ocLazyLoad.load({ name: module.default.name });
+                            resolve(module);
+                        })
+                    })
+                }
+            },
             views: {
                 "home": {
-                    template: template,
+                    template: require('./lot-targeting.html'),
                     controller: LotTargetingController,
                     controllerAs: 'vm',
                     resolve: {
@@ -17,7 +32,6 @@ export default function routeConfig($stateProvider) {
                     }
                 }
             },
-            pageTitle: 'BVA Auctions - Speciaal voor u'
         })
 }
 routeConfig.$inject = ['$stateProvider'];

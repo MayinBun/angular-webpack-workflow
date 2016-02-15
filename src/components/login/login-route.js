@@ -1,6 +1,7 @@
+import angular from 'angular';
 import loginTemplate from './login.html';
 import LoginController from './login-controller';
-export default function routeConfig($stateProvider) {
+function routeConfig($stateProvider) {
     'use strict';
     $stateProvider
         .state('login', {
@@ -8,11 +9,25 @@ export default function routeConfig($stateProvider) {
             views:{
                 "@":{
             template: loginTemplate,
-            controller: LoginController,
+            controller:'LoginController',
             controllerAs:'vm',
+            resolve: {
+                loadModule: ($q, $ocLazyLoad) => {
+                    return $q((resolve) => {
+                        require.ensure([], () => {
+                            let mod = require('./login');
+                            $ocLazyLoad.load({ name: mod.default.name });
+                            resolve(mod);
+                        })
+                    })
+                }
+            },
            }
             },
             pageTitle: 'BVA Auctions - Inloggen'
         })
 }
 routeConfig.$inject = ['$stateProvider'];
+
+export default angular.module('mbva.login.route',[])
+.config(routeConfig)

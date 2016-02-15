@@ -4,9 +4,7 @@ export default class LotsService {
           this.platform = platform;
       }
       getLots(auctionId,page){
-          return this.$http.get(this.platform.API_ENDPOINT + '/ext123/lots/byauction/' + auctionId + '/25/' + page,{
-              cache:false
-          })
+          return this.$http.get(this.platform.API_ENDPOINT + '/ext123/lots/byauction/' + auctionId + '/25/' + page)
       }
      getCategorieLots(subcatId){
         return this.$http.get(this.platform.API_ENDPOINT + '/ext123/lots/bysubcategory/' + subcatId);

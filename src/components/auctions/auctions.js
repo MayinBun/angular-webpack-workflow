@@ -6,7 +6,6 @@ import routeConfig from './auctions-route';
 
 export default angular.module('mbva.auctions', [
     Platform.name
-  ])
-  .service('AuctionsService',AuctionsService)
-  .directive('auctions',auctionsDirective)
-  .config(routeConfig);
+])
+    .service('AuctionsService', AuctionsService)
+    .directive('auctions', auctionsDirective)

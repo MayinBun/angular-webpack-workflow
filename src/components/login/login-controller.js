@@ -1,4 +1,5 @@
-export default class LoginController {
+import angular from 'angular';
+class LoginController {
     constructor($state, $previousState, SessionService) {
         this.loginError = false;
         this.$state = $state;
@@ -30,3 +31,6 @@ export default class LoginController {
     }
 }
 LoginController.$inject = ['$state', '$previousState', 'SessionService'];
+
+export default angular.module('mbva.login.controller',[])
+.controller('LoginController',LoginController);

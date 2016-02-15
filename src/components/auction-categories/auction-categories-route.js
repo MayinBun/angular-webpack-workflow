@@ -5,19 +5,34 @@ export default function routeConfig($stateProvider) {
         parent: 'auction-overview',
         url: '^/auction/category/:auctionId',
         sticky: true,
-        template: categoriesTemplate,
-        controller: CategoriesController,
-        controllerAs: 'vm',
-        resolve: { AuctionCategories: getCategories }
+        resolve: {
+            loadModule: ($q, $ocLazyLoad) => {
+                return $q((resolve) => {
+                    require.ensure([], () => {
+                        let module = require('./auction-categories');
+                        $ocLazyLoad.load({ name: module.default.name });
+                        resolve(module);
+                    })
+                })
+            }
+        },
+        views: {
+            "overview": {
+                template: categoriesTemplate,
+                controller: CategoriesController,
+                controllerAs: 'vm',
+                resolve: { AuctionCategories: getCategories }
+            }
+        }
     })
 }
-    function getCategories(AuctionCategoriesService, $stateParams) {
-        return AuctionCategoriesService.getAuctionCategories($stateParams.auctionId);
-    }
-    getCategories.$inject = ['AuctionCategoriesService', '$stateParams'];
+function getCategories(AuctionCategoriesService, $stateParams) {
+    return AuctionCategoriesService.getAuctionCategories($stateParams.auctionId);
+}
+getCategories.$inject = ['AuctionCategoriesService', '$stateParams'];
 
 class CategoriesController {
-    constructor($scope,$state, AuctionCategories) {
+    constructor($scope, $state, AuctionCategories) {
         this.$scope = $scope;
         this.$state = $state;
         this.page = this.$scope.tab.page || 1;
@@ -27,4 +42,4 @@ class CategoriesController {
         this.$state.go('list', { category: categoryId, page: 1 });
     }
 }
-CategoriesController.$inject = ['$scope','$state','AuctionCategories'];
+CategoriesController.$inject = ['$scope', '$state', 'AuctionCategories'];

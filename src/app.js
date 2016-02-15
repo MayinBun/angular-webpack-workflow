@@ -1,21 +1,22 @@
+//Vendor
 import angular from 'angular';
 import ngMessages from 'angular-messages';
 import ngAnimate from 'angular-animate';
 import uiRouter from 'angular-ui-router';
+import oclazyload from 'oclazyload';
 import uiRouterExtras from 'ui-router-extras/release/ct-ui-router-extras.js';
 
 //Modules
-import HomeModule from './components/home/home';
 import NavigationModule from './components/navigation/navigation';
 import LegalModule from './components/legal/legal';
 import PageTitleModule from './components/page-title/page-title';
 import TimerModule from './components/timer/timer';
 import PaginationModule from './components/pagination/pagination';
 import UserLotsModule from './components/user-lots/user-lots';
-import LoginModule from './components/login/login';
 import StaticContentModule from './components/static/static';
 import LotPageModule from './components/lot/lot';
-import AuctionOverviewModule from './components/auction-overview/auction-overview';
+import SearchBarModule from './components/search-bar/search-bar';
+import SearchModule from './components/search/search';
 
 //Global templates & css
 import footerTemplate from "./components/footer/footer.html";
@@ -25,20 +26,25 @@ import 'flexboxgrid/css/flexboxgrid.css';
 
 angular.module('mbva.app', [
     uiRouter,
+    'ct.ui.router.extras',
     ngAnimate,
     ngMessages,
-    HomeModule.name,
-    LoginModule.name,
+    oclazyload,
+    
+    require('./components/home/home-route').default.name,
+    require('./components/login/login-route').default.name,
+    require('./components/auction-overview/auction-overview-route').default.name,
     UserLotsModule.name,
     NavigationModule.name,
+    SearchBarModule.name,
+    SearchModule.name,
     LegalModule.name,
     PageTitleModule.name,
     TimerModule.name,
     PaginationModule.name,
-    AuctionOverviewModule.name,
+ 
     StaticContentModule.name,
-    LotPageModule.name,
-    'ct.ui.router.extras'
+    //LotPageModule.name
 ])
 .config(routeConfig)
 .controller('AppController',() => new AppController)
@@ -56,7 +62,7 @@ function routeConfig($stateProvider,$urlRouterProvider,$compileProvider) {
     $urlRouterProvider.otherwise('/'); //Fallback
     $urlRouterProvider.when('/login/*path', 'login');
     /*$urlRouterProvider.when('/auction/lot/:id?*path', '/auction/lot/:id?page');*/
-    $urlRouterProvider.when('/auction/index/:id?*path', "/auction/lot/:id");
+    //$urlRouterProvider.when('/auction/index/:id?*path', "/auction/lot/:id");
     $urlRouterProvider.when('/content/terms', '/terms');
     
     $stateProvider

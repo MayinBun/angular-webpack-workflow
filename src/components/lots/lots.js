@@ -8,6 +8,5 @@ export default angular.module('mbva.lots', [
     Platform.name
 	//'mbva.pagination'
 	])
-    .config(routeConfig)
     .service('LotsService',LotsService)
     .directive('lotsList',lotsListDirective)
