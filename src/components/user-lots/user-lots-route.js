@@ -1,15 +1,13 @@
-
 import UserLotsController from './user-lots-controller';
+import template from './user-lots.html';
 export default function routeConfig($stateProvider) {
     $stateProvider
         .state('user-lots', {
             url: '/dashboard',
-            template: require('./user-lots.html'),
+            template:template,
             controller: UserLotsController,
-            controllerAs: 'vm',
             resolve: {
-                userLots:
-                function (UserLotsService, $q, $state) {
+                userLots:['UserLotsService','$q','$state',function (UserLotsService, $q, $state) {
                     var defer = $q.defer();
                     UserLotsService.getUserLots().then(response => {
                         defer.resolve(response.data);
@@ -17,7 +15,7 @@ export default function routeConfig($stateProvider) {
                         $q.reject(error);
                     });
                     return defer.promise;
-                }
+                }]
             }
         })
 }

@@ -1,13 +1,13 @@
-<div class='row fullwidth user-lots-tabs text-center'>	
- <a data-ng-click="vm.toggle.overbid = !vm.toggle.overbid" data-ng-class="{'disable':!vm.toggle.overbid,'orange':vm.toggle.overbid}" class="col-xs textlimit">
+<div class='row fullwidth user-lots-tabs text-center'>	 
+ <a data-ng-click="toggle.overbid = !toggle.overbid" data-ng-class="{'disable':!toggle.overbid,'orange':toggle.overbid}" class="col-xs textlimit">
      <h1>{{userLots.overbid.lots.length}}<span>x</span></h1>
      <h5 class='status-text'>Overboden</h5>
  </a>
- <a data-ng-click="vm.highestBidFilter(vm.toggle.highestBidder = !vm.toggle.highestBidder)" ng-class="{'disable':!vm.toggle.highestBidder,'green':vm.toggle.highestBidder}" class="col-xs textlimit">
+ <a data-ng-click="highestBidFilter(toggle.highestBidder = !toggle.highestBidder)" ng-class="{'disable':!toggle.highestBidder,'green':toggle.highestBidder}" class="col-xs textlimit">
      <h1>{{userLots.highestbidder.lots.length}}<span>x</span></h1>
      <h5 class='status-text'>Hoogste bieder</h5>
  </a>
- <a data-ng-click="vm.notBidFilter(vm.toggle.notBidded = !vm.toggle.notBidded)" data-ng-class="{'disable':!vm.toggle.notBidded}" class="col-xs textlimit">
+ <a data-ng-click="notBidFilter(toggle.notBidded = !toggle.notBidded)" data-ng-class="{'disable':!toggle.notBidded}" class="col-xs textlimit">
      <h1>{{userLots.notbidded.lots.length}}<span>x</span></h1>
      <h5 class='status-text'>Niet geboden</h5>
  </a>
@@ -15,12 +15,12 @@
 </div>
 
 <div class='row'>
-	<a class='list-item col-xs-12 col-md-6 textlimit' ng-hide="overbidToggle" data-ng-repeat="lot in userLots.all.lots | filter:{bidded:BIDDED,highestBidder:HIGHESTBIDDER && BIDDED}" data-ui-sref='lot({auctionId:lot.auctionId,lotId:lot.id})'>
+	<a class='list-item col-xs-12 col-md-6 textlimit' ng-hide="overbidToggle" data-ng-repeat="lot in userLots.all.lots | filter:{bidded:BIDDED,highestBidder:HIGHESTBIDDER && BIDDED}|filter:custom" data-ui-sref='lot({auctionId:lot.auctionId,lotId:lot.id})'>
 		<img class='pull-left' data-ng-src='{{::lot.imageUrl}}'>
 		<h3 class="list-item-title">{{::lot.name}}</h3>
-		<h5 class="pull-right bva-black">€ {{::lot.latestBidAmount|number:2}}</h5>
+		<h5 class="pull-right bva-black" data-ng-class="{'green':lot.highestBidder,'orange':!lot.highestBidder && lot.bidded}">€ {{::lot.latestBidAmount|number:2}}</h5>
 		<h5 class="list-item-sub">{{::lot.fullNumber}}</h5>
 		<div data-timer data-start-date="lot.startDate" data-end-date="lot.endDate" data-type="lots"></div>
 	</a>
 </div>
-<!--filter:vm.custom-->
+

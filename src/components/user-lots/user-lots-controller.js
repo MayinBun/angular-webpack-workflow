@@ -1,88 +1,96 @@
 import angular from 'angular';
-export default class UserLotsController {
-    constructor($scope, $filter, userLots) {
-        this.$scope = $scope;
-        this.$filter = $filter;
-        this.userLots = userLots;
-
-        this.$scope.userLots = {
-            all: {
-                options: {
-                    open: true
+export default function UserLotsController($scope,$filter,userLots){       
+            $scope.userLots = {
+                all: {
+                    options: {
+                        open: true
+                    },
+                    lots: {}
                 },
-                lots: {}
-            },
-            overbid: {
-                options: {
-                    open: true,
-                    highestBidder: false,
-                    bidded: true
+                overbid: {
+                    options: {
+                        open: true,
+                        highestBidder: false,
+                        bidded: true
+                    },
+                    lots: {}
                 },
-                lots: {}
-            },
-            highestbidder: {
-                options: {
-                    open: true,
-                    highestBidder: true
+                highestbidder: {
+                    options: {
+                        open: true,
+                        highestBidder: true
+                    },
+                    lots: {}
                 },
-                lots: {}
-            },
-            notbidded: {
-                options: {
-                    open: true,
-                    bidded: false
-                },
-                lots: {}
+                notbidded: {
+                    options: {
+                        open: true,
+                        bidded: false
+                    },
+                    lots: {}
+                }
             }
-        }
 
-        this.$scope.$watch('userLots', function () {
-            angular.forEach($scope.userLots, function (value, key) {
-                value.lots = $filter('filter')(userLots, value.options);
-            })
-        })
+            $scope.$watch('userLots', function () {
+                angular.forEach($scope.userLots, function (value, key) {
+                    value.lots = $filter('filter')(userLots, value.options);
+                })
+            });
 
-        this.toggle = {
-            overbid: true,
-            highestBidder: true,
-            notBidded: true
-        }
+            $scope.toggle = {
+                overbid: true,
+                highestBidder: true,
+                notBidded: true
+            }
 
-        this.$scope.BIDDED = "";
-        this.$scope.HIGHESTBIDDER = "";
-        this.$scope.NOTBIDDED = "";
-    }
-    custom(item) {
-        if (this.$scope.toggle.overbid) {
-                if (item.bidded && item.highestBidder || !item.bidded) {
+            $scope.showOverbid = true;
+            $scope.showHighest = true;
+            $scope.showNotBidded = true;
+
+            $scope.BIDDED = "";
+            $scope.HIGHESTBIDDER = "";
+            $scope.NOTBIDDED = "";
+
+
+
+            $scope.custom = function (item) {
+                if (!$scope.toggle.overbid) {
+                    if (item.bidded && item.highestBidder || !item.bidded) {
+                        return item;
+                    }
+                }
+                else {
                     return item;
                 }
             }
-            else {
-                return item;
+        
+            //works
+            $scope.highestBidFilter = function (value) {
+                //console.log(value);
+                if (value) {
+                    if ($scope.toggle.notBidded) {
+                        $scope.BIDDED = "";
+                    }
+                    
+                    $scope.HIGHESTBIDDER = "";
+                }
+                else {
+                    $scope.HIGHESTBIDDER = value;
+                }
             }
-    }
-    highestBidFilter(value) {
-        if (value) {
-            if (this.toggle.notBidded) {
-                this.$scope.BIDDED = "";
-            }
+            
+            //works
+            $scope.notBidFilter = function (value) {
+                //console.log(value);
+                if (value) {
+                    $scope.BIDDED = "";
 
-            this.$scope.HIGHESTBIDDER = "";
-        }
-        else {
-            this.$scope.HIGHESTBIDDER = value;
-        }
-    }
-    notBidFilter(value) {
-        if (value) {
-            this.$scope.BIDDED = "";
-
-        } else {
-            this.$scope.BIDDED = true;
-            if (this.toggle.highestBidder) {
-                this.$scope.HIGHESTBIDDER = "";
+                } else {
+                    $scope.BIDDED = true;
+                    if ($scope.toggle.highestBidder) {
+                        $scope.HIGHESTBIDDER = "";
+                    }
+                }
             }
         }
-    }
-}
+        UserLotsController.$inject = ['$scope','$filter','userLots'];

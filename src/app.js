@@ -3,6 +3,7 @@ import angular from 'angular';
 import ngMessages from 'angular-messages';
 import ngAnimate from 'angular-animate';
 import uiRouter from 'angular-ui-router';
+import angularLoadingBar from 'angular-loading-bar';
 import oclazyload from 'oclazyload';
 import uiRouterExtras from 'ui-router-extras/release/ct-ui-router-extras.js';
 
@@ -32,7 +33,7 @@ angular.module('mbva.app', [
     ngAnimate,
     ngMessages,
     oclazyload,
-    require('angular-loading-bar'),
+    angularLoadingBar,
     Platform.name,
     require('./components/home/home-route').default.name,
     require('./components/login/login-route').default.name,
