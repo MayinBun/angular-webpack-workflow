@@ -7,7 +7,7 @@ function routeConfig($stateProvider) {
         .state('auctions-current', {
             parent: 'home',
             sticky: true,
-            url: 'auctions/current',
+            url: '/',
             views: {
                 "home": {
                     template: require('./auctions.html'),

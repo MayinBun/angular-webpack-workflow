@@ -1,7 +1,15 @@
-<div class="row fullwidth">
+<!--<div class="row fullwidth">
     <div class='input-group padding bg-bva-gray col-xs'>
         <input class='input-field padding' type="text" data-ng-keydown='$event.which === 13 && submit()' data-ng-model="userInput"
         placeholder="Kavels zoeken">
         <button class='input-addon' data-ng-click="submit()"><i class='fa fa-search'></i></button>
     </div>
+</div>-->
+<div class="row fullwidth">
+<div class="sw">
+    <form data-ng-submit="submit()">
+      <input type="search" data-ng-model="userInput" class="search" data-ng-keydown='$event.which === 13 && submit();' placeholder="Kavels zoeken..." />
+      <button class="go" type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
 </div>

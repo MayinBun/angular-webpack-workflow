@@ -22,15 +22,14 @@ import SearchBarModule from './components/search-bar/search-bar';
 import SearchModule from './components/search/search';
 
 //Global templates & css
-import footerTemplate from "./components/footer/footer.html";
 import './app.css';
 import 'flexboxgrid/css/flexboxgrid.css';
 import 'angular-loading-bar/build/loading-bar.css';
 
 //Route modules
 import HomeRoute from './components/home/home-route';
-import AuctionOverviewRoute from './components/auction-overview/auction-overview-route';
 import LoginRoute from './components/login/login-route';
+import AuctionOverviewRoute from './components/auction-overview/auction-overview-route';
 
 angular.module('mbva.app', [
     uiRouter,
@@ -54,9 +53,9 @@ angular.module('mbva.app', [
     StaticContentModule.name,
     //LotPageModule.name
 ])
-.config(routeConfig)
-.controller('AppController',() => new AppController)
 .run(run)
+.config(routeConfig)
+.controller('AppController',AppController)
 
 function run(){
     //Use fastclick since ngTouch is deprecated from angular 1.5.x
@@ -67,6 +66,7 @@ routeConfig.$inject = ['$stateProvider','$urlRouterProvider','$compileProvider',
 function routeConfig($stateProvider,$urlRouterProvider,$compileProvider,cfpLoadingBarProvider) {
     $compileProvider.debugInfoEnabled(false);
     cfpLoadingBarProvider.latencyThreshold = 300;
+    
     //URL rewritings
     $urlRouterProvider.otherwise('/'); //Fallback
     $urlRouterProvider.when('/login/*path', 'login');
@@ -78,33 +78,22 @@ function routeConfig($stateProvider,$urlRouterProvider,$compileProvider,cfpLoadi
         .state('root', {
             abstract: true,
             views: {
-                '@': {
-                    controller: "AppController",
+                '@':{
+                  controller:'AppController'  
                 },
                 'footer@': {
-                    template:footerTemplate
+                    template:require('./components/footer/footer.html')
                 }
             }
         })
-        .state('404', {
-            parent: 'root',
-            url: "/404",
-            pageTitle: 'Error 404',
-            views: {
-                "@": {
-                    template: 'error-404.html',
-                }
-            }
-        })
-}
+    }
 
-class AppController {
-    constructor(){
-      this.scroll = {
-          staticscroll:false
-      }
+function AppController ($scope){
+    $scope.root = {
+        staticViewScroll:false
     }
 }
+AppController.$inject = ['$scope'];
 
 /*.config([
         '$httpProvider',

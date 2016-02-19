@@ -9,7 +9,8 @@ export default angular.module('mbva.static', [accordionDirective.name])
       parent:'root',
       views: {
         'staticView@': {
-          template: require('./customerservice.html')
+          template: require('./customerservice.html'),
+          controller:StaticViewController
         }
       }
     })
@@ -18,7 +19,8 @@ export default angular.module('mbva.static', [accordionDirective.name])
         url: '/terms',
         views: {
           'staticView@': {
-            template: require('./terms.html')
+            template: require('./terms.html'),
+            controller:StaticViewController
           }
         }
       })
@@ -27,7 +29,8 @@ export default angular.module('mbva.static', [accordionDirective.name])
         url: '/about',
         views: {
           'staticView@': {
-            template:require('./about.html')
+            template:require('./about.html'),
+            controller:StaticViewController
           }
         }
       })
@@ -36,7 +39,8 @@ export default angular.module('mbva.static', [accordionDirective.name])
         url:'/contact',
         views: {
           'staticView@': {
-              template:require('./contact.html')
+              template:require('./contact.html'),
+              controller:StaticViewController
           }
         }
       })
@@ -55,7 +59,8 @@ export default angular.module('mbva.static', [accordionDirective.name])
         url:'/invoices',
         views: {
           'staticView@': {
-            template: require('./invoices.html')
+            template: require('./invoices.html'),
+            controller:StaticViewController
           }
         }
       })
@@ -64,7 +69,8 @@ export default angular.module('mbva.static', [accordionDirective.name])
         url: '/cookies',
         views: {
           'staticView@': {
-            template: require('./cookie.html')
+            template: require('./cookie.html'),
+            controller:StaticViewController
           }
         }
       })
@@ -73,16 +79,31 @@ export default angular.module('mbva.static', [accordionDirective.name])
         url: '/faq',
         views: {
           'staticView@': {
-              template: require('./faq.html')
+              template: require('./faq.html'),
+              controller:StaticViewController
           }
         }
       });
   }])
+  
+  
 
-  .controller('NewsController',['$scope','$stateParams','$http','$sce', 
+ /* .controller('NewsController',['$scope','$stateParams','$http','$sce', 
   function ($scope, $stateParams, $http, $sce) {
     var id = $stateParams.id;
     $http.get("http://origin.bva-auctions.com/news/index/" + id).then(function (res) {
       $scope.content = $sce.trustAsHtml(res.data);
     });
-  }]);
+  }]);*/
+  
+  class StaticViewController{
+    constructor($scope){
+        this.$scope = $scope;
+        console.log(this.$scope.root);
+        this.$scope.root.staticViewScroll = true;
+        this.$scope.$on('destroy',function(){
+            this.$scope.root.staticViewScroll = false;
+        })
+    }
+}
+StaticViewController.$inject= ['$scope'];

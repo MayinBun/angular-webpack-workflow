@@ -25,10 +25,12 @@ export default function staticContentDirective() {
 
 class Controller{
     constructor($scope){
-       /* this.$scope = $scope;
+        this.$scope = $scope;
+        console.log(this.$scope.root);
+        this.$scope.root.staticViewScroll = true;
         this.$scope.$on('$destroy',function(){
-            this.$scope.root.staticscroll = false;
-        })*/
+            this.$scope.staticViewScroll = false;
+        })
     }
 }
 Controller.$inject= ['$scope'];
