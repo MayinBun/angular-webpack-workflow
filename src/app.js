@@ -27,6 +27,11 @@ import './app.css';
 import 'flexboxgrid/css/flexboxgrid.css';
 import 'angular-loading-bar/build/loading-bar.css';
 
+//Route modules
+import HomeRoute from './components/home/home-route';
+import AuctionOverviewRoute from './components/auction-overview/auction-overview-route';
+import LoginRoute from './components/login/login-route';
+
 angular.module('mbva.app', [
     uiRouter,
     'ct.ui.router.extras',
@@ -35,9 +40,9 @@ angular.module('mbva.app', [
     oclazyload,
     angularLoadingBar,
     Platform.name,
-    require('./components/home/home-route').default.name,
-    require('./components/login/login-route').default.name,
-    require('./components/auction-overview/auction-overview-route').default.name,
+    HomeRoute.name,
+    AuctionOverviewRoute.name,
+    LoginRoute.name,
     UserLotsModule.name,
     NavigationModule.name,
     SearchBarModule.name,
@@ -47,7 +52,7 @@ angular.module('mbva.app', [
     TimerModule.name,
     PaginationModule.name,
     StaticContentModule.name,
-    LotPageModule.name
+    //LotPageModule.name
 ])
 .config(routeConfig)
 .controller('AppController',() => new AppController)

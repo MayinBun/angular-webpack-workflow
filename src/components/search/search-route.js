@@ -29,10 +29,8 @@ class SearchController {
         this.$stateParams = $stateParams;
         this.$state = $state;
         this.result = searchLots;
-
-        this.totalHits = this.result.totalHits || 0;
+        console.log(this.result);
         this.page = this.$stateParams.page;
-
     }
     pageChanged(toPage) {
         this.$state.go('search', { page: toPage });

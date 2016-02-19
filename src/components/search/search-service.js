@@ -22,3 +22,4 @@ angular
           return this.$http.get(this.platform.API_ENDPOINT + '/ext123/search/' + searchQuery + '/' + page || 1);
       }
   }
+  SearchService.$inject = ['$http','platform'];

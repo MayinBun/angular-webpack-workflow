@@ -1,21 +1,39 @@
 .caption-wrapper{
-  display:block;
+  display:inline-block;
   position: relative;
   overflow: hidden;
-  height:150px;
+  max-height:250px;
+  height:auto;
   width:auto;
   margin:0 auto;
 }
-.caption-content{
+.caption-content-bottom{
   position: absolute;
   left:0px;
   bottom:0px;
   width:100%;
-  line-height: 25px;
+  line-height: 22px;
   background-color:#333333;
   opacity: 0.8;
   color:#FFFFFF;
+  border-radius:5px 5px 0px 0px;
 }
+.caption-content-status{
+  position: absolute;
+  right:0px;
+  top:0px;
+  width:auto;
+  color:#FFFFFF;
+  border-radius: 3px;
+  padding:1px 2px;
+}
+.isOpenLot{
+    color:green;
+}
+.isClosedLot{
+    color:red;
+}
+
 .grid-image {
   border-radius: 3px;
   background: url("/app/media/images/im-not-available-114x114.png");
@@ -25,49 +43,4 @@
   max-width:100%;
   max-height:100%;
   height:auto;
-}
-
-#photos {
-  /* Prevent vertical gaps */
-  line-height: 0;
-  -webkit-column-count: 5;
-  -webkit-column-gap:   0px;
-  -moz-column-count:    5;
-  -moz-column-gap:      0px;
-  column-count:         5;
-  column-gap:           0px;  
-}
-
-#photos img {
-  /* Just in case there are inline attributes */
-  width: 100% !important;
-  height: auto !important;
-}
-@media (max-width: 1200px) {
-  #photos {
-  -moz-column-count:    4;
-  -webkit-column-count: 4;
-  column-count:         4;
-  }
-}
-@media (max-width: 1000px) {
-  #photos {
-  -moz-column-count:    3;
-  -webkit-column-count: 3;
-  column-count:         3;
-  }
-}
-@media (max-width: 800px) {
-  #photos {
-  -moz-column-count:    2;
-  -webkit-column-count: 2;
-  column-count:         2;
-  }
-}
-@media (max-width: 400px) {
-  #photos {
-  -moz-column-count:    1;
-  -webkit-column-count: 1;
-  column-count:         1;
-  }
 }

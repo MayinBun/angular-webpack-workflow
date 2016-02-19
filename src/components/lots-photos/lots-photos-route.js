@@ -1,35 +1,40 @@
-angular.module('mbva.lots-photos')
-  .config([
-    '$stateProvider',
-    function ($stateProvider) {
-      'use strict';
-      $stateProvider.state("photos", {
+export default function routeConfig($stateProvider) {
+    'use strict';
+    $stateProvider.state('photos', {
         parent: 'auction-overview',
-        url: "^/auction/lot/photos/:auctionId?page&category",
+        url: '^/auction/lot/photos/:auctionId?page&category',
         sticky: true,
-        resolve: {
-          auctionLots: auctionLots
-        },
-        controller: ['$scope', '$stateParams', 'auctionLots',
-          function ($scope, $stateParams, auctionLots) {
-            $scope.list = auctionLots;
-            $scope.page = 1;
-            $scope.tab.category = $stateParams.category;
-          }],
-        template: function ($stateParams) {
-          if ($stateParams.category !== undefined) {
-            return "<div lots-photos=list count='list.totalLotCount'></div>";
-          }
-          else {
-            return "<div lots-photos=list.lots page='page' count='list.totalLotCount'></div>";
-          }
+        views: {
+            "overview": {
+                resolve:{
+                    photos:auctionLots
+                },
+                controller: ['$scope', '$stateParams','photos',
+                    function ($scope, $stateParams,photos) {
+                        console.log(photos);
+                        $scope.list = photos.data;
+                        $scope.page = 1;
+                        $scope.tab.category = $stateParams.category;
+                    }],
+                template: function ($stateParams) {
+                    if ($stateParams.category !== undefined) {
+                        return "<div lots-photos=list count='list.totalLotCount'></div>";
+                    }
+                    else {
+                        return "<div lots-photos=list.lots page='page' count='list.totalLotCount'></div>";
+                    }
+                }
+            }
         }
-      })
-      function auctionLots(auctionCategoriesLots, lotsService, $stateParams) {
-        if ($stateParams.category) {
-          return auctionCategoriesLots($stateParams.category).query();
-        } else {
-          return lotsService($stateParams.auctionId,1).get();
-        }
-      }
-    }])
+    })
+}
+routeConfig.$inject = ['$stateProvider'];
+
+auctionLots.$inject = ['LotsService', '$stateParams'];
+function auctionLots(LotsService, $stateParams) {
+    if ($stateParams.category) {
+        return LotsService.getCategorieLots($stateParams.category).then(response => response);
+    } else {
+        return LotsService.getLots($stateParams.auctionId, 1).then(response => response);
+    }
+}

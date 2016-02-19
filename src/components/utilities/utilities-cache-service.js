@@ -3,10 +3,23 @@
 function($cacheFactory){
 	return $cacheFactory('appData');
 }])*/
-
+let self;
 export default class CacheService {
     constructor($cacheFactory){
-        this.$cacheFactory = $cacheFactory;
-        return this.$cacheFactory('appData');
+        self = this;
+        this.$cacheFactory = $cacheFactory('appData');
+    }
+    get(cacheId){
+        return self.$cacheFactory.get(String(cacheId));
+    }
+    put(key,value){
+        return self.$cacheFactory.put(String(key),value)
+    }
+    remove(key){
+        return self.$cacheFactory.remove(String(key));
+    }
+    info(){
+        return self.$cacheFactory.info();
     }
 }
+CacheService.$inject = ['$cacheFactory'];

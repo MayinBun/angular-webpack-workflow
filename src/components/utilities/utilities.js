@@ -4,4 +4,4 @@ import CacheService from "./utilities-cache-service";
 
 export default angular.module('mbva.utilities',[])
 .service('storage',()=> new StorageService)
-.service('cache',()=> new CacheService);
+.service('cache', CacheService);

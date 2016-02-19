@@ -1,5 +1,5 @@
 
-export default function lotsPhotosDirective($state, $stateParams, $timeout, lotsService, cacheService) {
+export default function lotsPhotosDirective($state, $stateParams, $timeout, LotsService, cache) {
     return {
         scope: {
             lotsPhotos: '=lotsPhotos',
@@ -8,11 +8,11 @@ export default function lotsPhotosDirective($state, $stateParams, $timeout, lots
         template:require('./lots-photos-tpl.html'),
         link: function (scope, element, attr) {
             var numPages;
-            var cache = cacheService.get('photoListCache');
+            var photosCache = cache.get('photoListCache');
             var page = 1;
             var auctionId = $stateParams.auctionId;
 
-            if (cache) {
+            if (photosCache) {
                 if (cache.auctionId == auctionId)
                     page = cache.lastPage;
             }
@@ -31,13 +31,13 @@ export default function lotsPhotosDirective($state, $stateParams, $timeout, lots
                     if (page < numPages && numPages > 1) {
                         scope.busy = true;
                         page++;
-                        lotsService(auctionId, page).get(function (response) {
+                        LotsService.getLots(auctionId, page).then(response => {
                             for (var i = 0; i < response.lots.length; i++) {
                                 var lot = response.lots[i];
                                 scope.lotsPhotos.push(lot);
                             }
                             var cacheData = { 'lastPage': page, 'auctionId': auctionId }
-                            cacheService.put('photoListCache', cacheData);
+                            cache.put('photoListCache', cacheData);
                             scope.busy = false;
                         })
                     }
@@ -45,3 +45,5 @@ export default function lotsPhotosDirective($state, $stateParams, $timeout, lots
             })
         }
     }
+}
+lotsPhotosDirective.$inject = ['$state','$stateParams','$timeout','LotsService','cache'];

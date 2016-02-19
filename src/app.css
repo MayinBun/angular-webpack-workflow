@@ -190,11 +190,9 @@ a.search:hover,a.search:focus{
   text-overflow: ellipsis;
   overflow: hidden;
   color:#333333;
-  padding:3px 0px;
 }
 
 .list-item-sub{
-  font-size:.8em;
   font-weight: bold;
   color:#777777;
   text-transform: uppercase;
