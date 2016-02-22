@@ -1,0 +1,6 @@
+<div class='row'>
+    <img data-ng-repeat="slide in slides"  ng-hide="$index !== currentSlide" ng-src="{{slide.image}}" />
+</div>
+
+<button ng-click="nextSlide()">next</button>
+<button ng-click="prevSlide()">prev</button>
