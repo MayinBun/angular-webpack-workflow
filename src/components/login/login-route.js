@@ -6,6 +6,7 @@ function routeConfig($stateProvider) {
     $stateProvider
         .state('login', {
             url: '/login',
+            parent:'root',
             pageTitle: 'BVA Auctions - Inloggen',
             views: {
                 "@": {
