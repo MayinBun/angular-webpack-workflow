@@ -41,8 +41,5 @@ class CategoriesController {
         this.$state = $state;
         this.categories = AuctionCategories.data;
     }
-    /*redirectTo(categoryId) {
-        this.$state.go('list', { category: categoryId, page: 1 });
-    }*/
 }
 CategoriesController.$inject = ['$scope', '$state', 'AuctionCategories'];

@@ -2,7 +2,8 @@
   float: left;
   width: 100%;
   height: auto;
-  padding: 15px;
+  padding: 10px;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11,6 +12,7 @@
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  background:#fff;
 }
 .sw form {
   float: left;
@@ -39,27 +41,21 @@
   outline: none;
   border: none;
   border-radius: 0;
-  background: #fff;
   padding: 10px 15px;
   height: 50px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   -webkit-appearance: none;
   letter-spacing: 1px;
+  transform: translateZ(0);
 }
 .sw .search:focus {
-  height: 80px;
-  margin-left: -15px;
-  padding: 10px 15px;
-  box-shadow: 0 2px 0 0px #0968AE;
+  box-shadow: 0 1px 0px 0px #0968AE;
   color:#0968AE;
 }
 .sw .search:focus + .go {
-  height: 80px;
-  margin-right: -15px;
-  max-width: 80px;
+  box-shadow: 0 1px 0px 0px #0968AE;
   color: #0968AE;
-  box-shadow: 0 2px 0 0px #0968AE;
 }
 
 .sw .go {
@@ -79,6 +75,7 @@
   height: 50px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+  transform: translateZ(0);
   font-size: 20px;
   outline: none;
 }
