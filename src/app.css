@@ -38,7 +38,7 @@ TABLE OF CONTENTS
 html, body {
   height:100%;
   -webkit-font-smoothing: antialiased;
-  font-family: Lato,'Lato',Arial, Helvetica, sans-serif;
+  font-family: Roboto,'Roboto',Arial, Helvetica, sans-serif;
 }
 
 h1 { font-size: 2em; }
@@ -53,15 +53,15 @@ h1 { font-size: 1.5em; }
 h2 { font-size: 1.17em; }
 h3 { font-size: 1.02em; }
 h4 { font-size: 0.83em; }
-h5 { font-size: .7em; }
+h5 { font-size: .76em; }
 h6 { font-size: .52em; }
 }
 
 h1,h2,h3,h4,h5,h6,p{
   text-decoration: none;
   text-transform: none;
-  color:inherit;
   text-rendering: optimizeLegibility;
+  color:inherit;
 }
 .site {
   display: flex;
@@ -206,13 +206,14 @@ a.search:hover,a.search:focus{
   text-overflow: ellipsis;
   overflow: hidden;
   color:#333333;
+  font-weight: 500;
 }
 
 .list-item-sub{
-  font-weight: bold;
+  font-weight: 500;
   color:#777777;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.6px;
   padding:3px 0px;
 }
 
@@ -322,12 +323,11 @@ a.search:hover,a.search:focus{
 
 .tabs a{
   font-size:11px;
+  font-weight: 500;
   text-transform: uppercase;
   line-height: 44px;
   color:#666666;
   letter-spacing: 1.4px;
-  font-family: Lato;
-  font-weight: bold;
   border-bottom: 1px solid #E0E0E8;
 }
 .tabs.scrollable{
