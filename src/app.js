@@ -31,6 +31,8 @@ import HomeRoute from './components/home/home-route';
 import LoginRoute from './components/login/login-route';
 import AuctionOverviewRoute from './components/auction-overview/auction-overview-route';
 
+import mobileBanner from './components/mobile-banner/mobile-banner.js';
+
 angular.module('mbva.app', [
     uiRouter,
     'ct.ui.router.extras',
@@ -51,6 +53,8 @@ angular.module('mbva.app', [
     TimerModule.name,
     PaginationModule.name,
     StaticContentModule.name,
+    mobileBanner.name
+   
     //LotPageModule.name
 ])
 .run(run)
@@ -58,7 +62,7 @@ angular.module('mbva.app', [
 .controller('AppController',AppController)
 
 function run(){
-    //Use fastclick since ngTouch is deprecated from angular 1.5.x
+    //Use fastclick polyfill since ngTouch is deprecated from angular 1.5.x
     require('fastclick').attach(document.body)
 }
 

@@ -1,16 +1,33 @@
-angular.module('mbva.mobile-banner', [])
+import angular from 'angular';
+export default angular.module('mbva.mobile-banner', [])
     .directive('mBanner', ['$interval', function ($interval) {
         return {
             scope: {
-                slides: '=mBanner'
+               
             },
-            templateUrl: 'components/mobile-banner/mobile-banner.html',
+            template:require('./mobile-banner.html'),
             link: function (scope, elem, attr) {
-                var maxImages = scope.slides.length - 1;
                 var AUTOPLAY_INTERVAL = 4000;
                 var autoplay;
+                
+                scope.slides = [
+                    {
+                        url:'https://images.bva-auctions.com/static/feeds/mobile/images/367.jpg',
+                        name:'Life & Garden'
+                    },
+                    {
+                        url:'https://images.bva-auctions.com/static/feeds/mobile/images/368.jpg',
+                        name:'Showroomkeukens'
+                    },
+                    {
+                        url:'https://images.bva-auctions.com/static/feeds/mobile/images/365.jpg',
+                        name:'Consumentenelektronica'
+                    }
+                ]
+                    
 
                 scope.currentSlide = 0;
+                console.log(scope.slides.length);
 
                 scope.nextSlide = function () {
                     scope.currentSlide = (scope.currentSlide < scope.slides.length - 1) ? ++scope.currentSlide : 0;
@@ -30,6 +47,10 @@ angular.module('mbva.mobile-banner', [])
                 };
 
                 scope.startAutoplay();
+                
+                scope.$on('destroy',function(){
+                    $interval.cancel(autoplay);
+                })
             }
         }
     }])

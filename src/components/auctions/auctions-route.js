@@ -48,7 +48,7 @@ class AuctionsController {
     constructor(AuctionsCurrent,AuctionsService) {
         this.auctions = AuctionsCurrent;
         this.AuctionsService = AuctionsService;
-        this.currentPage = Math.ceil(this.auctions.list.length / 25) || 1;
+        this.currentPage = this.auctions.data ? Math.ceil(this.auctions.list.length / 25) || 1 : 0;
         this.pages = Math.ceil(this.auctions.totalSize / 25);
         console.log(this.currentPage);
       

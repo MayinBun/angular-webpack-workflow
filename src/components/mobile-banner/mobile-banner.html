@@ -1,5 +1,4 @@
-<div class='row'>
-    <img data-ng-repeat="slide in slides"  ng-hide="$index !== currentSlide" ng-src="{{slide.image}}" />
+<div data-ng-hide="$index !== currentSlide" data-ng-repeat="slide in slides" class='row' data-ng-style="{'background':'url({{slide.url}}) center no-repeat'}" style="height:150px;">    
 </div>
 
 <button ng-click="nextSlide()">next</button>
