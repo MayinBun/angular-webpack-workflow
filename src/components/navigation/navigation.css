@@ -11,6 +11,9 @@ header{
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing:border-box;
+   transition: top 0.2s ease-in-out;
+   -webkit-transition:top 0.2s ease-in-out;
+   transform: translateZ(0);
 }
 
 .logo{
@@ -32,8 +35,12 @@ header{
   image-rendering: optimizeQuality;
   -webkit-user-select: none;
   user-select:none;
+  -moz-user-select: none;
 }
-
+section>.nav-icon{
+    color:#666666;
+    padding:15px 7px 15px 7px;
+}
 
 /*3) NAVIGATION (MENU) */
 nav{
@@ -52,7 +59,7 @@ nav>ul>li{
   text-align: center;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 nav>ul>li>a{
   display:inline-block;
@@ -78,7 +85,6 @@ nav>ul.ng-hide:not(.ng-hide-animate) {
     display:inline-block !important;
     width: 100%;
     line-height: 55px;
-    font-size:1.1em;
     color:#666666;
     text-rendering: optimizeLegibility;
     -webkit-user-select: none;
@@ -88,10 +94,11 @@ nav>ul.ng-hide:not(.ng-hide-animate) {
   nav>ul.ng-hide:not(.ng-hide-animate) {
     display: none !important;
   }
+
   nav>ul { 
     box-sizing: border-box;
 	position: absolute;
-	background: #fff;
+	background: #FFFFFF;
 	left:0;
 	width: 100%;
     border: none;
@@ -110,8 +117,4 @@ nav>ul.ng-hide:not(.ng-hide-animate) {
     nav>ul>li>a.m-active{
     box-shadow:none;
     }
-}
-
-section>.nav-icon{
-    color:#666666;
 }

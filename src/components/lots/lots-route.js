@@ -53,7 +53,6 @@ class LotsController {
         this.$stateParams = $stateParams;
         this.list = AuctionLots.data;
         this.page = this.$stateParams.page || 1;
-
         this.$scope.tab.page = this.$stateParams.page;
         this.$scope.tab.category = this.$stateParams.category;
     }

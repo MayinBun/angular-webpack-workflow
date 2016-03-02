@@ -1,4 +1,4 @@
-/*CSS RESET*/
+/*RESET*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -22,6 +22,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+::-moz-focus-inner {border:0;} /*Firefox remove dotted outline on elements*/
+
 /*
 TABLE OF CONTENTS
 0) GENERAL
@@ -37,29 +40,36 @@ TABLE OF CONTENTS
 /*0) GENERAL*/
 html, body {
   height:100%;
-  -webkit-font-smoothing: antialiased;
-  font-family: Roboto,'Roboto',Arial, Helvetica, sans-serif;
+  font-family:Arial, Helvetica, Sans-serif,Garuda;
+  -webkit-overflow-scrolling: touch;
 }
 
 h1 { font-size: 2em; }
 h2 { font-size: 1.5em; }
-h3 { font-size: 1.1em; }
-h4 { font-size: 1.02em; }
+h3 { font-size: 1.17em; }
+h4 { font-size: 1.12em; }
 h5 { font-size: .8em; }
 h6 { font-size: .67em; }
 
-@media(max-width:768px){
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 640px)
+  and (-webkit-min-device-pixel-ratio: 2)
+{
+   
 h1 { font-size: 1.5em; }
 h2 { font-size: 1.17em; }
 h3 { font-size: 1.02em; }
 h4 { font-size: 0.83em; }
-h5 { font-size: .76em; }
-h6 { font-size: .52em; }
+h5 { font-size: .7em; }
+h6 { font-size: .62em; }
 }
 
 h1,h2,h3,h4,h5,h6,p{
   text-decoration: none;
   text-transform: none;
+  font-weight: normal;
   text-rendering: optimizeLegibility;
   color:inherit;
 }
@@ -93,14 +103,12 @@ section{
   display:block; 
   line-height:55px;
 }
-a{cursor:pointer;}
-
-a:link,:visited,:hover,:active {
+a{
+    cursor:pointer;
+    outline:none;
     text-decoration: none;
-}
-a.search:hover,a.search:focus{
-  color:#FFFFFF;
-}
+    }
+
 .row{
   margin:0 !important;
   display:-webkit-box;
@@ -110,136 +118,56 @@ a.search:hover,a.search:focus{
 }
 
 
-/*1) FOOTER */
-.footer{
-    background:#333333;
-	box-sizing: border-box;
-  	width:100%;
-  	height:auto;
-    color:#eaeaea;
-}
-.footer .footer-links{
-  	list-style: none;
-	text-align:center;
-	margin: 0;
-}
-.footer .footer-links a{
-  	display:inline-block;
-	text-decoration: none;
-	color: inherit;
-	padding: 10px 0 15px;
-}
-
-.footer .footer-social-links{
-	list-style: none;
-	font-weight: bold;
-	text-align: center;
-}
-.footer .footer-social-links a{
-	padding:0px 10px;
-}
-.footer .footer-social-links i{
-    font-size:2em;
-}
-.fa-google-plus-square{
-    color:#dc4e41;
-}
-.fa-youtube-square{
-    color:#b50006;
-}
-.fa-linkedin-square{
-    color:#0274b3;
-}
-.fa-twitter-square{
-    color:#00aced;
-}
-.fa-facebook-square{
-    color:#3b579d;
-}
-.footer .footer-company-name{
-	font-size: .7em;
-	text-align: center;
-	padding:5px 0px 5px 0px;
-}
-.footer .footer-force-desktop{
-	text-align: center;
-	text-decoration: none;
-}
-.footer .footer-force-desktop a:before{
-	content: '\f108';
-    font-family: 'FontAwesome';
-	padding-right:5px;  
-}
-.footer .footer-force-desktop a{
-	text-decoration: none;
-	color:inherit;
-	display: inline-block;
-}
-
-@media only screen and (max-width: 480px) {
- 
-	.footer .footer-links{
-		font-size: .75em;
-	}
-	
-}
-@media only screen and (max-device-width: 320px) {
-    .footer .footer-company-name{
-		font-size: .7em;
-	}
-
-	.footer .footer-links{
-		font-size: .7em;
-	}
-    .footer .footer-social-links img{
-	width:20px;
-	padding: 0px 3px 0px 3px;
-    }
-}
+/*1) FOOTER 
+--app/components/footer/footer.css
+*/
 
 /*2) NAVIGATION-BAR
 --app/components/navigation/navigation.css
 */
 
-/*3) LIST COMPONENTS*/
+/*3) LISTS*/
+.list-item{
+  display:block;
+  padding:12px 10px 12px 10px;
+}
 .list-item-title{
   text-overflow: ellipsis;
   overflow: hidden;
   color:#333333;
-  font-weight: 500;
+  padding:0px 0px 5px 0px;
 }
 
 .list-item-sub{
-  font-weight: 500;
-  color:#777777;
+  color:#666666;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
-  padding:3px 0px;
+  letter-spacing: 0.7px;
+  padding:5px 0px;
+  font-weight: normal;
 }
-
-.list-item{
-  padding:10px 5px 10px 5px;
-  display:block;
+.list-item-amount{
+  font-weight: normal;
+  color:#333333;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+  line-height: 35px;
 }
 .list-item>img{
-  width: 80px;
-  height: 80px;
+  max-width:80px;
+  max-height: 80px;
   min-width: 80px;
   min-height: 80px;
-  border-radius: 3px;
+  border-radius: 1px;
   background: url("https://images.bva-auctions.com/static/114x114.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-position: center;
-  margin:0px 15px 0px 0px;
+  margin:0px 7px 5px 0px;
 }
 
 /*4) INPUT-FIELDS */
-.input{
-  -webkit-appearance: none; /*fix safari rounding*/
-  border-radius: 0;
-}
+
 .input-group{
   display:-webkit-box;
   display:-webkit-flex;
@@ -253,6 +181,7 @@ a.search:hover,a.search:focus{
 }
 .input-addon,
 .input-field{
+  -webkit-appearance: none; /*fix safari rounding*/
   border: 1px solid rgba(147, 128, 108, 0.25);
   padding: 0.5em 0.75em;
 }
@@ -322,39 +251,41 @@ a.search:hover,a.search:focus{
 }
 
 .tabs a{
-  font-size:11px;
-  font-weight: 500;
+  font-size:.7em;  
   text-transform: uppercase;
-  line-height: 44px;
+  line-height: 50px;
   color:#666666;
-  letter-spacing: 1.4px;
+  letter-spacing: 1px;
   border-bottom: 1px solid #E0E0E8;
 }
 .tabs.scrollable{
-  width:100%; /*Full width for firefox*/
-  display:-webkit-box;
-  display:-ms-flexbox;
-  display:-webkit-flex;
   display:flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flex;
+  overflow:auto;
+  flex:1;
+  -webkit-flex:1;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .tabs.scrollable>li{
-    display:inline-flex;
-    display:-webkit-inline-flex;
-    -webkit-flex:1 1 auto;
-    -moz-box-flex: 1 1 auto;
+    min-width: min-content;
+    min-width: -webkit-min-content;
+    display:-webkit-flex;
+    display:flex;
     flex: 1 1 auto;
+    -webkit-flex: 1 1 auto;
+    white-space: nowrap;
+    
 }
 .tabs.scrollable>li>a{
-    white-space: nowrap;
     width:100%;
     text-align: center;
     padding:0px 10px 0px 10px;
 }
+
 .tabs a.is-active-tab{
   border-bottom:1px solid #0968AE;
   text-align: center;
@@ -480,9 +411,6 @@ a.search:hover,a.search:focus{
 .radius-3{
   border-radius:3px !important;
 }
-.size-8{
-  font-size:8px;
-}
 .size-10{
   font-size:10px;
 }
@@ -519,6 +447,9 @@ a.search:hover,a.search:focus{
 .margin-right{
   margin-right:10px !important;
 }
+.auto-margin{
+    margin:0 auto;
+}
 
 /*Make spinner show in middle -> angular-loading-bar*/
 #loading-bar-spinner {
@@ -534,16 +465,89 @@ a.search:hover,a.search:focus{
   right: 0;
 }
 
-.fof{width:500px;margin:0 auto;}
-.fof>.top{
-    text-align: center;
-    padding: 1% 1% 5% 1%;
+/*) FOOTER */
+.footer{
+    background:#333333;
+	box-sizing: border-box;
+  	width:100%;
+  	height:auto;
+    color:#eaeaea;
 }
-.fof>.bottom>a{
-    display:block;
-    font-size: 1.4em;
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    color:#888888;
+.footer .footer-links{
+  	list-style: none;
+	text-align:center;
+	margin: 0;
+}
+.footer .footer-links a{
+  	display:inline-block;
+	text-decoration: none;
+	color: inherit;
+	padding: 10px 0 15px;
+}
+
+.footer .footer-social-links{
+	list-style: none;
+	font-weight: bold;
+	text-align: center;
+}
+.footer .footer-social-links a{
+	padding:0px 10px;
+}
+.footer .footer-social-links i{
+    font-size:2em;
+}
+.fa-google-plus-square{
+    color:#dc4e41;
+}
+.fa-youtube-square{
+    color:#b50006;
+}
+.fa-linkedin-square{
+    color:#0274b3;
+}
+.fa-twitter-square{
+    color:#00aced;
+}
+.fa-facebook-square{
+    color:#3b579d;
+}
+.footer .footer-company-name{
+	font-size: .7em;
+	text-align: center;
+	padding:5px 0px 5px 0px;
+}
+.footer .footer-force-desktop{
+	text-align: center;
+	text-decoration: none;
+}
+.footer .footer-force-desktop a:before{
+	content: '\f108';
+    font-family: 'FontAwesome';
+	padding-right:5px;  
+}
+.footer .footer-force-desktop a{
+	text-decoration: none;
+	color:inherit;
+	display: inline-block;
+}
+
+@media only screen and (max-width: 480px) {
+ 
+	.footer .footer-links{
+		font-size: .75em;
+	}
+	
+}
+@media only screen and (max-device-width: 320px) {
+    .footer .footer-company-name{
+		font-size: .7em;
+	}
+
+	.footer .footer-links{
+		font-size: .7em;
+	}
+    .footer .footer-social-links img{
+	width:20px;
+	padding: 0px 3px 0px 3px;
+    }
 }

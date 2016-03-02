@@ -4,14 +4,14 @@
 </div>
 
 <div data-ng-show='!dateIsBeforeNow && !dateIsAfterNow && secondsEnd > 0'>
-	<h5 class='list-item-sub'>
-		{{timestamp}}
-	</h5>
-	<div class='progressbar'>
-		<span ng-style="{width:percentage+'%'}"></span>
+	
+    <h5 class='list-item-sub'>{{timestamp}}</h5>
+	
+	<div class='progressbar clear'>
+		<span data-ng-style="{width:percentage+'%'}"></span>
 	</div>
 </div>
 <div data-ng-show='!dateIsBeforeNow && dateIsAfterNow'>
 	<i class="size-14 bva-black bold">opent</i>
-	<h6 class="size-12 bva-black-light">{{startDateAttr|date:"EEE dd MMM yyyy 'om' H:mm uur"}}</h6>
+	<h6 class="size-12 bva-black-light">{{::startDateAttr|date:"EEE dd MMM yyyy 'om' H:mm uur"}}</h6>
 </div>
