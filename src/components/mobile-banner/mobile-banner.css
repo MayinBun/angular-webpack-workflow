@@ -31,10 +31,3 @@
     height:auto;
     line-height: 250px;
 }
-
-.villain-container .villain-image.ng-hide-add{
-    opacity: 0;
-    -webkit-transition: all ease-in-out 1s;
-    -o-transition: all ease-in-out 1s;
-    transition: all ease-in-out 1s;
-}
