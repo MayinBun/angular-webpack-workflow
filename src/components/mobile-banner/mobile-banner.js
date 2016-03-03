@@ -1,9 +1,11 @@
 import angular from 'angular';
+import './mobile-banner.css';
 export default angular.module('mbva.mobile-banner', [])
     .directive('mBanner', ['$interval', function ($interval) {
         return {
             scope: {
-               
+               navEnabled:'@',
+               autoplay:'@'
             },
             template:require('./mobile-banner.html'),
             link: function (scope, elem, attr) {
@@ -12,22 +14,22 @@ export default angular.module('mbva.mobile-banner', [])
                 
                 scope.slides = [
                     {
-                        url:'https://images.bva-auctions.com/static/feeds/mobile/images/367.jpg',
+                        url:'https://unsplash.it/2000/1250?image=397',
                         name:'Life & Garden'
                     },
                     {
-                        url:'https://images.bva-auctions.com/static/feeds/mobile/images/368.jpg',
+                        url:'https://unsplash.it/2000/1250?image=689',
                         name:'Showroomkeukens'
                     },
                     {
-                        url:'https://images.bva-auctions.com/static/feeds/mobile/images/365.jpg',
+                        url:'https://unsplash.it/2000/1250?image=658',
                         name:'Consumentenelektronica'
                     }
                 ]
                     
 
                 scope.currentSlide = 0;
-                console.log(scope.slides.length);
+                //console.log(scope.slides.length);
 
                 scope.nextSlide = function () {
                     scope.currentSlide = (scope.currentSlide < scope.slides.length - 1) ? ++scope.currentSlide : 0;
@@ -45,12 +47,13 @@ export default angular.module('mbva.mobile-banner', [])
                 scope.stopAutoplay = function () {
                     $interval.cancel(autoplay);
                 };
-
-                scope.startAutoplay();
-                
                 scope.$on('destroy',function(){
                     $interval.cancel(autoplay);
                 })
+                
+                if(scope.autoplay){
+                scope.startAutoplay();
+                }
             }
         }
     }])

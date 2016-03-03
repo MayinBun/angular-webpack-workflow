@@ -1,0 +1,40 @@
+.villain-container{
+    position: relative;
+    display:inline-block;
+    width:100%;
+    margin:0;
+    padding:0;
+}
+.villain-container .villain-image{
+    display:block;
+    max-height:250px;
+    width:100%;
+    object-fit: cover !important; 
+}
+.villain-overlay{
+    position: absolute;
+    padding:0px 20px;
+    height:auto;
+    left:0;
+    top:0;
+    width:auto;
+    background: rgba(0,0,0,0.2); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(right, rgba(0,0,0,0.2), rgba(0,0,0,0));
+    background: -o-linear-gradient(right, rgba(0,0,0,0.2), rgba(0,0,0,0));
+    background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0)); /*Safari 5.1-6*/
+}
+.villain-overlay .image-text{
+    text-align: center;
+    font-family: Arial;
+    color:#F5F5F5;
+    opacity: 1;
+    height:auto;
+    line-height: 250px;
+}
+
+.villain-container .villain-image.ng-hide-add{
+    opacity: 0;
+    -webkit-transition: all ease-in-out 1s;
+    -o-transition: all ease-in-out 1s;
+    transition: all ease-in-out 1s;
+}

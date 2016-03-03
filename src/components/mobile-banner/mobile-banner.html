@@ -1,5 +1,9 @@
-<div data-ng-hide="$index !== currentSlide" data-ng-repeat="slide in slides" class='row' data-ng-style="{'background':'url({{slide.url}}) center no-repeat'}" style="height:150px;">    
+<div data-ng-hide="$index !== currentSlide" 
+data-ng-repeat="slide in slides" 
+class='villain-container'>
+<img class='villain-image' data-ng-src='{{slide.url}}'/>
+<div class='villain-overlay'><h3 class='image-text'>{{slide.name}}</h3></div>    
 </div>
 
-<button ng-click="nextSlide()">next</button>
-<button ng-click="prevSlide()">prev</button>
+<button data-ng-if="navEnabled" data-ng-click="nextSlide()">next</button>
+<button data-ng-if="navEnabled" data-ng-click="prevSlide()">prev</button>

@@ -1,4 +1,4 @@
-//Vendor
+//Vendor modules
 import angular from 'angular';
 import ngMessages from 'angular-messages';
 import ngAnimate from 'angular-animate';
@@ -7,7 +7,7 @@ import angularLoadingBar from 'angular-loading-bar';
 import oclazyload from 'oclazyload';
 import uiRouterExtras from 'ui-router-extras/release/ct-ui-router-extras.js';
 
-//Global Modules
+//Global App modules
 import NavigationModule from './components/navigation/navigation';
 import LegalModule from './components/legal/legal';
 import PageTitleModule from './components/page-title/page-title';
@@ -66,10 +66,10 @@ function run(){
     require('fastclick').attach(document.body)
 }
 
-routeConfig.$inject = ['$stateProvider','$urlRouterProvider','$compileProvider','cfpLoadingBarProvider'];
-function routeConfig($stateProvider,$urlRouterProvider,$compileProvider,cfpLoadingBarProvider) {
+routeConfig.$inject = ['$stateProvider','$urlRouterProvider','$compileProvider','cfpLoadingBarProvider','$httpProvider'];
+function routeConfig($stateProvider,$urlRouterProvider,$compileProvider,cfpLoadingBarProvider,$httpProvider) {
     $compileProvider.debugInfoEnabled(false);
-    cfpLoadingBarProvider.latencyThreshold = 300;
+    cfpLoadingBarProvider.latencyThreshold = 400;
     
     //URL rewritings
     $urlRouterProvider.otherwise('/'); //Fallback
@@ -77,6 +77,7 @@ function routeConfig($stateProvider,$urlRouterProvider,$compileProvider,cfpLoadi
     /*$urlRouterProvider.when('/auction/lot/:id?*path', '/auction/lot/:id?page');*/
     //$urlRouterProvider.when('/auction/index/:id?*path', "/auction/lot/:id");
     $urlRouterProvider.when('/content/terms', '/terms');
+    //$httpProvider.defaults.withCredentials = true; //needed for the browser to store api response cookies.
     
     $stateProvider
         .state('root', {
