@@ -48,14 +48,15 @@ class AuctionsController {
     constructor(AuctionsCurrent,AuctionsService) {
         this.auctions = AuctionsCurrent;
         this.AuctionsService = AuctionsService;
-        this.currentPage = this.auctions.data ? Math.ceil(this.auctions.list.length / 25) || 1 : 0;
+        this.currentPage = this.auctions.data ? Math.ceil(this.auctions.list.length / 25) : 1;
         this.pages = Math.ceil(this.auctions.totalSize / 25);
-        console.log(this.currentPage);
+        //console.log(this.currentPage);
+        //console.log(this.pages);
       
-        this.isLastPage = this.pages > this.currentPage;
+        this.isLastPage = this.pages <= this.currentPage;
     }
     loadMoreAuctions(){
-        if(this.isLastPage){
+        if(!this.isLastPage){
           this.currentPage++;
           console.log(this.currentPage);
                         this.AuctionsService.getAuctionsPaged(this.currentPage).then(response => {

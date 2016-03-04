@@ -1,6 +1,7 @@
 import angular from 'angular';
+import ngAnimate from 'angular-animate';
 import './mobile-banner.css';
-export default angular.module('mbva.mobile-banner', [])
+export default angular.module('mbva.mobile-banner', [ngAnimate])
     .directive('mBanner', ['$interval', function ($interval) {
         return {
             scope: {

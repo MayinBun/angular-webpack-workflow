@@ -6,4 +6,4 @@
        <div data-timer data-type="auctions" data-end-date="data.dateOfFirstLotClosing"></div>
     </a>
 </div>
-<a data-ng-if="vm.isLastPage" data-ng-click="vm.loadMoreAuctions()" class="button show-more">Meer veilingen </a>
+<a data-ng-if="!vm.isLastPage" data-ng-click="vm.loadMoreAuctions()" class="button show-more">Meer veilingen </a>

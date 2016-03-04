@@ -1,11 +1,17 @@
-.villain-container{
+.villain{
     position: relative;
-    display:inline-block;
+    display:block;
     width:100%;
     margin:0;
     padding:0;
+    opacity: 1;
+    user-select:none;
+    -ms-user-select: none;
+    -moz-user-focus: none;
+    -webkit-user-select: none;
+    transition: all linear 1s;
 }
-.villain-container .villain-image{
+.villain .villain-image{
     display:block;
     max-height:250px;
     width:100%;
@@ -30,4 +36,10 @@
     opacity: 1;
     height:auto;
     line-height: 250px;
+}
+.villain.ng-hide{
+  height: 0;
+  opacity: 0.7;
+  top:-9999px;
+  left: -9999px;
 }

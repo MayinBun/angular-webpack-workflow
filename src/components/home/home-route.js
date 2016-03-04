@@ -2,6 +2,7 @@ import angular from 'angular';
 import AuctionsRoute from '../auctions/auctions-route';
 
 export default angular.module('mbva.home.route', [
+    //Child routes
     require('../auctions/auctions-route').default.name,
     require('../auctions-future/auctions-future-route').default.name,
     require('../lot-targeting/lot-targeting-route').default.name
