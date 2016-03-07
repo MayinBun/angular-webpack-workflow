@@ -31,7 +31,6 @@ import HomeRoute from './components/home/home-route';
 import LoginRoute from './components/login/login-route';
 import AuctionOverviewRoute from './components/auction-overview/auction-overview-route';
 
-import mobileBanner from './components/mobile-banner/mobile-banner.js';
 
 angular.module('mbva.app', [
     uiRouter,
@@ -53,7 +52,6 @@ angular.module('mbva.app', [
     TimerModule.name,
     PaginationModule.name,
     StaticContentModule.name,
-    mobileBanner.name
    
     //LotPageModule.name
 ])

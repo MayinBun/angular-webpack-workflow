@@ -1,7 +1,7 @@
 import angular from "angular";
-import CarouselModule from "../carousel/carousel";
+import VillainBanner from '../villain-banner/villain-banner';
 
 
 export default angular.module('mbva.home', [
-    CarouselModule.name,
+    VillainBanner.name
 ])

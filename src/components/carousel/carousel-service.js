@@ -19,7 +19,7 @@
       }
       return { getCarouselItems: getCarouselItems };
     }])*/
-    const carouselEndpoint = 'https://api.bva-auctions.com/static/feeds/carousel_mobile.xml'; 
+    const carouselEndpoint = 'https://origin-api.bva-auctions.com/static/feeds/carousel_mobile.xml'; 
     export default class CarouselService {
         constructor($http){
             this.$http = $http;

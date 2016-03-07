@@ -1,14 +1,14 @@
 import angular from 'angular';
 import ngAnimate from 'angular-animate';
-import './mobile-banner.css';
-export default angular.module('mbva.mobile-banner', [ngAnimate])
+import './villain-banner.css';
+export default angular.module('mbva.villain-banner', [ngAnimate])
     .directive('mBanner', ['$interval', function ($interval) {
         return {
             scope: {
                navEnabled:'@',
                autoplay:'@'
             },
-            template:require('./mobile-banner.html'),
+            template:require('./villain-banner.html'),
             link: function (scope, elem, attr) {
                 var AUTOPLAY_INTERVAL = 4000;
                 var autoplay;
