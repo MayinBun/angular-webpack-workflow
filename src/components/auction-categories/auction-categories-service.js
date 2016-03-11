@@ -1,10 +1,10 @@
-export default class AuctionCategoriesService {
-    constructor($http,platform){
-        this.$http = $http;
-        this.platform = platform;
+import {Platform} from '../platform/platform';
+export default class AuctionCategoriesService extends Platform {
+    constructor($http){
+        super($http);
     }
     getAuctionCategories(auctionId){
-        return this.$http.get(this.platform.API_ENDPOINT + '/ext123/auction/' + auctionId + '/nl/lotcategories');
+        return this.$http.get(this.platform + '/ext123/auction/' + auctionId + '/nl/lotcategories');
     }
 }
 AuctionCategoriesService.$inject = ['$http','platform'];

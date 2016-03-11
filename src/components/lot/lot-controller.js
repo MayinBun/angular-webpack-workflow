@@ -7,13 +7,15 @@ const exceptions = {
     serverError: "Oeps er ging iets mis! Probeer het later nog ééns"
 }
 export default class LotController {
-    constructor($scope, $state, $window, $document,lot,auction,LotService) {
+    constructor($scope, $state, $window, $document,lot,auction,LotService,lotMedia) {
         this.$scope = $scope;
         this.$state = $state;
         this.service = LotService;
         this.lot = lot;
         this.auction = auction;
         this.body = angular.element($document[0].body); //todo adjust modal directive
+        this.images = lotMedia.data;
+        
         //console.log(this.auction);
         /*this.lotMedia = lotMedia;
         */
@@ -37,7 +39,7 @@ export default class LotController {
             bidvalue: this.lot.nextBidAmount,
             autobid: false
         }
-
+        
     }
    submitBid() {
         this.showModal = false;
@@ -104,7 +106,7 @@ export default class LotController {
 
 
 }
-LotController.$inject = ['$scope', '$state', '$window', '$document','lot','auction','LotService']
+LotController.$inject = ['$scope', '$state', '$window', '$document','lot','auction','LotService','lotMedia']
 
 /*
 angular.module('mbva.lot')

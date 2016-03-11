@@ -30,7 +30,10 @@ function routeConfig($stateProvider) {
             },
             views: {
                 "@": {
-                    template: require('./home.html')
+                    template: require('./home.html'),
+                    controller:['$scope',function($scope){
+                        $scope.root.staticViewScroll=false;
+                    }]
                 }
             }
         })

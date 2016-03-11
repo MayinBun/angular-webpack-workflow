@@ -1,11 +1,8 @@
 import angular from 'angular';
 import SessionService from './session-service';
 import SessionRecoveryService from './session-recovery-service';
-import Platform from '../platform/platform';
 
-angular.module('mbva.session',[
-    Platform.name
-])
+angular.module('mbva.session',[])
 .service('SessionService', SessionService)
 .service('SessionRecoveryService',SessionRecoveryService);
 

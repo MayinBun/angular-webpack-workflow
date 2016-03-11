@@ -2,7 +2,7 @@ import angular from 'angular';
 import Platform from '../platform/platform';
 import SearchService from './search-service';
 import routeConfig from './search-route';
-export default angular.module("mbva.search", [Platform.name])
+export default angular.module("mbva.search", [])
     .config(routeConfig)
     .service('SearchService',SearchService);
     

@@ -52,11 +52,10 @@ angular.module('mbva.app', [
     TimerModule.name,
     PaginationModule.name,
     StaticContentModule.name,
-   
-    //LotPageModule.name
+    LotPageModule.name
 ])
 .run(run)
-.config(routeConfig)
+.config(appConfig)
 .controller('AppController',AppController)
 
 function run(){
@@ -64,10 +63,11 @@ function run(){
     require('fastclick').attach(document.body)
 }
 
-routeConfig.$inject = ['$stateProvider','$urlRouterProvider','$compileProvider','cfpLoadingBarProvider','$httpProvider'];
-function routeConfig($stateProvider,$urlRouterProvider,$compileProvider,cfpLoadingBarProvider,$httpProvider) {
+appConfig.$inject = ['$stateProvider','$urlRouterProvider','$compileProvider','cfpLoadingBarProvider','$httpProvider','$uiViewScrollProvider','$provide'];
+function appConfig($stateProvider,$urlRouterProvider,$compileProvider,cfpLoadingBarProvider,$httpProvider,$uiViewScrollProvider,$provide) {
     $compileProvider.debugInfoEnabled(false);
     cfpLoadingBarProvider.latencyThreshold = 400;
+    //$uiViewScrollProvider.useAnchorScroll();
     
     //URL rewritings
     $urlRouterProvider.otherwise('/'); //Fallback

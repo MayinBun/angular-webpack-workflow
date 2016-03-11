@@ -1,14 +1,14 @@
-export default class AuctionsFutureService {
-    constructor(platform, $http) {
-        this.platform = platform;
-        this.$http = $http;
+import {Platform} from '../platform/platform';
+export default class AuctionsFutureService extends Platform {
+    constructor($http) {
+        super($http);
     }
     getAuctionsFuture(page) {
-        return this.$http.get(this.platform.API_ENDPOINT + '/ext123/auctions/byfuture/paged', {
+        return this.$http.get(this.platform + '/ext123/auctions/byfuture/paged', {
             params: {
                 page: page
             }
         })
     }
 }
-AuctionsFutureService.$inject = ['platform', '$http'];
+AuctionsFutureService.$inject = ['$http'];

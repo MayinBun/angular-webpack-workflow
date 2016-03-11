@@ -277,4 +277,4 @@ angular.module('mbva.lazy-image-src')
                 link: link,
                 restrict: "A"
             });
-        }])
+        }

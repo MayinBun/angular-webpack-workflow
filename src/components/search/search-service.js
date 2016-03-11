@@ -12,14 +12,13 @@ angular
       return search;
     }
   ]);*/
-  
-  export default class SearchService {
-      constructor($http,platform){
-          this.$http = $http;
-          this.platform = platform;
+  import {Platform} from '../platform/platform';
+  export default class SearchService extends Platform {
+      constructor($http){
+          super($http);
       }
       searchQuery(searchQuery,page){
-          return this.$http.get(this.platform.API_ENDPOINT + '/ext123/search/' + searchQuery + '/' + page || 1);
+          return this.$http.get(this.platform + '/ext123/search/' + searchQuery + '/' + page || 1);
       }
   }
-  SearchService.$inject = ['$http','platform'];
+  SearchService.$inject = ['$http'];

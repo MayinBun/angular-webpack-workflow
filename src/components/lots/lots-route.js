@@ -17,7 +17,7 @@ function routeConfig($stateProvider) {
                         resolve(module);
                     })
                 })
-            }
+            },
         },
         views: {
             "overview": {

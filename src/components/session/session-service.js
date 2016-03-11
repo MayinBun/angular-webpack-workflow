@@ -1,8 +1,8 @@
-export default class SessionService {
-    constructor($cookies, $http, platform) {
+import {Platform} from '../platform/platform';
+export default class SessionService extends Platform {
+    constructor($cookies,$http) {
+        super($http);
         this.$cookies = $cookies;
-        this.$http = $http;
-        this.platform = platform;
         this.user = {};
     }
     create(user) {
@@ -17,7 +17,7 @@ export default class SessionService {
         return !!this.$cookies.get('isLoggedin');
     }
     LOGIN(credentials) {
-        return this.$http.post(this.platform.API_ENDPOINT + '/ext123/login', credentials, {
+        return this.$http.post(this.platform + '/ext123/login', credentials, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -26,11 +26,11 @@ export default class SessionService {
     LOGOUT() {
         return this.$http({
             method: 'POST',
-            url: this.platform.API_ENDPOINT + '/ext123/logout',
+            url: this.platform + '/ext123/logout',
             transformResponse: (text) => {
                 return text;
             }
         });
     }
 }
-SessionService.$inject = ['$cookies', '$http', 'platform'];
+SessionService.$inject = ['$cookies','$http'];

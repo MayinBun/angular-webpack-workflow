@@ -9,15 +9,7 @@
 </div>
 
 	<!-- carousel -->
-	<div class='row'>
-		<div class='col-xs'>
-			<slick data-init-onload='true' data-arrows='true' data-slides-to-show="1" data="::lotMedia">
-				<div data-ng-repeat='slide in ::lotMedia'>	
-					<img class='lot-slide' data-ng-src='{{::slide.url}}'/>
-				</div>
-			</slick>
-		</div>
-	</div>
+	<image-slider images="vm.images" enable-fs enable-nav></image-slider>
 
 <div class='caption-bottom'>
 	<!-- open auction -->

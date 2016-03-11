@@ -1,0 +1,12 @@
+  <div class='row fullwidth'>
+        <div class='col-xs image-container'>
+            <div data-ng-repeat="slide in images">
+                <img data-ng-click="toggleFs()" data-ng-hide='$index !== currentSlide' class='image-slide' data-ng-src='{{::slide.url}}'/>
+            </div>
+             <div data-ng-if="images.length > 1 && navEnabled">
+                <button class="previous" data-ng-click="previousSlide()"></button>
+			    <button class="next" data-ng-click="nextSlide()"></button>
+             </div>
+        </div>
+    </div>
+    <fs-image-view data-ng-show='showFs'></fs-image-view>
