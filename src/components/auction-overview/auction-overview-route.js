@@ -3,7 +3,8 @@ import AuctionOverviewController from './auction-overview-controller';
 
 export default angular.module('mbva.auction-overview.route', [
     require('../lots/lots-route').default.name,
-    require('../auction-categories/auction-categories-route').default.name
+    require('../auction-categories/auction-categories-route').default.name,
+    require('../lots-photos/lots-photos-route').default.name
 ]).config(routeConfig)
 
 function routeConfig($stateProvider) {

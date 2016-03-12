@@ -1,4 +1,5 @@
 
+lotsPhotosDirective.$inject = ['$state','$stateParams','$timeout','LotsService','cache'];
 export default function lotsPhotosDirective($state, $stateParams, $timeout, LotsService, cache) {
     return {
         scope: {
@@ -46,4 +47,3 @@ export default function lotsPhotosDirective($state, $stateParams, $timeout, Lots
         }
     }
 }
-lotsPhotosDirective.$inject = ['$state','$stateParams','$timeout','LotsService','cache'];

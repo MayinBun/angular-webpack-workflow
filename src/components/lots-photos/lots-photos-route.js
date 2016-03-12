@@ -1,9 +1,23 @@
-export default function routeConfig($stateProvider) {
-    'use strict';
+import angular from 'angular';
+export default angular.module('mbva.lots-photos.route',[])
+.config(routeConfig);
+
+function routeConfig($stateProvider) {
     $stateProvider.state('photos', {
         parent: 'auction-overview',
         url: '^/auction/lot/photos/:auctionId?page&category',
         sticky: true,
+           resolve:{
+               loadModule: ($q, $ocLazyLoad) => {
+                return $q((resolve) => {
+                    require.ensure([], () => {
+                        let module = require('./lots-photos');
+                        $ocLazyLoad.load({ name: module.default.name });
+                        resolve(module);
+                    })
+                })
+            },
+        },
         views: {
             "overview": {
                 resolve:{
