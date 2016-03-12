@@ -17,7 +17,6 @@ import Platform from './components/platform/platform';
 
 import UserLotsModule from './components/user-lots/user-lots';
 import StaticContentModule from './components/static/static';
-import LotPageModule from './components/lot/lot';
 import SearchBarModule from './components/search-bar/search-bar';
 import SearchModule from './components/search/search';
 
@@ -30,7 +29,7 @@ import 'angular-loading-bar/build/loading-bar.css';
 import HomeRoute from './components/home/home-route';
 import LoginRoute from './components/login/login-route';
 import AuctionOverviewRoute from './components/auction-overview/auction-overview-route';
-
+import LotRoute from './components/lot/lot-route';
 
 angular.module('mbva.app', [
     uiRouter,
@@ -42,6 +41,7 @@ angular.module('mbva.app', [
     Platform.name,
     HomeRoute.name,
     AuctionOverviewRoute.name,
+    LotRoute.name,
     LoginRoute.name,
     UserLotsModule.name,
     NavigationModule.name,
@@ -52,7 +52,6 @@ angular.module('mbva.app', [
     TimerModule.name,
     PaginationModule.name,
     StaticContentModule.name,
-    LotPageModule.name
 ])
 .run(run)
 .config(appConfig)

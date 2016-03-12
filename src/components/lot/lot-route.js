@@ -1,15 +1,28 @@
-import LotController from './lot-controller';
-import tpl from './lot.html';
+import angular from 'angular';
+
+export default angular.module('mbva.lot.route',[])
+.config(routeConfig);
 
 routeConfig.$inject = ['$stateProvider'];
-export default function routeConfig($stateProvider) {
+function routeConfig($stateProvider) {
     $stateProvider.state('lot', {
         parent: 'root',
         url: '^/auction/lot/:auctionId/:lotId',
+        resolve: {
+            loadModule: ($q, $ocLazyLoad) => {
+                return $q((resolve) => {
+                    require.ensure([], () => {
+                        let module = require('./lot');
+                        $ocLazyLoad.load({ name: module.default.name });
+                        resolve(module);
+                    })
+                })
+            }
+        },
         views: {
             'staticView@': {
-                template: tpl,
-                controller: LotController,
+                template: require('./lot.html'),
+                controller: 'LotController',
                 controllerAs: 'vm',
                 resolve: {
                     lot: lot,

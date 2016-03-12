@@ -95,7 +95,6 @@ export default angular.module('mbva.static', [accordionDirective.name])
       $scope.content = $sce.trustAsHtml(res.data);
     });
   }]);*/
-  
   class StaticViewController{
     constructor($scope){
         this.$scope = $scope;
