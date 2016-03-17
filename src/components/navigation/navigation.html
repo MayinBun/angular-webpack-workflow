@@ -1,6 +1,6 @@
 <header>
     <div class='logo'>
-        <a data-ui-sref='home'><img data-ng-src="{{nav.logo}}"/></a>
+        <a data-ui-sref='home'><img data-ng-src="{{nav.logo}}" /></a>
     </div>
     <nav>
         <a id='menu-icon' data-ng-click='showMenu = !showMenu'><i class="fa fa-bars fa-lg"></i> Menu</a>
@@ -8,25 +8,25 @@
             <li>
                 <a data-ui-sref-active='m-active' data-ui-sref='home' data-ng-click='showMenu = !showMenu'>    
                 Alle veilingen
-            </a>
+                </a>
             </li>
             <li>
                 <a data-ui-sref-active='m-active' data-ui-sref='user-lots' data-ng-click='showMenu = !showMenu'>
                Mijn kavels
-            </a>
+                </a>
             </li>
             <li>
                 <a data-ui-sref-active='m-active' data-ng-hide='nav.is.loggedin' data-ui-sref='login' data-ng-click='showMenu = !showMenu'> 
                 Inloggen
-            </a>
+                </a>
                 <a data-ng-hide='!nav.is.loggedin' data-ng-click='nav.logOut();!showMenu'>  
                 Uitloggen
-            </a>
+                </a>
             </li>
             <li>
                 <a data-ui-sref-active='m-active' data-ui-sref='contact' data-ng-click='showMenu = !showMenu'>
                Contact
-            </a>
+                </a>
             </li>
         </ul>
     </nav>
