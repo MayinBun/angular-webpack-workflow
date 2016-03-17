@@ -5,9 +5,6 @@ searchBarDirective.$inject = ['$state', '$timeout'];
 export default function searchBarDirective($state, $timeout) {
     return {
         restrict: 'EA',
-        scope:{
-            isVisible:'=',
-        },
         template: searchBarTemplate,
         link: function (scope, element, attr) {
             //var input = angular.element('#search-input');
