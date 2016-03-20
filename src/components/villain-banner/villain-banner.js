@@ -10,7 +10,7 @@ export default angular.module('mbva.villain-banner', [ngAnimate])
             },
             template:require('./villain-banner.html'),
             link: function (scope, elem, attr) {
-                var AUTOPLAY_INTERVAL = 4000;
+                var AUTOPLAY_INTERVAL = 5000;
                 var autoplay;
                 
                 scope.slides = [

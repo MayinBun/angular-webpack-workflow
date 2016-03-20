@@ -1,7 +1,8 @@
 .villain{
     position: relative;
-    display:block;
+    display: block;
     width:100%;
+    height:250px;
     margin:0;
     padding:0;
     opacity: 1;
@@ -9,17 +10,16 @@
     -ms-user-select: none;
     -moz-user-focus: none;
     -webkit-user-select: none;
-    -webkit-transition: all 1s linear;
-    -moz-transition: all 1s linear;
-    transition: all 1s linear; 
 }
-.villain .villain-image{
-    display:block;
-    max-height:250px;
+.villain .villain-image>img{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
     width:100%;
     object-fit: cover !important; 
 }
-.villain-overlay{
+.villain-image .villain-overlay{
     position: absolute;
     padding:0px 20px;
     height:auto;
@@ -39,9 +39,62 @@
     height:auto;
     line-height: 250px;
 }
-.villain.ng-hide{
-  height: 0px;
-  opacity: 0.9;
-  top:-9999px;
-  left: -9999px;
+
+/*Animations*/
+.villain>.villain-image.ng-hide-add{
+ -webkit-animation:  1s hide;
+ -moz-animation: 1s hide;
+ animation: 1s hide;
+}
+
+.villain>.villain-image.ng-hide-remove {
+  -webkit-animation:1s show;
+  -moz-animation: 1s show;
+  animation:1s show;
+}
+
+
+@keyframes hide {
+  0% {
+    opacity:1;
+  }
+  100% { 
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes hide {
+  0% {
+    opacity:1;
+  
+  }
+ 
+  100% { 
+    opacity:0;
+   
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity:0;
+   
+  }
+
+  100% { 
+    opacity:1;
+ 
+  }
+}
+
+@-webkit-keyframes show {
+  0% {
+    opacity:0;
+  
+  }
+
+  100% { 
+    opacity:1;
+   
+  }
 }
