@@ -2,17 +2,17 @@ import angular from 'angular';
 import ngAnimate from 'angular-animate';
 import './villain-banner.css';
 export default angular.module('mbva.villain-banner', [ngAnimate])
-    .directive('mBanner', ['$interval', function ($interval) {
+    .directive('villainBanner', ['$interval', function ($interval) {
         return {
+            restrict:'EA',
             scope: {
-               navEnabled:'@',
                autoplay:'@'
             },
             template:require('./villain-banner.html'),
             link: function (scope, elem, attr) {
                 var AUTOPLAY_INTERVAL = 5000;
-                var autoplay;
-                
+                var autoplay;  
+                      
                 scope.slides = [
                     {
                         url:'https://unsplash.it/2000/1250?image=397',

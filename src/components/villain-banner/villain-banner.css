@@ -5,19 +5,22 @@
     height:250px;
     margin:0;
     padding:0;
-    opacity: 1;
     user-select:none;
     -ms-user-select: none;
     -moz-user-focus: none;
     -webkit-user-select: none;
 }
-.villain .villain-image>img{
+.villain-image img{
     position: absolute;
     top:0;
     left:0;
     height: 100%;
     width:100%;
     object-fit: cover !important; 
+   -webkit-transform: translate3d(0, 0, 0);
+   -moz-transform: translate3d(0, 0, 0);
+   -ms-transform: translate3d(0, 0, 0);
+   transform: translate3d(0, 0, 0);
 }
 .villain-image .villain-overlay{
     position: absolute;
@@ -26,75 +29,27 @@
     left:0;
     top:0;
     width:auto;
-    background: rgba(0,0,0,0.2); /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(right, rgba(0,0,0,0.2), rgba(0,0,0,0));
-    background: -o-linear-gradient(right, rgba(0,0,0,0.2), rgba(0,0,0,0));
-    background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0)); /*Safari 5.1-6*/
+    background: rgba(0,0,0,0.5); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(right, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+    background: -o-linear-gradient(right, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+    background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.2)); /*Safari 5.1-6*/
 }
 .villain-overlay .image-text{
     text-align: center;
     font-family: Arial;
-    color:#F5F5F5;
+    color:#F7F7F7;
     opacity: 1;
     height:auto;
     line-height: 250px;
 }
 
-/*Animations*/
-.villain>.villain-image.ng-hide-add{
- -webkit-animation:  1s hide;
- -moz-animation: 1s hide;
- animation: 1s hide;
+/*Fading transition*/
+.villain-image.ng-hide{
+ opacity: 0;
 }
-
-.villain>.villain-image.ng-hide-remove {
-  -webkit-animation:1s show;
-  -moz-animation: 1s show;
-  animation:1s show;
+.villain-image.ng-hide-remove{
+ transition: all linear 500ms;
 }
-
-
-@keyframes hide {
-  0% {
-    opacity:1;
-  }
-  100% { 
-    opacity:0;
-  }
-}
-
-@-webkit-keyframes hide {
-  0% {
-    opacity:1;
-  
-  }
- 
-  100% { 
-    opacity:0;
-   
-  }
-}
-
-@keyframes show {
-  0% {
-    opacity:0;
-   
-  }
-
-  100% { 
-    opacity:1;
- 
-  }
-}
-
-@-webkit-keyframes show {
-  0% {
-    opacity:0;
-  
-  }
-
-  100% { 
-    opacity:1;
-   
-  }
+.villain-image.ng-hide-add{
+ transition: all linear 500ms;
 }

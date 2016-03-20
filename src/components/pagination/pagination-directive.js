@@ -15,18 +15,7 @@ export default function paginationDirective () {
             showPrevNext: '@',
             pagingAction: '&'
         },
-
-        // Assign the angular directive template HTML
-        template: 
-            '<ul data-ng-hide="Hide" data-ng-class="ulClass"> ' +
-                '<li ' +
-                    'title="{{Item.title}}" ' +
-                    'data-ng-class="Item.liClass" ' +
-                    'data-ng-click="Item.action()" ' +
-                    'data-ng-repeat="Item in List"> ' +
-                        '<span data-ng-bind="Item.value"></span> ' +
-                '</li>' +
-            '</ul>'
+        template: require('./pagination.html')
     };
     
     
