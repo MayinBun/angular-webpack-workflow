@@ -46,14 +46,16 @@ function getAuctions($q, AuctionsService) {
 
 class AuctionsController {
     constructor(AuctionsCurrent,AuctionsService) {
+        try {
         this.auctions = AuctionsCurrent;
         this.AuctionsService = AuctionsService;
-        this.currentPage = this.auctions.data ? Math.ceil(this.auctions.list.length / 25) : 1;
+        this.currentPage = Math.ceil(this.auctions.list.length / 25);
         this.pages = Math.ceil(this.auctions.totalSize / 25);
-        //console.log(this.currentPage);
-        //console.log(this.pages);
-      
         this.isLastPage = this.pages <= this.currentPage;
+            
+        } catch (error) {
+            throw "auctions is undefined or null";
+        }
     }
     loadMoreAuctions(){
         if(!this.isLastPage){
