@@ -6,7 +6,7 @@ import uiRouter from 'angular-ui-router';
 import angularLoadingBar from 'angular-loading-bar';
 import oclazyload from 'oclazyload';
 import uiRouterExtras from 'ui-router-extras/release/ct-ui-router-extras.js';
-
+import slyRepeat from './sly';
 //Global App modules
 import NavigationModule from './components/navigation/navigation';
 import LegalModule from './components/legal/legal';
@@ -36,6 +36,7 @@ angular.module('mbva.app', [
     'ct.ui.router.extras',
     ngAnimate,
     ngMessages,
+    slyRepeat.name,
     oclazyload,
     angularLoadingBar,
     Platform.name,
