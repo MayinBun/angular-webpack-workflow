@@ -29,7 +29,7 @@ class Controller{
         console.log(this.$scope.root);
         this.$scope.root.staticViewScroll = true;
         this.$scope.$on('$destroy',function(){
-            this.$scope.staticViewScroll = false;
+            this.$scope.root.staticViewScroll = false;
         })
     }
 }
