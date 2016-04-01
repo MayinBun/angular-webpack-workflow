@@ -1,51 +1,12 @@
 import angular from 'angular';
 export default function UserLotsController($scope,$filter,userLots){       
-            $scope.userLots = {
-                all: {
-                    options: {
-                        open: true
-                    },
-                    lots: {}
-                },
-                overbid: {
-                    options: {
-                        open: true,
-                        highestBidder: false,
-                        bidded: true
-                    },
-                    lots: {}
-                },
-                highestbidder: {
-                    options: {
-                        open: true,
-                        highestBidder: true
-                    },
-                    lots: {}
-                },
-                notbidded: {
-                    options: {
-                        open: true,
-                        bidded: false
-                    },
-                    lots: {}
-                }
-            }
-
-            $scope.$watch('userLots', function () {
-                angular.forEach($scope.userLots, function (value, key) {
-                    value.lots = $filter('filter')(userLots, value.options);
-                })
-            });
+            $scope.userLots = userLots;
 
             $scope.toggle = {
                 overbid: true,
                 highestBidder: true,
                 notBidded: true
             }
-
-            $scope.showOverbid = true;
-            $scope.showHighest = true;
-            $scope.showNotBidded = true;
 
             $scope.BIDDED = "";
             $scope.HIGHESTBIDDER = "";

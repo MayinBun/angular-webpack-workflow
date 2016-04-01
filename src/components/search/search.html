@@ -2,7 +2,7 @@
 <h4 class='text-center padding' data-ng-if="vm.result.totalHits !== undefined">{{::result.totalHits}} resultaten gevonden voor "{{::searchQuery}}"</h4>
 <div class="row">
   <a data-ng-repeat="data in vm.result.data.lots" class="list-item col-md-6 col-xs-12 textlimit" data-ui-sref="lot({auctionId:data.lot.auctionId,lotId:data.lot.id})">
-          <img class="pull-left" data-ng-src="{{::data.lot.imageUrl}}"/>
+         <div class="image-container"><span class="image-helper"></span><img data-ng-src="{{::data.lot.imageUrl}}"/></div>
             <h3 class="list-item-title">{{::data.lot.name.nl}}</h3>
             <h4 class="pull-right bva-black">€ {{::data.lot.latestBidAmount|number:2}}</h4>
             <h5 class="list-item-sub">{{::data.lot.fullNumber}}</h5>

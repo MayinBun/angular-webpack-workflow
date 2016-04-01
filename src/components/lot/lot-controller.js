@@ -103,6 +103,9 @@ export default class LotController {
         this.showModal = false;
         this.body.removeClass('hide-overflow');
     }
+    reloadState(){
+        this.$state.reload();
+    }
 
 
 }

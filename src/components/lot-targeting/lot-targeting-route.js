@@ -8,7 +8,7 @@ function routeConfig($stateProvider) {
     $stateProvider
         .state('lot-targeting', {
             parent: 'home',
-            url: 'selected',
+            url: '/selected',
             sticky: true,
             pageTitle: 'BVA Auctions - Speciaal voor u',
             resolve: {

@@ -1,6 +1,6 @@
 <div class="row">
   <a data-sly-repeat="data in vm.auctions.list" class="list-item col-md-6 col-xs-12" data-ui-sref="list({auctionId:data.id,page:1})">
-       <img class="pull-left" data-ng-src="http://images.bva-auctions.com/static/auctions/{{::data.id}}/overview/114x114/{{::data.id}}.jpg"/>
+       <div class="image-container"><span class="image-helper"></span><img data-ng-src="{{data.imageUrl}}"/></div>
        <h3 class="list-item-title textlimit">{{::data.name.nl}}</h3>
        <h5 data-ng-if="::data.approvedLotCount == 1 ? lotText ='kavel' : lotText = 'kavels'" class="list-item-sub textlimit"><i class='fa fa-map-marker fa-lg'></i> {{::data.approvedLotCount}} {{::lotText}} | {{::data.location.name.nl}}</h5>
        <div data-timer data-type="auctions" data-end-date="data.dateOfFirstLotClosing"></div>

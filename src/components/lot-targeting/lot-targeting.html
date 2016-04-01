@@ -1,8 +1,8 @@
 <div class="row">
     <a data-ng-repeat="data in vm.selectedLots" class="list-item col-md-6 col-xs-12 textlimit" data-ui-sref="lot({auctionId:data.auctionId,lotId:data.id})">
-        <img class="pull-left" data-ng-src="{{::data.imageUrl}}"/>
+        <div class="image-container"><span class="image-helper"></span><img data-ng-src="{{::data.imageUrl}}"/></div>
         <h3 class="list-item-title">{{::data.name.nl}}</h3>
-        <h5 class="pull-right bva-black">€ {{::data.latestBidAmount|number:2}}</h5>
+        <h4 class="pull-right bva-black">€ {{::data.latestBidAmount|number:2}}</h4>
         <h5 class="list-item-sub">{{::data.fullNumber}}</h5>
         <div data-timer data-type="lots" data-start-date="data.startDate" data-end-date="data.endDate"></div>
     </a>

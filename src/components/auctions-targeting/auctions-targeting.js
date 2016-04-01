@@ -1,1 +1,0 @@
-angular.module('mbva.auctions-targeting',[])

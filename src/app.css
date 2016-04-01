@@ -110,7 +110,8 @@ a{
     }
 
 .row{
-  margin:0 !important;
+  margin:0px !important;
+  padding:0px !important;
   display:-webkit-box;
   display:-webkit-flex;
   display:-ms-flexbox;
@@ -127,9 +128,22 @@ a{
 */
 
 /*3) LISTS*/
+ul.m-list{
+    width:100%;
+    list-style-type: none;
+}
+ul.m-list li{
+    overflow: auto;
+    padding:12px 10px 12px 10px;
+}
+ul.m-list li img{
+    max-height: 100%;
+    max-width: 100%;
+}
+
 .list-item{
   display:block;
-  padding:12px 10px 12px 10px;
+  padding: 10px 10px 10px 0px !important;
 }
 .list-item-title{
   text-overflow: ellipsis;
@@ -152,18 +166,27 @@ a{
   vertical-align: middle;
   line-height: 35px;
 }
-.list-item>img{
-  max-width:80px;
-  max-height: 80px;
-  min-width: 80px;
-  min-height: 80px;
-  border-radius: 1px;
-  background: url("https://images.bva-auctions.com/static/114x114.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-position: center;
-  margin:0px 7px 5px 0px;
+.list-item .image-container{
+    height:80px;
+    width:80px;
+    padding:0px 10px;
+    margin-bottom:5px;
+    text-align: center;
+    border-radius: 1px;
+    overflow: hidden;
+    float:left;
+    white-space: nowrap;
+}
+.list-item .image-container .image-helper{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.list-item .image-container>img{ 
+    vertical-align: middle;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /*4) INPUT-FIELDS */

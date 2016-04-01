@@ -1,6 +1,6 @@
 .progressbar {
   height: 1px;
-  background-color: #eaeaea;
+  background-color: #ccc;
   overflow:hidden;
 }
 .progressbar > span {
