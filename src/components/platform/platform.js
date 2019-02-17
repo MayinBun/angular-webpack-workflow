@@ -3,7 +3,7 @@ import angular from 'angular';
 export default angular.module('mbva.platform', [])
     .service('platform',() => new PlatformService);
 
-const API_ENDPOINT = 'https://api-acc.bva-auctions.com/api/rest';  
+const API_ENDPOINT = process.env.API_BASE;  
 
 
 class Platform {
